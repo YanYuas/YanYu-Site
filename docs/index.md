@@ -3,6 +3,7 @@ hide:
   - navigation
   - toc
   - path
+  - footer        # 首页不要「上一页 / 下一页」（它本来也没有上下页）
 title: 首页
 ---
 

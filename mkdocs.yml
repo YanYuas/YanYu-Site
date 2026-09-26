@@ -107,6 +107,9 @@ theme:
   features:                 # 功能开关：想开哪个就加一行，想关就加 # 注释掉
     - navigation.tabs       # 顶部标签导航（个人站观感的关键一项）
     - navigation.top        # 回到顶部按钮
+    - navigation.footer     # 内容页底部的「上一页 / 下一页」
+                            #   关掉时 Material 根本不渲染那个 nav，
+                            #   所以光写 CSS 是隐藏不掉它的（首页改用 front matter 的 hide: [footer]）
     - search.highlight      # 搜索结果高亮关键词
     - content.code.copy     # 代码块右上角一键复制
 
