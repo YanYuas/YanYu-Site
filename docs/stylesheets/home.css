@@ -1,0 +1,92 @@
+/* ==================================================================
+   home.css · 首页落地页样式
+   ------------------------------------------------------------------
+   与 starry-academic.css 的分工：
+     starry-academic.css → 全站视觉系统（配色 / 字体 / 组件 / 玻璃）
+     home.css            → 只管首页的版式（Hero / 节奏 / 网格）
+   所有版式规则都限定在 .home 容器内，不影响内容页。
+   唯一的例外是下面 .md-grid 那一条（改的是全站内容区最大宽度），已单独标注。
+   ================================================================== */
+
+/* 内容区略加宽：读长文仍舒适，但给卡片留出横向空间
+   ⚠ 这一条是【全局】的，不只作用于首页 —— 改它会影响所有内容页 */
+.md-grid { max-width: 68rem; }
+
+/* ==================================================================
+   一、Hero 区
+   ================================================================== */
+
+/* Hero 占据首屏的主要视线，垂直方向有呼吸 */
+.home .hero {
+  text-align: center;
+  padding: 4.5rem 1rem 3rem;
+}
+
+/* 问候语：小字、大字距 —— 像钟楼的报时 */
+.home .hero .greet {
+  font-size: 0.95rem;
+  letter-spacing: 0.35em;
+  text-indent: 0.35em;
+  color: var(--sa-text-low);
+  margin: 0 0 0.6rem;
+}
+
+/* 名字：全页最大的元素，纯黑楷书 */
+.home .hero h1 {
+  font-size: clamp(2.6rem, 7vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  border-bottom: none;
+  padding-bottom: 0;
+  margin: 0 0 1.1rem;
+}
+
+/* 一句话介绍 */
+.home .hero > p:not(.greet) {
+  max-width: 30rem;
+  margin: 0 auto 2rem;
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--sa-text-mid);
+}
+
+/* 按钮组 */
+.home .hero .md-button {
+  margin: 0 0.3rem;
+}
+
+/* ==================================================================
+   二、板块卡片
+   ================================================================== */
+
+/* 卡片与 Hero 之间的留白即分隔，不用 hr */
+.home .grid.cards {
+  margin-top: 1.5rem;
+  grid-gap: 1.1rem;
+}
+
+.home .grid.cards > ul > li {
+  padding: 1.5rem 1.3rem;
+}
+
+.home .grid.cards strong {
+  font-size: 1.06rem;
+  letter-spacing: 0.05em;
+}
+
+/* ==================================================================
+   三、页脚小字
+   ================================================================== */
+
+.home-foot {
+  margin-top: 4rem;
+  padding-top: 1.4rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--sa-text-low);
+  border-top: 1px solid var(--sa-line);
+}
+
+.home-foot a { border-bottom: none; }

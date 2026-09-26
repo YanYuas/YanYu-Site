@@ -1,0 +1,188 @@
+# ============================================================
+# mkdocs.yml · 网站总控制台
+#
+# 三条铁律（违反任意一条都会报错）：
+#   ① 冒号后面必须有空格        site_name: xxx
+#   ② 只能用空格缩进，禁止 Tab   同一层必须对齐
+#   ③ # 开头是注释，机器完全忽略
+# ============================================================
+
+# ---------- 1. 基本信息 ----------
+site_name: YanYuas
+site_description: 数学与应用数学本科生 · 数学建模、数学理论与随笔
+
+# ---------- 2. 导航 ----------
+# 左边是显示在菜单上的中文，右边是真实文件路径
+# 缩进更深一层 = 二级菜单（鼠标悬停展开）
+nav:
+  - 首页: index.md
+  - 数学建模:
+      - 板块导览: mathmodel/index.md
+      - 知识库: mathmodel/kb/index.md
+      - 竞赛作品: mathmodel/works/index.md
+  - 数学理论:
+      - 板块导览: maththeory/index.md
+      - 高等代数:
+          - 总览: maththeory/advanced-algebra/index.md
+          - 方法论与研究:
+              - 从初等几何到公理化演进: maththeory/advanced-algebra/theory/从初等几何到公理化演进.md
+              - 充要图谱方法论-v2: maththeory/advanced-algebra/theory/充要图谱方法论-v2.md
+              - 几何统摄与充要图谱-学术论文: maththeory/advanced-algebra/theory/几何统摄与充要图谱-学术论文.md
+          - 领域一 · 矩阵与基:
+              - 领域导览: maththeory/advanced-algebra/matrix-basis/index.md
+              - F1 · 基底与坐标:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/习题集.md
+              - F2 · 矩阵运算与分块:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/习题集.md
+              - F3 · 行列式:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F3-行列式/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F3-行列式/习题集.md
+              - F4 · 特征理论:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F4-特征理论/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F4-特征理论/习题集.md
+              - F5 · 相似与标准形:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/习题集.md
+              - F6 · λ矩阵与若尔当标准形:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/习题集.md
+              - F7 · 矩阵分解:
+                  - 讲义: maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/讲义.md
+                  - 习题集: maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/习题集.md
+          - 领域二 · 线性空间:
+              - 领域导览: maththeory/advanced-algebra/linear-space/index.md
+              - G1 · 线性空间的定义与基本性质:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/习题集.md
+              - G2 · 基维数与同构:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G2-基维数与同构/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G2-基维数与同构/习题集.md
+              - G3 · 内积空间与正交性:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/习题集.md
+              - G4 · 商空间:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G4-商空间/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G4-商空间/习题集.md
+              - G5 · 解析几何嵌入:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/习题集.md
+              - G6 · 仿射空间:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G6-仿射空间/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G6-仿射空间/习题集.md
+              - G7 · 二次型与曲面:
+                  - 讲义: maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-space/G7-二次型与曲面/习题集.md
+          - 领域三 · 线性变换:
+              - 领域导览: maththeory/advanced-algebra/linear-transform/index.md
+              - T1 · 线性变换的定义与基本性质:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/习题集.md
+              - T2 · 核与像:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T2-核与像/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T2-核与像/习题集.md
+              - T3 · 同构与线性变换空间:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T3-同构与线性变换空间/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T3-同构与线性变换空间/习题集.md
+              - T4 · 特征理论的算子视角:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/习题集.md
+              - T5 · 对角化与谱定理:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/习题集.md
+              - T6 · Jordan标准形的算子构造:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/习题集.md
+              - T7 · 特殊线性变换与应用:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集.md
+  - 随笔: blog/index.md
+  - 关于: about.md
+theme:
+  name: material            # 用 Material 这套主题
+  language: zh              # 界面文字用中文（搜索框提示、目录标题等）
+  font: false               # 不加载 Google 字体 —— 国内访问更快
+
+  features:                 # 功能开关：想开哪个就加一行，想关就加 # 注释掉
+    - navigation.tabs       # 顶部标签导航（个人站观感的关键一项）
+    - navigation.top        # 回到顶部按钮
+    - search.highlight      # 搜索结果高亮关键词
+    - content.code.copy     # 代码块右上角一键复制
+
+  palette:                  # 配色方案：两套（深色 / 浅色）
+    - media: "(prefers-color-scheme: dark)"
+      scheme: starry        # ← 必须与 CSS 里 [data-md-color-scheme="starry"] 完全一致
+      primary: custom       # ← custom = 颜色全部交给我的 CSS 处理
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: parchment     # ← 浅色那套，对应 CSS 里的 parchment
+      primary: custom
+      toggle:
+        icon: material/white-balance-sunny
+        name: 切换到深色模式
+
+# ---------- 插件 ----------
+plugins:
+  - search:
+      # 【为什么必须显式写 lang，不能靠 theme.language: zh 自动带出来】
+      # Material 的默认逻辑是去读语言包里的 search.config.lang，
+      # 而 zh 语言包只覆盖了 "language"，没覆盖这一项，
+      # 于是回落到 en 语言包的值 —— 最终搜索索引是 "lang": ["en"]。
+      # 后果：英文分词器 + 英文词干还原，而中文没有空格，
+      # "线性空间的定义与基本性质" 会被当成【一个】词条存进去，
+      # 搜「线性空间」永远命中不了（lunr 只做整词匹配，不做子串匹配）。
+      # 补上 zh 才会启用 jieba 中文分词 —— 就是 requirements.txt 里那个 jieba。
+      lang:
+        - zh
+        - en
+
+# ---------- 4. 自定义样式 ----------
+extra_css:                  # 这里的文件最后加载，所以能覆盖 Material 默认外观
+  - stylesheets/starry-academic.css   # 全站视觉系统（配色/字体/组件/玻璃）
+  - stylesheets/home.css              # 首页版式（Hero/节奏/网格），必须排在后面
+
+# ---------- 5. Markdown 扩展 ----------
+markdown_extensions:
+  - attr_list               # 支持 { align=center } 这类属性写法
+  - md_in_html              # 支持在 HTML 标签里写 Markdown（首页卡片需要它）
+  - admonition              # 支持 !!! note / !!! tip 彩色提示框
+  - meta                    # 支持页面顶部 hide: 隐藏侧边栏（首页落地页要用）
+
+  # ★ 图标语法 :material-xxx: —— 缺了它，图标会原样显示成 ":material-pencil:{ .lg }" 这堆文本
+  #   这是 Material 官方推荐的图标方案，依赖 material 自带的两套翻译器
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # 代码块 + Mermaid 流程图（写数模笔记会用）
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # 数学公式（配合 javascripts/mathjax.js）
+  - pymdownx.arithmatex:
+      generic: true
+
+  # 其他常用
+  - footnotes               # 脚注
+  - toc:
+      permalink: true         # 标题锚点
+
+# ---------- 6. 脚本 ----------
+# ① 首页动态问候语（按时间变化："早上好/下午好/晚上好，我是衍煜"）
+# ② MathJax 公式渲染：先加载自己的配置，再加载 MathJax 本体
+#    【重要】MathJax 本体已下载到本地 javascripts/vendor/，不再依赖 CDN。
+#    原因：原先用的字节跳动镜像 lf26-cdn-tos.bytecdntp.com 已失效（404），
+#    会导致全站公式完全不渲染。本地化后既快又稳定，离线也能用。
+extra_javascript:
+  - javascripts/home-greet.js
+  - javascripts/mathjax.js
+  - javascripts/vendor/tex-mml-chtml.js

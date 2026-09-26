@@ -1,0 +1,36 @@
+# ================================================================
+# .gitignore · 哪些文件不进 Git
+# 原则：能随时自动重新生成的东西，都不进 Git
+# ================================================================
+
+# 虚拟环境
+.venv/
+venv/
+env/
+
+# MkDocs 生成的网站成品
+site/
+
+# Python 缓存
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter 检查点
+.ipynb_checkpoints/
+
+# 编辑器 / 系统
+# 注：.vscode/settings.json 例外 —— 它存放 mkdocs.yml 的 YAML 标签白名单，
+#     是项目配置的一部分，需要跟随仓库。
+.vscode/*
+!.vscode/settings.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# 临时文件
+*.tmp
+*.log
+
+# 个人学习文档
+文档/

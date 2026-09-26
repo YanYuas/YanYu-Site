@@ -1,0 +1,38 @@
+{
+  // ============================================================
+  // VS Code 工作区配置
+  // ============================================================
+
+  // ---------- YAML 标签白名单 ----------
+  // mkdocs.yml 里用了 PyYAML 的 python/name 标签（Material 官方写法），
+  // VS Code 内置校验器不认识它们，会报红。
+  // 这里把它们登记为合法标签，红线即消失，校验能力仍保留。
+  "yaml.customTags": [
+    "!!python/name:material.extensions.emoji.twemoji",
+    "!!python/name:material.extensions.emoji.to_svg",
+    "!!python/name:pymdownx.superfences.fence_code_format"
+  ],
+
+  // ---------- 文件关联 ----------
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  },
+
+  // ---------- 文件排除（资源管理器里少些噪音）----------
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.venv": true
+  },
+  "search.exclude": {
+    "site/**": true,
+    "**/.venv": true
+  },
+
+  // ---------- Python ----------
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+}

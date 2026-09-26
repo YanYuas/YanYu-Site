@@ -1,0 +1,599 @@
+/* ==================================================================
+   starry-academic.css ·「霜穹」Frostlight
+   ------------------------------------------------------------------
+   设计语言：弥散光 + 玻璃态（Glassmorphism）
+   气质：通透 · 轻盈 · 清冷 · 有光
+   对标：清晨结霜的玻璃窗 —— 背后有光，表面有雾
+
+   与上一版「星穹典录」的关键差异：
+   · 底色由「近墨黑」改为「深蓝灰」，告别沉重
+   · 装饰大幅减负：去掉 h1 双线 / h3 金竖线 / 金色 hr
+   · 强调色由「满眼金」收敛为「单一靛蓝」，金仅用于引用块一处
+   · 材质由实色改为玻璃层（blur + saturate + 半透明 + 细高光边）
+
+   【玻璃态成立的前提】
+   玻璃之所以看得见，是因为它背后有东西可以透。
+   所以本设计在底层铺了 4 团弥散光斑（见第二节）——
+   删掉光斑，玻璃效果就会消失。改样式时务必保留这一层。
+
+   【调色接口】
+   - 改配色只需动每个 scheme 块顶部的 --sa-* 变量
+   - --sa-* 是「霜穹」自己的调色板；--md-* 是 Material 读取的变量
+   - 沿用 scheme 名 starry / parchment（与 mkdocs.yml 配置保持一致）
+   ================================================================== */
+
+
+/* ==================================================================
+   一、字体系统
+   ================================================================== */
+
+:root {
+  /* ★ 主字体：楷书（用户指定审美）
+     字体栈按平台排列，确保各系统都能命中楷体：
+       Windows  → KaiTi（Win7+ 内置）/ SimKai（旧版）
+       macOS    → Kaiti SC / STKaiti
+       Linux    → AR PL UKai CN
+     楷书笔画细、骨架清，配套要求见下方文字颜色（必须用浓墨，不能灰） */
+  --sa-font-kai: 'KaiTi', 'STKaiti', 'Kaiti SC', '楷体', 'KaiTi_GB2312',
+                 'SimKai', 'AR PL UKai CN', 'Noto Serif CJK SC',
+                 'Source Han Serif SC', serif;
+
+  --sa-font-display: var(--sa-font-kai);
+  --sa-font-body:    var(--sa-font-kai);
+  --sa-font-mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular',
+                  Consolas, 'Liberation Mono', monospace;
+
+  /* 排版尺度（比例 1.2 —— 比上一版收敛，层级靠字重而非夸张字号） */
+  --sa-step--1: 0.85rem;
+  --sa-step-0:  1rem;
+  --sa-step-1:  1.2rem;
+  --sa-step-2:  1.44rem;
+  --sa-step-3:  1.728rem;
+  --sa-step-4:  2.074rem;
+
+  /* 玻璃参数 */
+  --sa-blur: 18px;
+}
+
+
+/* ==================================================================
+   二、弥散光背景（玻璃态的光源，不可删除）
+   四团柔光：靛蓝 / 青 / 紫 / 暖粉，低透明度大面积铺开
+   ================================================================== */
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(52% 42% at 14% 12%, var(--sa-glow-1), transparent 60%),
+    radial-gradient(46% 38% at 88% 22%, var(--sa-glow-2), transparent 62%),
+    radial-gradient(50% 44% at 76% 86%, var(--sa-glow-3), transparent 60%),
+    radial-gradient(40% 34% at 26% 78%, var(--sa-glow-4), transparent 62%);
+}
+
+
+/* ==================================================================
+   三、深色 · 夜穹（starry）
+   底色调成「深蓝灰」而非黑 —— 本版关键改动
+   ================================================================== */
+
+[data-md-color-scheme="starry"] {
+
+  --sa-bg:       #171A2B;   /* 深蓝灰（不是黑） */
+  --sa-bg-2:     #1E2236;
+  --sa-elevated: #262B42;
+
+  /* 玻璃层 */
+  --sa-glass:        rgba(255,255,255,0.055);
+  --sa-glass-strong: rgba(255,255,255,0.09);
+  --sa-glass-border: rgba(255,255,255,0.14);
+
+  /* 弥散光 */
+  --sa-glow-1: rgba(76,124,255,0.26);   /* 靛蓝 */
+  --sa-glow-2: rgba(41,163,163,0.20);   /* 青 */
+  --sa-glow-3: rgba(139,111,224,0.20);  /* 紫 */
+  --sa-glow-4: rgba(255,183,140,0.12);  /* 暖粉 */
+
+  /* 强调：单一靛蓝（金只留给引用块） */
+  --sa-accent:      #6B9BFF;
+  --sa-accent-soft: #9DBBFF;
+  --sa-accent-dim:  rgba(107,155,255,0.30);
+  --sa-gold:        #D9BC6A;
+
+  /* 语义 */
+  --sa-success: #52C4A0;
+  --sa-warning: #E0A458;
+  --sa-danger:  #E8707A;
+  --sa-info:    #6B9BFF;
+
+  /* 文字：楷书笔画细，深底上必须给足亮度，否则笔画断裂
+     色相统一偏暖（R>B），避免与冷蓝底糊在一起 */
+  --sa-text-hi:  #FAF8F3;   /* 标题 · 暖白 · 15.16:1 */
+  --sa-text-mid: #DCD9D2;   /* 正文 · 11.42:1 */
+  --sa-text-low: #9E9C95;   /* 弱化 · 5.86:1 */
+
+  --sa-line:      rgba(255,255,255,0.10);
+  --sa-line-soft: rgba(255,255,255,0.06);
+
+  color-scheme: dark;
+
+  /* ---- 喂给 Material ---- */
+  --md-primary-fg-color:        var(--sa-accent);
+  --md-primary-fg-color--light: var(--sa-accent-soft);
+  --md-primary-fg-color--dark:  #3D63D6;
+  --md-primary-bg-color:        var(--sa-elevated);
+  --md-primary-bg-color--light: var(--sa-bg-2);
+  --md-primary-bg-color--dark:  #12141F;
+
+  --md-accent-fg-color:              var(--sa-accent-soft);
+  --md-accent-fg-color--transparent: var(--sa-accent-dim);
+  --md-accent-bg-color:              var(--sa-elevated);
+  --md-accent-bg-color--light:       var(--sa-bg-2);
+
+  --md-default-fg-color:           var(--sa-text-hi);
+  --md-default-fg-color--light:    var(--sa-text-mid);
+  --md-default-fg-color--lighter:  var(--sa-text-low);
+  --md-default-fg-color--lightest: var(--sa-text-low);
+  /* 内容区用极淡玻璃：既让弥散光透上来，又给搜索框等 UI 元素留一层基底
+     （若设为 transparent，下拉面板会透视正文、影响可读） */
+  --md-default-bg-color:           var(--sa-glass);
+  --md-default-bg-color--light:    var(--sa-glass-strong);
+  --md-default-bg-color--dark:     #12141F;
+
+  --md-typeset-color:       var(--sa-text-mid);
+  --md-typeset-a-color:     var(--sa-accent-soft);
+  --md-typeset-mark-color:  rgba(107,155,255,0.26);
+  --md-typeset-table-color: var(--sa-line-soft);
+
+  --md-code-fg-color:             var(--sa-text-hi);
+  --md-code-bg-color:             var(--sa-glass-strong);
+  --md-code-hl-color:             rgba(107,155,255,0.16);
+  --md-code-hl-keyword-color:     var(--sa-danger);
+  --md-code-hl-string-color:      var(--sa-success);
+  --md-code-hl-number-color:      var(--sa-warning);
+  --md-code-hl-comment-color:     var(--sa-text-low);
+  --md-code-hl-function-color:    var(--sa-info);
+  --md-code-hl-constant-color:    var(--sa-accent-soft);
+  --md-code-hl-name-color:        var(--sa-text-hi);
+  --md-code-hl-operator-color:    var(--sa-text-mid);
+  --md-code-hl-punctuation-color: var(--sa-text-low);
+  --md-code-hl-generic-color:     var(--sa-text-mid);
+  --md-code-hl-variable-color:    var(--sa-text-hi);
+
+  --md-footer-bg-color:          rgba(18,20,31,0.72);
+  --md-footer-bg-color--dark:    #12141F;
+  --md-footer-fg-color:          var(--sa-text-hi);
+  --md-footer-fg-color--light:   var(--sa-text-mid);
+  --md-footer-fg-color--lighter: var(--sa-text-low);
+
+  /* 阴影：柔和、大扩散、无硬边 */
+  --md-shadow-z1: 0 2px 8px rgba(9,11,20,0.28), 0 0 0 1px var(--sa-glass-border);
+  --md-shadow-z2: 0 8px 24px rgba(9,11,20,0.36), 0 0 0 1px var(--sa-glass-border);
+  --md-shadow-z3: 0 16px 40px rgba(9,11,20,0.44);
+  --md-shadow-z4: 0 24px 60px rgba(9,11,20,0.52);
+}
+
+
+/* ==================================================================
+   四、浅色 · 晴霜（parchment）
+   ================================================================== */
+
+[data-md-color-scheme="parchment"] {
+
+  --sa-bg:       #F2F5FA;   /* 冷白 */
+  --sa-bg-2:     #E9EEF7;
+  --sa-elevated: #FFFFFF;
+
+  /* 玻璃层：浅底上用白色半透明 */
+  --sa-glass:        rgba(255,255,255,0.58);
+  --sa-glass-strong: rgba(255,255,255,0.78);
+  --sa-glass-border: rgba(255,255,255,0.85);
+
+  /* 弥散光：v2.1 增强 —— 玻璃态的"光"要看得见才有通透感 */
+  --sa-glow-1: rgba(76,124,255,0.40);
+  --sa-glow-2: rgba(41,163,163,0.32);
+  --sa-glow-3: rgba(139,111,224,0.30);
+  --sa-glow-4: rgba(255,183,140,0.26);
+
+  --sa-accent:      #2E5BD4;   /* 浅底上要压暗才看得清 */
+  --sa-accent-soft: #4569D9;
+  --sa-accent-dim:  rgba(46,91,212,0.26);
+  --sa-gold:        #A98A3E;
+
+  --sa-success: #1F8A6E;
+  --sa-warning: #B4761F;
+  --sa-danger:  #C4434D;
+  --sa-info:    #2E5BD4;
+
+  /* 文字：纯黑焦墨 —— 楷书配纯黑的笔画最实，最接近手写墨迹
+     层次不靠颜色深浅区分，靠字号 / 字重 / 留白区分（传统书籍即如此） */
+  --sa-text-hi:  #000000;   /* 标题 · 焦墨 · 19.8:1 */
+  --sa-text-mid: #000000;   /* 正文 · 焦墨 · 19.8:1 */
+  --sa-text-low: #4A4A4A;   /* 弱化 · 淡墨 · 8.4:1（若也纯黑，辅助信息会抢注意力） */
+
+  --sa-line:      rgba(26,32,53,0.10);
+  --sa-line-soft: rgba(26,32,53,0.07);
+
+  color-scheme: light;
+
+  --md-primary-fg-color:        var(--sa-accent);
+  --md-primary-fg-color--light: var(--sa-accent-soft);
+  --md-primary-fg-color--dark:  #23479F;
+  --md-primary-bg-color:        var(--sa-elevated);
+  --md-primary-bg-color--light: var(--sa-bg-2);
+  --md-primary-bg-color--dark:  #DDE4F0;
+
+  --md-accent-fg-color:              var(--sa-accent-soft);
+  --md-accent-fg-color--transparent: var(--sa-accent-dim);
+  --md-accent-bg-color:              var(--sa-elevated);
+  --md-accent-bg-color--light:       var(--sa-bg-2);
+
+  --md-default-fg-color:           var(--sa-text-hi);
+  --md-default-fg-color--light:    var(--sa-text-mid);
+  --md-default-fg-color--lighter:  var(--sa-text-low);
+  --md-default-fg-color--lightest: var(--sa-text-low);
+  --md-default-bg-color:           var(--sa-glass);
+  --md-default-bg-color--light:    var(--sa-glass-strong);
+  --md-default-bg-color--dark:     #E2E8F3;
+
+  --md-typeset-color:       var(--sa-text-mid);
+  --md-typeset-a-color:     var(--sa-accent);
+  --md-typeset-mark-color:  rgba(46,91,212,0.20);
+  --md-typeset-table-color: var(--sa-line-soft);
+
+  --md-code-fg-color:             var(--sa-text-hi);
+  --md-code-bg-color:             var(--sa-glass-strong);
+  --md-code-hl-color:             rgba(46,91,212,0.10);
+  --md-code-hl-keyword-color:     var(--sa-danger);
+  --md-code-hl-string-color:      var(--sa-success);
+  --md-code-hl-number-color:      var(--sa-warning);
+  --md-code-hl-comment-color:     var(--sa-text-low);
+  --md-code-hl-function-color:    var(--sa-info);
+  --md-code-hl-constant-color:    var(--sa-accent-soft);
+  --md-code-hl-name-color:        var(--sa-text-hi);
+  --md-code-hl-operator-color:    var(--sa-text-mid);
+  --md-code-hl-punctuation-color: var(--sa-text-low);
+  --md-code-hl-generic-color:     var(--sa-text-mid);
+  --md-code-hl-variable-color:    var(--sa-text-hi);
+
+  --md-footer-bg-color:          rgba(233,238,247,0.72);
+  --md-footer-bg-color--dark:    #DDE4F0;
+  --md-footer-fg-color:          var(--sa-text-hi);
+  --md-footer-fg-color--light:   var(--sa-text-mid);
+  --md-footer-fg-color--lighter: var(--sa-text-low);
+
+  --md-shadow-z1: 0 2px 8px rgba(26,32,53,0.06), 0 0 0 1px var(--sa-glass-border);
+  --md-shadow-z2: 0 8px 24px rgba(26,32,53,0.10), 0 0 0 1px var(--sa-glass-border);
+  --md-shadow-z3: 0 16px 40px rgba(26,32,53,0.13);
+  --md-shadow-z4: 0 24px 60px rgba(26,32,53,0.16);
+}
+
+
+/* ==================================================================
+   五、排版（装饰减负：层级靠字重与字距，不靠线条）
+   ================================================================== */
+
+.md-typeset {
+  font-family: var(--sa-font-body);
+  font-size: var(--sa-step-0);
+  line-height: 1.9;                /* 楷书笔画舒展，行距要比无衬线更松 */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 导航 / 页头 / 页脚统一楷书，全站保持书卷气。
+   注意：只限定这几个容器，不去动 body 全局字体 ——
+   否则会覆盖 Material 的图标字体（Material Icons），导致图标变成方框 */
+.md-nav,
+.md-tabs,
+.md-header__title,
+.md-footer,
+.md-search__input {
+  font-family: var(--sa-font-kai);
+}
+
+.md-typeset h1, .md-typeset h2, .md-typeset h3,
+.md-typeset h4, .md-typeset h5, .md-typeset h6 {
+  font-family: var(--sa-font-display);
+  color: var(--sa-text-hi);
+  line-height: 1.4;
+}
+
+/* 楷书不加字距（本身骨架就清楚，拉字距反而散） */
+.md-typeset h1 { font-size: var(--sa-step-4); font-weight: 700; letter-spacing: 0; }
+.md-typeset h2 { font-size: var(--sa-step-3); font-weight: 700; letter-spacing: 0; }
+.md-typeset h3 { font-size: var(--sa-step-2); font-weight: 700; }
+.md-typeset h4 { font-size: var(--sa-step-1); font-weight: 700; }
+.md-typeset h5, .md-typeset h6 { font-size: var(--sa-step-0); font-weight: 700; }
+
+/* h1 只留一条极淡的分隔线，不再双线 */
+.md-typeset h1 {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--sa-line);
+  margin-bottom: 1.5rem;
+}
+/* h2 / h3 不加任何线条 —— 用留白制造层级 */
+
+/* 链接：细下划线，hover 点亮 */
+.md-typeset a {
+  color: var(--sa-accent-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--sa-accent-dim);
+  transition: color .2s ease-out, border-color .2s ease-out;
+}
+.md-typeset a:hover { border-bottom-color: var(--sa-accent-soft); }
+[data-md-color-scheme="parchment"] .md-typeset a { color: var(--sa-accent); }
+
+/* 引用：金线是本设计中金色唯一出现的地方 */
+.md-typeset blockquote {
+  border-left: 3px solid var(--sa-gold);
+  padding: 0.15rem 0 0.15rem 1.1rem;
+  margin-left: 0;
+  color: var(--sa-text-mid);
+  font-style: italic;
+}
+
+/* hr：极淡，不再做渐隐装饰 */
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background: var(--sa-line);
+  margin: 2rem 0;
+}
+
+::selection {
+  background: var(--sa-accent-dim);
+  color: var(--sa-text-hi);
+}
+
+.md-typeset code {
+  font-family: var(--sa-font-mono);
+  font-size: 0.88em;
+}
+
+
+/* ==================================================================
+   六、组件（玻璃层）
+   ================================================================== */
+
+/* ---- 玻璃卡片 ---- */
+.md-typeset .grid > .card {
+  background: var(--sa-glass);
+  backdrop-filter: blur(var(--sa-blur)) saturate(170%);
+  -webkit-backdrop-filter: blur(var(--sa-blur)) saturate(170%);
+  border: 1px solid var(--sa-glass-border);
+  border-radius: 14px;
+  box-shadow: var(--md-shadow-z1);
+  transition: transform .24s cubic-bezier(.16,1,.3,1),
+              box-shadow .24s ease-out,
+              border-color .24s ease-out;
+}
+.md-typeset .grid > .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--md-shadow-z2);
+  border-color: var(--sa-accent-dim);
+}
+
+/* ---- 提示框：玻璃 + 左侧色条 ---- */
+.md-typeset .admonition,
+.md-typeset details {
+  background: var(--sa-glass);
+  backdrop-filter: blur(var(--sa-blur)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--sa-blur)) saturate(160%);
+  border: 1px solid var(--sa-glass-border);
+  border-left: 3px solid var(--sa-info);
+  border-radius: 14px;
+  box-shadow: var(--md-shadow-z1);
+  font-size: 0.95rem;
+}
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  background: transparent;
+  font-family: var(--sa-font-display);
+  font-weight: 600;
+}
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  --md-accent-fg-color: var(--sa-info);
+  border-left-color: var(--sa-info);
+}
+.md-typeset .admonition.tip,
+.md-typeset details.tip {
+  --md-accent-fg-color: var(--sa-success);
+  border-left-color: var(--sa-success);
+}
+.md-typeset .admonition.warning,
+.md-typeset details.warning {
+  --md-accent-fg-color: var(--sa-warning);
+  border-left-color: var(--sa-warning);
+}
+.md-typeset .admonition.danger,
+.md-typeset details.danger {
+  --md-accent-fg-color: var(--sa-danger);
+  border-left-color: var(--sa-danger);
+}
+
+/* ---- 表格：玻璃 + 圆角 ---- */
+.md-typeset table:not([class]) {
+  background: var(--sa-glass);
+  backdrop-filter: blur(var(--sa-blur));
+  -webkit-backdrop-filter: blur(var(--sa-blur));
+  border: 1px solid var(--sa-glass-border);
+  border-radius: 14px;
+  box-shadow: var(--md-shadow-z1);
+  font-size: 0.94rem;
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+}
+.md-typeset table:not([class]) th {
+  background: var(--sa-glass-strong);
+  color: var(--sa-text-hi);
+  font-family: var(--sa-font-display);
+  font-weight: 600;
+}
+
+/* ---- 代码块：玻璃凹槽 ---- */
+.md-typeset pre > code,
+.md-typeset .highlight {
+  background: var(--sa-glass-strong) !important;
+  backdrop-filter: blur(var(--sa-blur));
+  -webkit-backdrop-filter: blur(var(--sa-blur));
+  border: 1px solid var(--sa-glass-border);
+  border-radius: 14px;
+  font-family: var(--sa-font-mono);
+  font-size: 0.86rem;
+  line-height: 1.7;
+}
+
+/* ---- 按钮：胶囊 + 主色
+   ⚠️ color 必须 !important：实测本页按钮文字被 Material 的
+   .md-typeset .md-button{color:var(--md-primary-fg-color)} 盖回主色蓝，
+   造成「蓝字蓝底」隐形 —— 这是截图对比才发现的 */
+.md-typeset .md-button {
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background .2s ease-out, box-shadow .2s ease-out;
+}
+.md-typeset .md-button--primary {
+  background: var(--sa-accent) !important;
+  border-color: var(--sa-accent) !important;
+  color: #FFFFFF !important;
+}
+.md-typeset .md-button--primary:hover {
+  box-shadow: 0 4px 16px var(--sa-accent-dim);
+}
+.md-typeset .md-button:not(.md-button--primary) {
+  background: var(--sa-glass);
+  border-color: var(--sa-glass-border);
+  color: var(--sa-text-hi) !important;
+}
+.md-typeset .md-button:not(.md-button--primary):hover {
+  border-color: var(--sa-accent);
+  color: var(--sa-accent) !important;
+}
+
+
+/* ==================================================================
+   七、布局
+   ================================================================== */
+
+/* 页头：玻璃条
+   ⚠️ 必须用 !important：Material 的 palette CSS 用
+   [data-md-color-primary=custom] .md-header（特异性 0,2,0）设置背景，
+   单靠 .md-header（0,1,0）压不住 —— 否则导航栏会是一条刺眼的实心蓝 */
+.md-header {
+  background: var(--sa-glass) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--sa-glass-border);
+  box-shadow: none;
+}
+
+/* 顶部标签栏：透明，与页头连成一条完整的玻璃带 */
+.md-tabs {
+  background: transparent !important;
+}
+
+/* 侧边栏：透明，让弥散光透上来 */
+.md-sidebar { background: transparent; }
+.md-sidebar__scrollwrap {
+  background: transparent;
+  scrollbar-width: thin;
+}
+
+/* 页头文字颜色
+   Material 默认把页头文字设为 --md-primary-bg-color，
+   而我把它设成了白色（--sa-elevated）—— 白字压在浅色玻璃上等于隐形。
+   所以必须显式指定页头内的文字颜色。 */
+.md-header__title,
+.md-header__topic,
+.md-header__button,
+.md-tabs__link {
+  color: var(--sa-text-hi);
+  opacity: 1;
+}
+.md-header__button:hover,
+.md-tabs__link:hover {
+  color: var(--sa-accent);
+}
+
+/* 当前所在项：主色
+   ⚠️ 关键：Material 把 --active 类加在**父级 <li>** 上，不是链接自己！
+     顶部标签：.md-tabs__item--active .md-tabs__link
+     侧边栏：  .md-nav__item--active > .md-nav__link
+   写成 .md-tabs__link--active（链接带类）会导致选择器永远匹配不到，
+   规则静默失效 —— 页面表现为"当前项颜色不对且你怎么改都没反应" */
+.md-nav__item--active > .md-nav__link,
+.md-tabs__item--active .md-tabs__link {
+  color: var(--sa-accent) !important;
+  font-weight: 600;
+}
+[data-md-color-scheme="starry"] .md-nav__item--active > .md-nav__link,
+[data-md-color-scheme="starry"] .md-tabs__item--active .md-tabs__link {
+  color: var(--sa-accent-soft) !important;
+}
+
+/* 页脚：玻璃（同样需要 !important，理由同页头） */
+.md-footer { border-top: 1px solid var(--sa-glass-border); }
+.md-footer-meta {
+  background: var(--sa-glass) !important;
+  backdrop-filter: blur(var(--sa-blur));
+  -webkit-backdrop-filter: blur(var(--sa-blur));
+}
+
+/* 滚动条 */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--sa-accent-dim);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover { background: var(--sa-accent); }
+
+/* 搜索框 */
+.md-search__form { border-radius: 999px; }
+
+
+/* ==================================================================
+   八、无障碍、降级与打印
+   ================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 不支持 backdrop-filter 的浏览器：退回实色，保证文字可读 */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .md-typeset .grid > .card,
+  .md-typeset .admonition,
+  .md-typeset details,
+  .md-typeset table:not([class]),
+  .md-typeset pre > code,
+  .md-typeset .highlight,
+  .md-header,
+  .md-footer-meta {
+    background: var(--sa-bg-2) !important;
+  }
+}
+
+@media print {
+  body::before { display: none !important; }
+  .md-header, .md-sidebar, .md-footer, .md-tabs { display: none !important; }
+  .md-typeset { color: #000; }
+  .md-typeset h1 { border-color: #999; }
+  .md-typeset a { color: #000; border-bottom: none; }
+  .md-typeset pre > code { background: #F5F5F5 !important; }
+  .md-typeset .grid > .card,
+  .md-typeset .admonition,
+  .md-typeset table:not([class]) {
+    background: #FFF !important;
+    border: 1px solid #DDD;
+  }
+}
