@@ -1,0 +1,135 @@
+# ==================================================================
+# YanYu-MathModeling 数学建模知识库 · 网站配置文件
+# 主题：Material for MkDocs + 星空学术风（starry-academic.css）
+# 说明：本文件不写死导航(nav)，网站导航会按 docs 目录结构自动生成，
+#       这样新增文件无需改配置，自动出现在网站上。
+# ==================================================================
+
+# ------------------ 基本信息 ------------------
+site_name: YanYu 数学建模知识库
+site_description: 个人数学建模知识体系——算法原理、代码模板、赛题实战、论文写作、团队协作、工具箱
+site_author: YanYu
+# 私有部署阶段替换为真实网址；本地预览时此项不影响
+site_url: https://yanyu-mathmodeling.pages.dev
+
+# ------------------ 主题 ------------------
+theme:
+  name: material
+  language: zh
+  custom_dir: overrides
+
+  # 顶部 / 侧边导航、搜索、代码等交互特性
+  features:
+    - navigation.tabs             # 顶部一级导航标签
+    - navigation.sections        # 侧边栏分组
+    - navigation.indexes         # 目录 index.md 作为该分区首页
+    - navigation.top             # 回到顶部按钮
+    - navigation.tracking        # URL 随滚动定位到当前标题
+    - navigation.expand          # 侧边栏默认展开（内容多时可改 false）
+    - search.suggest             # 搜索输入时给建议
+    - search.highlight           # 搜索结果高亮关键词
+    - search.share               # 搜索结果可分享
+    - content.action.edit        # 页面显示"编辑"按钮
+    - content.code.copy          # 代码块右上角一键复制
+    - content.code.annotate      # 代码逐行注释（数字标记）
+    - content.tabs.link          # 同类选项卡联动切换
+
+  # 配色方案：星空(深色，默认)/星空白(浅色)，具体颜色在 starry-academic.css
+  palette:
+    - media: "(prefers-color-scheme: dark)"
+      scheme: starry            # 对应 css 中 [data-md-color-scheme="starry"]
+      primary: custom           # custom = 颜色完全交给 starry-academic.css
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: parchment         # 对应 [data-md-color-scheme="parchment"]
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/white-balance-sunny
+        name: 切换到深色模式
+
+  # 字体（留空走系统/CDN，可按需开启 Google 字体镜像）
+  font: false
+
+# ------------------ 插件 ------------------
+plugins:
+  # 全文搜索（已安装 jieba，构建时对中文分词；ja 作为 CJK 兜底）
+  - search:
+      lang:
+        - en
+        - ja
+      separator: '[\s\u200b\-_,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+  # 标签系统：tags.md 自动列出每个标签下的页面
+  - tags:
+      tags_file: tags.md
+
+  # 自动显示每页"最后更新/创建时间"（基于 Git）
+  - git-revision-date-localized:
+      enable_creation_date: true
+      fallback_to_build_date: true
+
+  # 支持把 Jupyter Notebook(.ipynb) 直接放进网站
+  - mkdocs-jupyter:
+      include_source: true
+      ignore_h1_titles: true
+
+# ------------------ Markdown 扩展 ------------------
+markdown_extensions:
+  - admonition                    # 提示框 note/tip/warning/danger
+  - pymdownx.details              # 可折叠的提示框
+  - attr_list                     # 给元素加属性（如居中、样式）
+  - md_in_html                    # HTML 标签内嵌 Markdown
+
+  # 代码块 + Mermaid 流程图
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  # 内容选项卡（同一处切换多组内容）
+  - pymdownx.tabbed:
+      alternate_style: true
+      combine_header_slug: true
+
+  # 代码高亮
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+
+  # 数学公式（配合 javascripts/mathjax.js）
+  - pymdownx.arithmatex:
+      generic: true
+
+  # 脚注、键盘按键、任务列表、表情符号
+  - footnotes
+  - pymdownx.keys
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+  # 标题锚点
+  - toc:
+      permalink: true
+      permalink_title: 复制链接到该段落
+
+# ------------------ 额外样式与脚本 ------------------
+extra_css:
+  # 星空学术风样式（换风格时替换/新增这里的文件即可，内容不用动）
+  - stylesheets/starry-academic.css
+
+extra_javascript:
+  # 数学公式 MathJax
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+# ------------------ 页脚信息 ------------------
+copyright: Copyright &copy; 2026 YanYu · 数学建模知识库
