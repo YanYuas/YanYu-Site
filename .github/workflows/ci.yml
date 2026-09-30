@@ -1,0 +1,84 @@
+# ============================================================
+# ci.yml · GitHub Actions 自动部署（零基础自学版）
+# ============================================================
+# 【这个文件是干什么的】
+#   每次你把代码 push 到 GitHub 的 main 分支，
+#   GitHub 会自动运行这个工作流：
+#     1. 安装 Python 和依赖
+#     2. 用 MkDocs 构建网站
+#     3. 把构建好的 site/ 目录部署到 GitHub Pages
+#   这样你不需要手动构建和上传，push 就自动上线。
+#
+# 【怎么启用】
+#   1. 把这个文件放在 .github/workflows/ 目录下（已经放好了）
+#   2. 到 GitHub 仓库 → Settings → Pages
+#   3. Source 选择 "GitHub Actions"
+#   4. 以后 push 到 main 分支就会自动部署
+#
+# 【注意】
+#   - 如果你用的主分支叫 master 而不是 main，把下面的 branches: [main] 改成 master
+#   - 第一次部署可能需要等1-2分钟
+# ============================================================
+
+# 工作流名称（在 GitHub Actions 页面显示）
+name: Deploy MkDocs to GitHub Pages
+
+# 触发条件：push 到 main 分支时触发
+on:
+  push:
+    branches:
+      - main
+  # 也可以手动触发（在 GitHub Actions 页面点 "Run workflow"）
+  workflow_dispatch:
+
+# 权限设置：允许部署到 GitHub Pages
+permissions:
+  contents: read          # 读取仓库内容
+  pages: write            # 写入 GitHub Pages
+  id-token: write         # 身份验证
+
+# 任务：只需要一个部署任务
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # 在最新版 Ubuntu 上运行
+    environment:
+      name: github-pages    # 环境名（GitHub Pages 专用）
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # 第1步：把代码拉取到运行环境
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 拉取完整历史（git-revision-date-localized 插件需要）
+
+      # 第2步：设置 Python 环境
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # Python 版本
+
+      # 第3步：安装依赖
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      # 第4步：配置 GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 第5步：用 MkDocs 构建网站
+      - name: Build with MkDocs
+        run: mkdocs build
+
+      # 第6步：上传构建产物（site/ 目录）
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/  # MkDocs 构建输出目录
+
+      # 第7步：部署到 GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

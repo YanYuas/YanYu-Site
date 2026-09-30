@@ -102,9 +102,24 @@ tools/                        项目维护脚本
   若要启用需同步改 `theme.palette` 的 scheme 值。
 - `home.css`：首页版式，必须排在 `starry-academic.css` 之后
 
+## 内容边界（作者明确划定，不要动）
+
+**数模竞赛作品的规划结构不要擅自修改**。
+`docs/mathmodel/works/index.md` 里有 5 个作品条目，
+其中 02_EEMCM / 03_HSMCM / 04_CUMCM / 05_APMCM **尚未创建**，
+链接会 404 并在构建时产生 4 条 WARNING —— 这是作者有意保留的占位，
+等后续逐个补完。不要「修复」成非链接或删掉。
+
+`tools/check_site.py` 顶部有 `PLANNED_MARKERS` 白名单，
+把这 4 条归到「规划中」而非「失效」。建好页面后删掉对应代号。
+
 ## 工作流约定
 
-- `site/` 与 `.venv/` 不入库
+- `site/`、`.venv/` 不入库
+- `文档/` 与 `手册/` 为个人学习文档，不入库
+  （目录 2026-09 从「文档」改名为「手册」，gitignore 两条都保留）
 - `.vscode/settings.json` 例外入库（存 YAML 标签白名单）
-- `文档/` 为个人学习文档，不入库
-- 构建用 `--strict`（tasks.json 已配），警告即失败，便于及早发现问题
+- **默认构建不要用 `--strict`**：那 4 条规划链接必然产生警告，
+  strict 模式会直接中止构建。tasks.json 里已拆成
+  「构建站点」（非 strict）与「严格检查（发布前）」两个任务。
+- 提交前建议跑 `tools/check_site.py`
