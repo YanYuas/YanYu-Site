@@ -1,92 +1,718 @@
 /* ==================================================================
-   home.css · 首页落地页样式
+   home.css · 首页落地页样式（史诗背景 + 粒子星空 + 金色主题）
    ------------------------------------------------------------------
-   与 starry-academic.css 的分工：
-     starry-academic.css → 全站视觉系统（配色 / 字体 / 组件 / 玻璃）
-     home.css            → 只管首页的版式（Hero / 节奏 / 网格）
-   所有版式规则都限定在 .home 容器内，不影响内容页。
-   唯一的例外是下面 .md-grid 那一条（改的是全站内容区最大宽度），已单独标注。
+   【这个文件是干什么的】
+     只管首页（index.md）的版式，不影响其他内容页。
+     与 starry-academic.css 的分工：
+       starry-academic.css → 全站视觉系统（配色 / 字体 / 组件 / 玻璃）
+       home.css            → 只管首页的版式（Hero / 按钮 / 卡片 / 背景图 / 粒子适配）
+
+   【层级结构（从底到顶）】
+     z-index: -3  →  .home::before    背景图（Ken Burns 缓慢缩放）
+     z-index: -2  →  .home::after     深色/浅色遮罩（保证文字可读）
+     z-index: -1  →  #particle-canvas  粒子 canvas（暖白粒子 + 流星）
+     z-index:  1  →  .home > *         首页内容（Hero / 按钮 / 卡片 / 页脚）
+
+   【作用范围】
+     所有版式规则都限定在 .home 容器内，不影响内容页。
    ================================================================== */
 
-/* 内容区略加宽：读长文仍舒适，但给卡片留出横向空间
-   ⚠ 这一条是【全局】的，不只作用于首页 —— 改它会影响所有内容页 */
-.md-grid { max-width: 68rem; }
 
 /* ==================================================================
-   一、Hero 区
+   全局内容区宽度
    ================================================================== */
 
-/* Hero 占据首屏的主要视线，垂直方向有呼吸 */
+/* 内容区略加宽
+   ⚠ 这一条是【全局】的，不只作用于首页 —— 改它会影响所有内容页
+   Material 默认最大宽度是 61rem（约976px），这里加到 68rem（约1088px）
+   加宽的目的：给首页三个卡片留出更宽松的横向空间 */
+.md-grid {
+  max-width: 68rem;                   /* 内容区最大宽度：68rem ≈ 1088px */
+}
+
+
+/* ==================================================================
+   零、背景图 + 粒子适配
+   ================================================================== */
+
+/* ---------- 首页内容容器 .home ----------
+   作用：
+   1. position: relative —— 让子元素的绝对/固定定位能以它为参考
+   2. overflow: visible —— 确保固定定位的伪元素（背景图/遮罩）不会被裁剪
+   3. 不设 z-index（保持 auto）—— 避免创建层叠上下文，
+      否则子元素的负 z-index（背景图-3、遮罩-2、粒子-1）会被裁剪在 .home 内部，
+      无法显示在 .home 背景之下 */
+.home {
+  position: relative;                  /* 相对定位，作为子元素定位参考 */
+  overflow: visible;                   /* 不裁剪溢出内容（固定定位伪元素需要） */
+}
+
+/* 首页所有内容子元素提升到粒子之上
+   选择器解释：
+   - .home > * 选择 .home 的所有直接子元素（hero、grid cards、home-foot）
+   - :not(#particle-canvas) 排除粒子 canvas（它是 JS 动态插入的，也是直接子元素）
+   为什么要提升：粒子 canvas 的 z-index 是 -1，内容默认是 auto（相当于0），
+   但 canvas 后插入 DOM 可能盖在内容上面，所以显式给内容设 z-index:1 确保在最上层 */
+.home > *:not(#particle-canvas) {
+  position: relative;                  /* 相对定位，z-index 才会生效 */
+  z-index: 1;                          /* 层级1：在粒子（-1）之上 */
+}
+
+/* ---------- 背景图 .home::before ----------
+   用 ::before 伪元素承载背景图，而不是直接给 body 设背景，原因：
+   1. 可以独立做 transform 缩放动画（Ken Burns 效果）
+   2. 可以独立控制 z-index 层级
+   3. 不会被 Material 主题的容器背景色盖住
+   position: fixed 让背景图固定在视口，滚动时不动 */
+.home::before {
+  content: '';                         /* 伪元素必须有 content 属性，即使是空字符串 */
+  position: fixed;                     /* 固定定位：相对于视口，滚动时不动 */
+  top: 0;                              /* 距离视口顶部0 */
+  left: 0;                             /* 距离视口左侧0 */
+  width: 100%;                         /* 宽度铺满视口 */
+  height: 100%;                        /* 高度铺满视口 */
+  background-image: url('../assets/images/hero-bg.png');  /* 背景图路径（相对于CSS文件） */
+  background-size: cover;              /* 背景图缩放：cover = 铺满容器，可能裁剪 */
+  background-position: center;         /* 背景图位置：居中 */
+  z-index: -3;                         /* 层级-3：最底层，在遮罩和粒子之下 */
+  pointer-events: none;                /* 不响应鼠标事件，点击穿透到下面 */
+
+  /* Ken Burns 动画：缓慢放大 + 平移，30秒一个循环
+     ease-in-out = 慢起慢落，infinite = 无限循环，alternate = 来回播放（放大后缩小） */
+  animation: kenBurns 30s ease-in-out infinite alternate;
+}
+
+/* Ken Burns 关键帧定义
+   从1倍缩放到1.15倍，同时向左上轻微平移
+   这种缓慢的缩放+平移让静态图片产生"呼吸感"，像电影镜头 */
+@keyframes kenBurns {
+  0% {                                 /* 动画开始：原始大小，无偏移 */
+    transform: scale(1) translate(0, 0);
+  }
+  100% {                               /* 动画结束：放大到1.15倍，向左移1.5%向上移1% */
+    transform: scale(1.15) translate(-1.5%, -1%);
+  }
+}
+
+/* ---------- 深色遮罩层 .home::after ----------
+   背景图本身有亮有暗，直接放文字可能看不清，所以加一层深色渐变遮罩
+   渐变方向135度（从左上到右下），左侧深（文字主要在左侧/中间），
+   右侧稍透（露出背景图的画面细节），底部也加深 */
+.home::after {
+  content: '';                         /* 伪元素必须有 content */
+  position: fixed;                     /* 固定定位，铺满视口 */
+  top: 0;                              /* 顶部0 */
+  left: 0;                             /* 左侧0 */
+  width: 100%;                         /* 宽度100% */
+  height: 100%;                        /* 高度100% */
+  /* 深色渐变：135度方向，四个色标
+     rgba(红,绿,蓝,透明度) —— 这里都是深蓝黑色调，透明度从0.82到0.5再回到0.75 */
+  background: linear-gradient(
+    135deg,                             /* 渐变角度：135度（左上→右下） */
+    rgba(5, 8, 25, 0.82) 0%,          /* 起点（左上）：最深，82%不透明 */
+    rgba(10, 14, 39, 0.65) 40%,       /* 40%位置：中等深度，65%不透明 */
+    rgba(15, 20, 50, 0.5) 70%,        /* 70%位置：最浅，50%不透明（露出画面） */
+    rgba(10, 14, 39, 0.75) 100%       /* 终点（右下）：加深，75%不透明 */
+  );
+  z-index: -2;                         /* 层级-2：在背景图(-3)之上，粒子(-1)之下 */
+  pointer-events: none;                /* 不响应鼠标 */
+}
+
+/* 浅色模式（parchment）下的遮罩
+   浅色模式下不能用深色遮罩（会和浅色主题冲突），换成暖白色半透明
+   同时降低不透明度（从0.82降到0.55），让背景图细节更多透出来，
+   避免一片发白的感觉 */
+[data-md-color-scheme="parchment"] .home::after {
+  background: linear-gradient(
+    135deg,                             /* 同样135度方向 */
+    rgba(255, 253, 245, 0.55) 0%,     /* 暖白色，55%不透明 */
+    rgba(255, 253, 245, 0.4) 40%,     /* 40%位置：40%不透明 */
+    rgba(255, 253, 245, 0.3) 70%,     /* 70%位置：最透，30%不透明 */
+    rgba(255, 253, 245, 0.5) 100%     /* 终点：50%不透明 */
+  );
+}
+
+/* 首页主内容区背景透明
+   Material 主题默认给 .md-main__inner 设了背景色，会盖住背景图
+   所以深色(starry)和浅色(parchment)两套模式都设为透明 */
+[data-md-color-scheme="starry"] .md-main__inner,
+[data-md-color-scheme="parchment"] .md-main__inner {
+  background: transparent;              /* 背景透明，露出下面的背景图 */
+}
+
+/* Material 主题的外层容器也要透明
+   .md-container 和 .md-main 是更外层的容器，如果不透明也会盖住背景图 */
+.md-container,
+.md-main {
+  background: transparent;              /* 背景透明 */
+}
+
+
+/* ==================================================================
+   一、Hero 区（首页最上方的大标题区域）
+   ================================================================== */
+
+/* Hero 容器
+   占据首屏的主要视线，包含：问候语 + 名字 + 副标题 + 按钮
+   用 flex 布局让内容垂直居中，min-height 保证至少占60%视口高度 */
 .home .hero {
-  text-align: center;
-  padding: 4.5rem 1rem 3rem;
+  text-align: center;                  /* 文字水平居中 */
+  padding: 7rem 1rem 4rem;             /* 内边距：上7rem（大，防止名字被截断）左右1rem 下4rem */
+  position: relative;                  /* 相对定位 */
+  min-height: 60vh;                    /* 最小高度：60%视口高度，让内容更舒展 */
+  display: flex;                       /* 弹性布局 */
+  flex-direction: column;              /* 子元素垂直排列 */
+  justify-content: center;             /* 子元素垂直居中 */
 }
 
-/* 问候语：小字、大字距 —— 像钟楼的报时 */
+/* 问候语（"早上好，我是" / "夜深了，我是"）
+   小字、大字距，像钟楼报时一样有仪式感
+   初始透明，由CSS动画在0.3秒后淡入 */
 .home .hero .greet {
-  font-size: 0.95rem;
-  letter-spacing: 0.35em;
-  text-indent: 0.35em;
-  color: var(--sa-text-low);
-  margin: 0 0 0.6rem;
+  font-size: 1rem;                     /* 字号：1rem（比正文稍小） */
+  font-weight: 500;                    /* 字重：500（中等粗细） */
+  letter-spacing: 0.4em;               /* 字间距：0.4em（很大，营造仪式感） */
+  text-indent: 0.4em;                  /* 首行缩进：0.4em（补偿字间距导致的视觉偏移） */
+  color: #ffd700;                      /* 文字颜色：金色 #ffd700，和名字呼应 */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);  /* 文字阴影：金色发光，10px模糊，50%不透明 */
+  margin: 0 0 1rem;                    /* 外边距：底部1rem（和名字拉开距离） */
+  opacity: 0;                          /* 初始透明度：0（完全透明，等动画淡入） */
+  animation: greetFadeIn 1s ease 0.3s forwards;  /* 动画：1秒淡入，延迟0.3秒开始，forwards=结束后保持最终状态 */
 }
 
-/* 名字：全页最大的元素，纯黑楷书 */
+/* 问候语淡入动画关键帧
+   从：透明 + 上移15px + 字间距0.6em
+   到：不透明 + 原位 + 字间距0.4em
+   字间距从大到小的收缩效果，增加仪式感 */
+@keyframes greetFadeIn {
+  from {
+    opacity: 0;                        /* 起始：完全透明 */
+    transform: translateY(-15px);      /* 起始：向上偏移15px */
+    letter-spacing: 0.6em;             /* 起始：字间距更大0.6em */
+  }
+  to {
+    opacity: 1;                        /* 结束：完全不透明 */
+    transform: translateY(0);          /* 结束：回到原位 */
+    letter-spacing: 0.4em;             /* 结束：字间距收缩到0.4em */
+  }
+}
+
+/* 名字大标题（"衍煜"）
+   全页最大的元素，渐变金色文字 + 流动动画 + 发光脉冲
+   渐变文字原理：用 background 做渐变，然后 background-clip: text 把背景裁剪到文字形状，
+   再把文字填充设为透明，这样文字就显示出渐变背景了 */
 .home .hero h1 {
-  font-size: clamp(2.6rem, 7vw, 3.8rem);
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: 0.16em;
-  text-indent: 0.16em;
-  border-bottom: none;
-  padding-bottom: 0;
-  margin: 0 0 1.1rem;
+  font-size: clamp(3.5rem, 9vw, 5.5rem);  /* 响应式字号：最小3.5rem，随视口宽度9vw，最大5.5rem */
+  font-weight: 800;                    /* 字重：800（超粗，有冲击力） */
+  line-height: 1.1;                    /* 行高：1.1（紧凑，避免名字占太高） */
+  letter-spacing: 0.25em;              /* 字间距：0.25em（大，有设计感） */
+  text-indent: 0.25em;                 /* 首行缩进：0.25em（补偿字间距） */
+  border-bottom: none;                 /* 去掉 Material 默认的 h1 底部分割线 */
+  padding-bottom: 0;                   /* 去掉默认底部内边距 */
+  margin: 0 0 1.5rem;                  /* 外边距：底部1.5rem（和副标题拉开距离） */
+
+  /* 渐变背景：从暖橙金(#ffb347)→金色(#ffd700)→亮金白(#fff8dc)→金色→暖橙金
+     五个色标形成对称渐变，中间最亮，两端偏橙 */
+  background: linear-gradient(135deg, #ffb347 0%, #ffd700 25%, #fff8dc 50%, #ffd700 75%, #ffb347 100%);
+  background-size: 200% 200%;          /* 背景放大到200%，为流动动画做准备（背景比元素大才能移动） */
+  -webkit-background-clip: text;       /* Safari/Chrome：背景裁剪到文字形状 */
+  background-clip: text;                /* 标准：背景裁剪到文字形状 */
+  -webkit-text-fill-color: transparent; /* Safari/Chrome：文字填充透明，露出渐变背景 */
+  color: transparent;                   /* 标准：文字颜色透明 */
+
+  /* 组合动画：
+     1. gradientFlow 4秒 —— 渐变背景流动（颜色在文字上移动）
+     2. nameGlow 3秒 —— 发光强度脉冲（呼吸效果）
+     两个动画同时运行，ease/ease-in-out 缓动，infinite 无限循环 */
+  animation: gradientFlow 4s ease infinite, nameGlow 3s ease-in-out infinite;
 }
 
-/* 一句话介绍 */
-.home .hero > p:not(.greet) {
-  max-width: 30rem;
-  margin: 0 auto 2rem;
-  font-size: 1rem;
-  line-height: 1.9;
-  color: var(--sa-text-mid);
+/* 名字发光脉冲动画关键帧
+   用两层 drop-shadow 模拟发光：
+   内层20px（近光）+ 外层40px（远光）
+   0%/100% 较弱，50% 较强，形成呼吸脉冲效果 */
+@keyframes nameGlow {
+  0%, 100% {
+    /* 弱发光：近光20px 40%不透明，远光40px 20%不透明 */
+    filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.4)) drop-shadow(0 0 40px rgba(255, 180, 0, 0.2));
+  }
+  50% {
+    /* 强发光：近光30px 70%不透明，远光60px 40%不透明 */
+    filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 60px rgba(255, 180, 0, 0.4));
+  }
 }
 
-/* 按钮组 */
-.home .hero .md-button {
-  margin: 0 0.3rem;
+/* 渐变流动动画关键帧
+   通过改变 background-position 让放大的渐变背景在文字后面移动
+   0%→50%→100% 从左到右再回到左，形成循环流动 */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }   /* 起始：背景在左侧 */
+  50% { background-position: 100% 50%; } /* 中间：背景移到右侧 */
+  100% { background-position: 0% 50%; }  /* 结束：回到左侧 */
+}
+
+/* 浅色模式下的名字
+   也用金色渐变（和深色模式统一，才有"流光溢彩"的感觉）
+   但颜色稍暗（暗金色系），并加柔和的深色文字阴影，保证在浅色背景上可读 */
+[data-md-color-scheme="parchment"] .home .hero h1 {
+  /* 暗金渐变：暗金(#b8860b)→金(#daa520)→亮金(#ffd700)→金→暗金 */
+  background: linear-gradient(135deg, #b8860b 0%, #daa520 25%, #ffd700 50%, #daa520 75%, #b8860b 100%);
+  background-size: 200% 200%;          /* 同样放大背景做流动 */
+  -webkit-background-clip: text;       /* 裁剪到文字 */
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(139, 105, 20, 0.3));  /* 柔和深色阴影，保证可读性 */
+}
+
+/* 浅色模式问候语：深金色
+   深色模式用亮金#ffd700，浅色模式用深金#8b6914，在浅色背景上更清晰 */
+[data-md-color-scheme="parchment"] .home .hero .greet {
+  color: #8b6914;                      /* 深金色 */
+  text-shadow: 0 0 6px rgba(139, 105, 20, 0.2);  /* 柔和深金发光 */
+}
+
+/* 浅色模式副标题：深暖棕色
+   深色模式用暖白#e8dcc8，浅色模式用深暖棕#6b5330，保证可读 */
+[data-md-color-scheme="parchment"] .home .hero .hero-subtitle {
+  color: #6b5330;                      /* 深暖棕色 */
+  text-shadow: none;                    /* 浅色模式不需要文字阴影 */
+}
+
+/* 副标题（"数学与应用数学 · 建模手 · 写作者"）
+   名字下面的一句话介绍，由 JS 控制打字机效果逐字打出
+   初始透明，名字打完后 JS 会设 opacity:1 并加 .typing 类显示光标 */
+.home .hero .hero-subtitle {
+  font-size: 1.2rem;                    /* 字号：1.2rem（比名字小，比正文大） */
+  font-weight: 400;                     /* 字重：400（正常） */
+  letter-spacing: 0.2em;                /* 字间距：0.2em（适中） */
+  color: #e8dcc8;                       /* 文字颜色：暖白色，和金色主题呼应 */
+  text-shadow: 0 0 8px rgba(255, 220, 150, 0.3);  /* 柔和暖金发光 */
+  margin: 0 0 2.5rem;                   /* 外边距：底部2.5rem（和按钮拉开距离） */
+  min-height: 1.8rem;                   /* 最小高度：1.8rem（占位，避免打字时高度跳动） */
+  opacity: 0;                            /* 初始透明 */
+  transition: opacity 0.5s ease;        /* 透明度过渡：0.5秒，JS设opacity时平滑变化 */
+}
+
+/* 副标题打字机光标
+   JS 在打字过程中会给副标题加 .typing 类，
+   用 ::after 伪元素在文字末尾加一个闪烁的竖线光标 */
+.home .hero .hero-subtitle.typing::after {
+  content: '|';                          /* 光标字符：竖线 */
+  color: #ffd700;                        /* 光标颜色：金色 */
+  animation: cursorBlink 0.8s step-end infinite;  /* 闪烁动画：0.8秒周期，step-end=瞬间切换（不渐变） */
+  margin-left: 2px;                      /* 光标和文字之间留2px */
+}
+
+/* 光标闪烁动画关键帧
+   0%/100% 显示，50% 隐藏，形成闪烁 */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }              /* 显示 */
+  50% { opacity: 0; }                    /* 隐藏 */
+}
+
+/* 按钮组容器
+   三个按钮水平排列，居中，允许换行
+   初始透明，2秒后淡入（等名字和副标题打字机打完） */
+.home .hero .hero-buttons {
+  display: flex;                         /* 弹性布局 */
+  justify-content: center;               /* 水平居中 */
+  flex-wrap: wrap;                       /* 允许换行（屏幕窄时按钮自动换行） */
+  gap: 0.8rem;                           /* 按钮之间间距：0.8rem */
+  opacity: 0;                            /* 初始透明 */
+  animation: buttonsFadeIn 1s ease 2s forwards;  /* 动画：1秒淡入，延迟2秒，结束后保持 */
+}
+
+/* 按钮组淡入动画关键帧
+   从：透明 + 下移15px
+   到：不透明 + 原位 */
+@keyframes buttonsFadeIn {
+  from {
+    opacity: 0;                          /* 起始：透明 */
+    transform: translateY(15px);         /* 起始：下移15px */
+  }
+  to {
+    opacity: 1;                          /* 结束：不透明 */
+    transform: translateY(0);            /* 结束：原位 */
+  }
 }
 
 /* ==================================================================
-   二、板块卡片
+   按钮样式（玻璃态金色主题）
    ================================================================== */
 
-/* 卡片与 Hero 之间的留白即分隔，不用 hr */
+/* 所有按钮基础样式（玻璃态）
+   选择器加 a 标签（a.md-button）提高优先级，
+   所有关键属性加 !important 强制覆盖 Material 主题默认的蓝色按钮
+   玻璃态 = 半透明背景 + backdrop-filter 模糊 + 细边框 + 内阴影高光 */
+.home .hero a.md-button {
+  padding: 0.75rem 2rem !important;      /* 内边距：上下0.75rem 左右2rem（胶囊形） */
+  font-size: 1rem !important;            /* 字号：1rem */
+  font-weight: 600 !important;           /* 字重：600（半粗） */
+  letter-spacing: 0.12em !important;     /* 字间距：0.12em */
+  border-radius: 50px !important;         /* 圆角：50px（胶囊形，因为高度约1.5rem，50px足够圆） */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;  /* 所有属性过渡：0.3秒，Material 标准缓动曲线 */
+  position: relative !important;          /* 相对定位（为 ::before 光泽效果做参考） */
+  overflow: hidden !important;            /* 隐藏溢出（光泽扫过效果需要） */
+  /* 玻璃态背景：金色6%不透明，非常淡 */
+  background: rgba(255, 215, 0, 0.06) !important;
+  background-color: rgba(255, 215, 0, 0.06) !important;  /* 同时写 background 和 background-color 双保险 */
+  color: #ffd700 !important;              /* 文字颜色：金色 */
+  border: 1.5px solid rgba(255, 215, 0, 0.4) !important;  /* 边框：1.5px，金色40%不透明 */
+  backdrop-filter: blur(8px);             /* 背景模糊：8px（毛玻璃效果） */
+  -webkit-backdrop-filter: blur(8px);     /* Safari 兼容 */
+  /* 阴影：外阴影（深度感）+ 内阴影（顶部高光，模拟玻璃反光） */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 按钮内部光泽扫过效果
+   用 ::before 伪元素做一个从左到右的白色渐变条，
+   初始在按钮左侧外面（left:-100%），悬停时移到右侧（left:100%），
+   形成一道光扫过按钮的效果 */
+.home .hero a.md-button::before {
+  content: '';                            /* 伪元素必须有 content */
+  position: absolute;                     /* 绝对定位，相对于按钮 */
+  top: 0;                                 /* 顶部0 */
+  left: -100%;                            /* 初始在按钮左侧外面 */
+  width: 100%;                            /* 宽度和按钮一样 */
+  height: 100%;                           /* 高度和按钮一样 */
+  /* 白色渐变条：两端透明，中间15%不透明白色 */
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.5s ease;             /* left 属性过渡：0.5秒，悬停时平滑移动 */
+}
+
+/* 按钮悬停时光泽移到右侧 */
+.home .hero a.md-button:hover::before {
+  left: 100%;                             /* 移到按钮右侧外面（完成扫过） */
+}
+
+/* 前两个按钮（primary 类）稍突出
+   数学建模和数学理论是主要入口，用 .md-button--primary 标记，
+   样式上：背景更实（12% vs 6%）、边框更亮（60% vs 40%）、文字更亮（#ffed4e vs #ffd700）、字重更粗（700 vs 600）、阴影更强 */
+.home .hero a.md-button--primary {
+  background: rgba(255, 215, 0, 0.12) !important;  /* 背景更实：12% */
+  background-color: rgba(255, 215, 0, 0.12) !important;
+  border-color: rgba(255, 215, 0, 0.6) !important;  /* 边框更亮：60% */
+  color: #ffed4e !important;              /* 文字更亮：亮金 #ffed4e */
+  font-weight: 700 !important;             /* 字重更粗：700 */
+  /* 阴影更强：外阴影 + 金色光晕 + 内高光 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
+              0 0 15px rgba(255, 215, 0, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* 所有按钮悬停效果
+   上浮3px + 放大3% + 背景变实（18%）+ 边框变亮金 + 文字变亮白 + 阴影增强+金色发光 */
+.home .hero a.md-button:hover {
+  transform: translateY(-3px) scale(1.03) !important;  /* 上浮3px + 放大到103% */
+  background: rgba(255, 215, 0, 0.18) !important;      /* 背景变实：18% */
+  background-color: rgba(255, 215, 0, 0.18) !important;
+  border-color: #ffd700 !important;                      /* 边框变亮金 */
+  color: #fff8dc !important;                              /* 文字变亮白 */
+  /* 阴影增强：更大外阴影 + 更强金色光晕 + 更亮内高光 */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25),
+              0 0 25px rgba(255, 215, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+/* primary 按钮悬停时发光更强
+   在通用悬停基础上，背景更实（22%），金色光晕更强 */
+.home .hero a.md-button--primary:hover {
+  background: rgba(255, 215, 0, 0.22) !important;  /* 背景更实：22% */
+  background-color: rgba(255, 215, 0, 0.22) !important;
+  /* 更强阴影：更大外阴影 + 更强金色光晕（35px） */
+  box-shadow: 0 8px 35px rgba(0, 0, 0, 0.3),
+              0 0 35px rgba(255, 215, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+}
+
+/* 浅色模式按钮
+   浅色背景上不能用亮金文字（太晃），改用深金色系
+   背景用深金8%不透明，文字深金#8b6914，边框深金40% */
+[data-md-color-scheme="parchment"] .home .hero a.md-button {
+  background: rgba(139, 105, 20, 0.08) !important;  /* 深金背景：8% */
+  background-color: rgba(139, 105, 20, 0.08) !important;
+  color: #8b6914 !important;                          /* 深金文字 */
+  border-color: rgba(139, 105, 20, 0.4) !important;  /* 深金边框：40% */
+  /* 浅色阴影：深金色调，内高光更亮（浅色背景上反光更明显） */
+  box-shadow: 0 4px 12px rgba(139, 105, 20, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 浅色模式 primary 按钮：稍突出
+   背景更实（12%），文字更深（#6b5310），边框更亮（60%） */
+[data-md-color-scheme="parchment"] .home .hero a.md-button--primary {
+  background: rgba(139, 105, 20, 0.12) !important;
+  background-color: rgba(139, 105, 20, 0.12) !important;
+  color: #6b5310 !important;                          /* 更深的金色 */
+  border-color: rgba(139, 105, 20, 0.6) !important;
+}
+
+/* 浅色模式按钮悬停
+   背景更实（18%），文字更深（#4a3a0c），边框变深金，阴影增强 */
+[data-md-color-scheme="parchment"] .home .hero a.md-button:hover {
+  background: rgba(139, 105, 20, 0.18) !important;
+  background-color: rgba(139, 105, 20, 0.18) !important;
+  color: #4a3a0c !important;                          /* 最深的金色 */
+  border-color: #8b6914 !important;
+  box-shadow: 0 6px 20px rgba(139, 105, 20, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+
+/* ==================================================================
+   二、板块卡片（首页中间的三个卡片）
+   ================================================================== */
+
+/* 卡片网格容器
+   三个卡片一排，和 Hero 之间留3rem间距
+   强制 grid-template-columns: repeat(3, 1fr) 确保大屏幕三列，
+   不用 Material 默认的响应式（默认可能在中等屏幕就变两列） */
 .home .grid.cards {
-  margin-top: 1.5rem;
-  grid-gap: 1.1rem;
+  margin-top: 3rem;                     /* 上方间距：3rem（和 Hero 拉开距离） */
+  grid-gap: 1.5rem;                     /* 卡片之间间距：1.5rem */
+  grid-template-columns: repeat(3, 1fr);  /* 强制三列，每列等宽 */
 }
 
+/* 中等屏幕（平板，≤1000px）：两列
+   屏幕宽度不够时，三个卡片一排太挤，改成两列（第三个在第二行） */
+@media (max-width: 1000px) {
+  .home .grid.cards {
+    grid-template-columns: repeat(2, 1fr);  /* 两列 */
+  }
+}
+
+/* 小屏幕（手机，≤600px）：单列
+   手机屏幕窄，卡片竖排 */
+@media (max-width: 600px) {
+  .home .grid.cards {
+    grid-template-columns: 1fr;        /* 单列 */
+  }
+}
+
+/* 单个卡片（玻璃态 + 金色主题）
+   Material 的 grid cards 结构是 .grid.cards > ul > li，所以选择器要写全
+   玻璃态：深蓝半透明背景 + 10px模糊 + 金色细边框 + 圆角16px
+   入场动画：初始透明+下移30px，0.8秒淡入上移 */
 .home .grid.cards > ul > li {
-  padding: 1.5rem 1.3rem;
+  padding: 2rem 1.6rem;                 /* 内边距：上下2rem 左右1.6rem */
+  background: rgba(15, 20, 45, 0.5);   /* 背景：深蓝半透明（50%不透明） */
+  border: 1px solid rgba(255, 215, 0, 0.2);  /* 边框：1px，金色20%不透明（很淡） */
+  border-radius: 16px;                  /* 圆角：16px */
+  backdrop-filter: blur(10px);          /* 背景模糊：10px（毛玻璃） */
+  -webkit-backdrop-filter: blur(10px);  /* Safari 兼容 */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  /* 所有属性过渡：0.4秒 */
+  position: relative;                    /* 相对定位（为 ::before/::after 装饰做参考） */
+  overflow: hidden;                      /* 隐藏溢出（装饰光晕不超出卡片） */
+
+  /* 入场动画初始状态 */
+  opacity: 0;                            /* 初始透明 */
+  transform: translateY(30px);           /* 初始下移30px */
+  animation: cardFadeIn 0.8s ease forwards;  /* 动画：0.8秒淡入上移，结束后保持 */
 }
 
-.home .grid.cards strong {
-  font-size: 1.06rem;
-  letter-spacing: 0.05em;
+/* 三个卡片依次延迟入场
+   第一个2.2秒，第二个2.4秒，第三个2.6秒
+   等名字和副标题打字机打完（约2秒）后，卡片依次出现 */
+.home .grid.cards > ul > li:nth-child(1) { animation-delay: 2.2s; }
+.home .grid.cards > ul > li:nth-child(2) { animation-delay: 2.4s; }
+.home .grid.cards > ul > li:nth-child(3) { animation-delay: 2.6s; }
+
+/* 卡片入场动画关键帧
+   从：透明 + 下移30px
+   到：不透明 + 原位 */
+@keyframes cardFadeIn {
+  to {
+    opacity: 1;                          /* 结束：不透明 */
+    transform: translateY(0);            /* 结束：原位 */
+  }
 }
+
+/* 卡片顶部渐变光带（::before）
+   卡片顶部一条2px高的金色渐变线，两端透明中间金，
+   初始50%不透明，悬停时变亮变粗 */
+.home .grid.cards > ul > li::before {
+  content: '';                            /* 伪元素必须有 content */
+  position: absolute;                     /* 绝对定位，相对于卡片 */
+  top: 0;                                 /* 顶部0 */
+  left: 0;                                /* 左侧0 */
+  right: 0;                               /* 右侧0（铺满宽度） */
+  height: 2px;                            /* 高度2px */
+  /* 金色渐变：两端透明，中间金色 */
+  background: linear-gradient(90deg, transparent, #ffd700, transparent);
+  opacity: 0.5;                           /* 初始50%不透明 */
+  transition: all 0.3s ease;              /* 过渡：0.3秒 */
+}
+
+/* 卡片右上角光晕装饰（::after）
+   一个径向渐变的金色光晕，放在卡片右上角外面（top:-50% right:-50%），
+   只显示四分之一圆在卡片内，增加氛围感 */
+.home .grid.cards > ul > li::after {
+  content: '';                            /* 伪元素必须有 content */
+  position: absolute;                     /* 绝对定位 */
+  top: -50%;                              /* 顶部在卡片上方外面 */
+  right: -50%;                            /* 右侧在卡片右方外面 */
+  width: 100%;                            /* 宽度和卡片一样 */
+  height: 100%;                           /* 高度和卡片一样 */
+  /* 径向渐变：中心金色8%不透明，向外渐变到透明 */
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+  pointer-events: none;                   /* 不响应鼠标 */
+}
+
+/* 卡片悬停效果
+   上浮6px + 放大2% + 边框变亮（60%）+ 背景变深（60%）+ 阴影增强+金色光晕 */
+.home .grid.cards > ul > li:hover {
+  transform: translateY(-6px) scale(1.02);  /* 上浮6px + 放大到102% */
+  border-color: rgba(255, 215, 0, 0.6);     /* 边框变亮：60% */
+  background: rgba(20, 25, 55, 0.6);         /* 背景变深：60% */
+  /* 阴影：大外阴影 + 金色光晕 + 内高光 */
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3),
+              0 0 30px rgba(255, 215, 0, 0.15),
+              inset 0 1px 0 rgba(255, 215, 0, 0.1);
+}
+
+/* 卡片悬停时顶部光带变亮变粗
+   不透明度100%，高度3px，加金色发光阴影 */
+.home .grid.cards > ul > li:hover::before {
+  opacity: 1;                             /* 完全不透明 */
+  height: 3px;                            /* 变粗到3px */
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);  /* 金色发光 */
+}
+
+/* 卡片标题（"数学建模"、"数学理论"、"随笔"）
+   金色 + 发光，1.25rem，字间距0.1em */
+.home .grid.cards strong {
+  font-size: 1.25rem;                    /* 字号：1.25rem */
+  font-weight: 700;                      /* 字重：700（粗） */
+  letter-spacing: 0.1em;                 /* 字间距：0.1em */
+  color: #ffd700;                        /* 金色 */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);  /* 金色发光 */
+}
+
+/* 卡片描述文字
+   暖灰色，比标题暗，形成层次 */
+.home .grid.cards p {
+  color: #c8c0b0;                        /* 暖灰色 */
+}
+
+/* 卡片里的图标（Material 图标）
+   放大到1.8em，加金色发光阴影 */
+.home .grid.cards .twemoji,
+.home .grid.cards .twemoji svg {
+  width: 1.8em;                           /* 宽度：1.8em */
+  height: 1.8em;                          /* 高度：1.8em */
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.4));  /* 金色发光 */
+}
+
+/* 浅色模式卡片
+   暖白玻璃态（60%不透明）+ 深金边框（25%）+ 深金柔和阴影
+   和浅色背景协调，不会像深色卡片那样突兀 */
+[data-md-color-scheme="parchment"] .home .grid.cards > ul > li {
+  background: rgba(255, 253, 245, 0.6);  /* 暖白背景：60% */
+  border-color: rgba(139, 105, 20, 0.25);  /* 深金边框：25% */
+  box-shadow: 0 4px 15px rgba(139, 105, 20, 0.08);  /* 深金柔和阴影 */
+}
+
+/* 浅色模式卡片悬停
+   背景更实（75%），边框更亮（50%），阴影增强 */
+[data-md-color-scheme="parchment"] .home .grid.cards > ul > li:hover {
+  background: rgba(255, 253, 245, 0.75);  /* 背景更实：75% */
+  border-color: rgba(139, 105, 20, 0.5);   /* 边框更亮：50% */
+  box-shadow: 0 8px 25px rgba(139, 105, 20, 0.12);  /* 阴影增强 */
+}
+
+/* 浅色模式卡片标题：深金色，去掉发光（浅色背景上发光不明显） */
+[data-md-color-scheme="parchment"] .home .grid.cards strong {
+  color: #8b6914;                        /* 深金色 */
+  text-shadow: none;                      /* 去掉发光 */
+}
+
+/* 浅色模式卡片描述：深暖灰色 */
+[data-md-color-scheme="parchment"] .home .grid.cards p {
+  color: #6b5d45;                        /* 深暖灰 */
+}
+
+/* 浅色模式卡片顶部光带：暗金色 */
+[data-md-color-scheme="parchment"] .home .grid.cards > ul > li::before {
+  background: linear-gradient(90deg, transparent, #b8860b, transparent);  /* 暗金渐变 */
+}
+
+/* 浅色模式卡片右上角光晕：深金色，更淡 */
+[data-md-color-scheme="parchment"] .home .grid.cards > ul > li::after {
+  background: radial-gradient(circle, rgba(139, 105, 20, 0.06) 0%, transparent 70%);
+}
+
 
 /* ==================================================================
-   三、页脚小字
+   三、页脚小字（首页最底部）
    ================================================================== */
 
+/* 页脚容器
+   "关于我 · MkDocs + Material · 全部用 Markdown 写作"
+   顶部有分割线，居中，小字，弱化颜色
+   初始透明，2.5秒后淡入（等卡片入场后） */
 .home-foot {
-  margin-top: 4rem;
-  padding-top: 1.4rem;
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--sa-text-low);
-  border-top: 1px solid var(--sa-line);
+  margin-top: 4.5rem;                    /* 上方间距：4.5rem（大留白） */
+  padding-top: 1.5rem;                   /* 顶部内边距：1.5rem */
+  text-align: center;                     /* 居中 */
+  font-size: 0.85rem;                     /* 小字：0.85rem */
+  color: var(--sa-text-low);              /* 文字颜色：用主题变量 --sa-text-low（弱化色） */
+  border-top: 1px solid var(--sa-line);   /* 顶部分割线：用主题变量 --sa-line */
+  opacity: 0;                              /* 初始透明 */
+  animation: footFadeIn 1s ease 2.5s forwards;  /* 动画：1秒淡入，延迟2.5秒 */
 }
 
-.home-foot a { border-bottom: none; }
+/* 页脚淡入动画关键帧
+   从透明到不透明，没有位移 */
+@keyframes footFadeIn {
+  from { opacity: 0; }                    /* 起始：透明 */
+  to { opacity: 1; }                      /* 结束：不透明 */
+}
+
+/* 页脚里的链接不要下划线
+   Material 默认给链接加底部边框，页脚链接不需要 */
+.home-foot a {
+  border-bottom: none;                    /* 去掉底部边框（下划线） */
+}
+
+
+/* ==================================================================
+   四、响应式适配（手机端，≤600px）
+   ================================================================== */
+
+/* 屏幕宽度小于600px时（手机），调整首页布局 */
+@media (max-width: 600px) {
+  /* Hero 区：减小上下内边距，取消最小高度限制
+     手机屏幕小，不需要60vh的最小高度 */
+  .home .hero {
+    padding: 3rem 1rem 2rem;             /* 内边距减小：上3rem 左右1rem 下2rem */
+    min-height: auto;                     /* 取消最小高度限制 */
+  }
+
+  /* 名字：手机上字号小一点，字间距也小一点
+     clamp(2.2rem, 10vw, 3rem) = 最小2.2rem，随宽度10vw，最大3rem */
+  .home .hero h1 {
+    font-size: clamp(2.2rem, 10vw, 3rem);  /* 字号减小 */
+    letter-spacing: 0.12em;                 /* 字间距减小 */
+  }
+
+  /* 副标题：手机上字号小一点，字间距小一点 */
+  .home .hero .hero-subtitle {
+    font-size: 0.95rem;                    /* 字号减小 */
+    letter-spacing: 0.1em;                  /* 字间距减小 */
+  }
+
+  /* 按钮组：手机上按钮竖排
+     屏幕窄，三个按钮横排太挤，改成竖排居中 */
+  .home .hero .hero-buttons {
+    flex-direction: column;                 /* 垂直排列 */
+    align-items: center;                    /* 水平居中 */
+    gap: 0.6rem;                            /* 按钮间距减小到0.6rem */
+  }
+
+  /* 按钮：手机上占满80%宽度，文字居中
+     竖排时按钮太窄不好看，占满宽度更舒服 */
+  .home .hero .md-button {
+    width: 80%;                             /* 宽度80% */
+    text-align: center;                     /* 文字居中 */
+  }
+}

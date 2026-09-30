@@ -1,38 +1,59 @@
 {
   // ============================================================
-  // VS Code 工作区配置
+  // .vscode/settings.json · VS Code 工作区配置（零基础自学版）
+  // ============================================================
+  // 【这个文件是干什么的】
+  //   当你用 VS Code 打开这个项目时，这里的设置会自动生效。
+  //   它只影响这个项目，不影响你其他项目的 VS Code 设置。
+  //   因为它被 .gitignore 特意保留了（!.vscode/settings.json），
+  //   所以团队成员打开项目时也能获得一致的编辑体验。
+  //
+  // 【注意】JSON 文件里不能写注释，但 VS Code 的 settings.json 支持
+  //        用 // 写注释（这是 VS Code 的特殊处理，标准 JSON 不支持）。
   // ============================================================
 
   // ---------- YAML 标签白名单 ----------
-  // mkdocs.yml 里用了 PyYAML 的 python/name 标签（Material 官方写法），
-  // VS Code 内置校验器不认识它们，会报红。
-  // 这里把它们登记为合法标签，红线即消失，校验能力仍保留。
+  // mkdocs.yml 里用了 PyYAML 的 python/name 标签（Material 官方写法），比如：
+  //   !!python/name:material.extensions.emoji.twemoji
+  // VS Code 内置的 YAML 校验器不认识这些标签，会在下面画红线报错。
+  // 这里把它们登记为"合法标签"，红线就消失了，但校验能力仍然保留。
   "yaml.customTags": [
     "!!python/name:material.extensions.emoji.twemoji",
     "!!python/name:material.extensions.emoji.to_svg",
     "!!python/name:pymdownx.superfences.fence_code_format"
   ],
 
-  // ---------- 文件关联 ----------
+  // ---------- Markdown 编辑器设置 ----------
   "[markdown]": {
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "on",   // 自动换行：长行不会超出屏幕，而是折到下一行
     "editor.quickSuggestions": {
-      "other": true,
-      "comments": false,
-      "strings": false
+      "other": true,           // 输入时显示自动补全建议
+      "comments": false,       // 注释里不显示自动补全
+      "strings": false         // 字符串里不显示自动补全
     }
   },
 
   // ---------- 文件排除（资源管理器里少些噪音）----------
+  // 这些文件/目录在 VS Code 左侧文件树里隐藏，让你专注于内容
   "files.exclude": {
-    "**/__pycache__": true,
-    "**/.venv": true
-  },
-  "search.exclude": {
-    "site/**": true,
-    "**/.venv": true
+    "**/__pycache__": true,    // Python 缓存目录
+    "**/.venv": true           // 虚拟环境（里面有几百个包，不需要看）
   },
 
-  // ---------- Python ----------
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+  // ---------- 搜索排除 ----------
+  // 用 VS Code 全局搜索（Ctrl+Shift+F）时，不搜索这些目录
+  "search.exclude": {
+    "site/**": true,           // 构建产物（里面是生成的 HTML，搜了没意义）
+    "**/.venv": true           // 虚拟环境里的包代码
+  },
+
+  // ---------- Python 解释器 ----------
+  // 告诉 VS Code 用项目虚拟环境里的 Python，而不是系统 Python
+  // 这样按 F5 运行脚本、安装包，都会用 .venv 里的环境
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe",
+
+  // ---------- 文件编码与换行 ----------
+  // 统一用 UTF-8，避免中文乱码
+  "files.encoding": "utf8",
+  "files.eol": "\n"            // 统一用 LF 换行符（和 .gitattributes 保持一致）
 }

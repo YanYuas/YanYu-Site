@@ -1,33 +1,94 @@
 # ============================================================
 # mkdocs.yml · 网站总控制台
 #
-# 三条铁律（违反任意一条都会报错）：
-#   ① 冒号后面必须有空格        site_name: xxx
-#   ② 只能用空格缩进，禁止 Tab   同一层必须对齐
-#   ③ # 开头是注释，机器完全忽略
+# 这个文件控制网站的一切：叫什么名字、导航怎么排、长什么样、
+# 用哪些插件、加载哪些样式和脚本。你以后改网站，90%的情况
+# 都是改这个文件。
+#
+# 三条铁律（违反任意一条都会报错，新手最容易踩的坑）：
+#   ① 冒号后面必须有空格        site_name: xxx  ✅
+#                               site_name:xxx    ❌
+#   ② 只能用空格缩进，禁止 Tab   同一层必须对齐，差一个空格都不行
+#   ③ # 开头是注释，机器完全忽略，写多少都不影响运行
 # ============================================================
 
-# ---------- 1. 基本信息 ----------
-site_name: YanYuas
-site_description: 数学与应用数学本科生 · 数学建模、数学理论与随笔
 
-# ---------- 2. 导航 ----------
-# 左边是显示在菜单上的中文，右边是真实文件路径
-# 缩进更深一层 = 二级菜单（鼠标悬停展开）
+# ============================================================
+# 第 1 部分：基本信息
+# ============================================================
+# 这部分是网站的"身份证"，显示在浏览器标签页、搜索结果里。
+
+site_name: YanYuas-Personal-Website
+# ↑ 网站名字。显示在浏览器标签页左上角，也会出现在搜索结果的标题里。
+# 改这里就能改网站名，比如改成 "衍煜的个人网站"。
+
+site_description: 数学与应用数学本科生 · 数学建模、数学理论与随笔
+# ↑ 网站描述。搜索引擎会显示这个，访客一眼知道你这个站是干什么的。
+# 建议用一句话说清"你是谁 + 网站有什么"。
+
+
+# ============================================================
+# 第 2 部分：导航（nav）—— 网站顶部菜单怎么排
+# ============================================================
+# 【怎么看这一段】
+#   左边的中文 = 菜单上显示给人看的名字
+#   右边的路径 = 真实文件位置（相对 docs/ 文件夹写）
+#   缩进更深一层 = 子菜单（鼠标悬停展开）
+#   再深一层 = 孙菜单，以此类推
+#
+# 【怎么改】
+#   加菜单项 → 加一行 "- 名字: 路径.md"
+#   删菜单项 → 删掉那一行
+#   换顺序 → 上下移动行（上面的排在左边）
+#   子菜单 → 下面缩进两格再写
+#
+# 【注意】路径里的 / 是正斜杠，不是反斜杠 \。Windows 路径习惯用 \，
+# 但这里必须用 /，否则 MkDocs 找不到文件。
+
 nav:
+
+  # ---------- 首页 ----------
+  # 网站的第一页，访客打开网址看到的第一个页面。
   - 首页: index.md
+
+  # ---------- 数学建模（五个模块） ----------
+  # 这是你的主线板块之一，分成五个模块：
+  #   1. 建模手的自我修养 —— 个人经历、方法论、团队协作经验
+  #   2. 数学与算法基础 —— 算法原理、代码模板、案例集
+  #   3. 我的竞赛作品 —— 五场比赛的记录和成果
+  #   4. 优秀论文精解 —— 历年优秀论文的拆解分析
+  #   5. 深入论文研究 —— 学术研究项目（最小覆盖圆等）
   - 数学建模:
       - 板块导览: mathmodel/index.md
-      - 知识库: mathmodel/kb/index.md
-      - 竞赛作品: mathmodel/works/index.md
+      # ↑ 五个模块的总入口页，有卡片导航和建设进度表
+      - 建模手的自我修养: mathmodel/self-cultivation/index.md
+      # ↑ 写你自己的故事：参赛经历、踩坑经验、三手协作SOP
+      - 数学与算法基础: mathmodel/fundamentals/index.md
+      # ↑ 算法知识库，优化模型已深挖，其他方向待补充
+      - 我的竞赛作品: mathmodel/works/index.md
+      # ↑ 国赛/华数杯/电工杯/五一杯/亚太杯，每场一页
+      - 优秀论文精解: mathmodel/paper-analysis/index.md
+      # ↑ 读别人的优秀论文，拆方法、学技巧
+      - 深入论文研究: mathmodel/research/index.md
+      # ↑ 超出竞赛范围的学术研究，目标是产出论文
+
+  # ---------- 数学理论 ----------
+  # 高等代数46万字内容在这里，三领域×七模块=21个模块，
+  # 每个模块有讲义+习题集（32题/模块，共672道题）。
   - 数学理论:
       - 板块导览: maththeory/index.md
       - 高等代数:
           - 总览: maththeory/advanced-algebra/index.md
+          # ↑ 高等代数的总入口，介绍三领域结构和学习路线
+
+          # 方法论与研究：你自己总结的学习方法论和学术论文
           - 方法论与研究:
               - 从初等几何到公理化演进: maththeory/advanced-algebra/theory/从初等几何到公理化演进.md
               - 充要图谱方法论-v2: maththeory/advanced-algebra/theory/充要图谱方法论-v2.md
               - 几何统摄与充要图谱-学术论文: maththeory/advanced-algebra/theory/几何统摄与充要图谱-学术论文.md
+
+          # 领域一：矩阵与基（F1-F7）
+          # F = Field（领域），每个专题有讲义+习题集
           - 领域一 · 矩阵与基:
               - 领域导览: maththeory/advanced-algebra/matrix-basis/index.md
               - F1 · 基底与坐标:
@@ -51,6 +112,9 @@ nav:
               - F7 · 矩阵分解:
                   - 讲义: maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/讲义.md
                   - 习题集: maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/习题集.md
+
+          # 领域二：线性空间（G1-G7）
+          # G = General（广义空间），从线性空间定义到二次型曲面
           - 领域二 · 线性空间:
               - 领域导览: maththeory/advanced-algebra/linear-space/index.md
               - G1 · 线性空间的定义与基本性质:
@@ -74,17 +138,20 @@ nav:
               - G7 · 二次型与曲面:
                   - 讲义: maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-space/G7-二次型与曲面/习题集.md
+
+          # 领域三：线性变换（T1-T7）
+          # T = Transformation（变换），从定义到Jordan标准形
           - 领域三 · 线性变换:
               - 领域导览: maththeory/advanced-algebra/linear-transform/index.md
               - T1 · 线性变换的定义与基本性质:
                   - 讲义: maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/习题集.md
-              - T2 · 核与像:
-                  - 讲义: maththeory/advanced-algebra/linear-transform/T2-核与像/讲义.md
-                  - 习题集: maththeory/advanced-algebra/linear-transform/T2-核与像/习题集.md
-              - T3 · 同构与线性变换空间:
-                  - 讲义: maththeory/advanced-algebra/linear-transform/T3-同构与线性变换空间/讲义.md
-                  - 习题集: maththeory/advanced-algebra/linear-transform/T3-同构与线性变换空间/习题集.md
+              - T2 · 矩阵表示与相似:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/习题集.md
+              - T3 · 核像与不变子空间:
+                  - 讲义: maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/讲义.md
+                  - 习题集: maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/习题集.md
               - T4 · 特征理论的算子视角:
                   - 讲义: maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/习题集.md
@@ -97,37 +164,99 @@ nav:
               - T7 · 特殊线性变换与应用:
                   - 讲义: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集.md
-  - 随笔: blog/index.md
+
+  # ---------- 随笔（两个子板块） ----------
+  # 文学创作（海灵传说）暂存在 _archive/literature/，不参与构建。
+  # 以后想挂回来，把目录移回 docs/blog/literature/，在这里加回子菜单就行。
+  - 随笔:
+      - 随笔总览: blog/index.md
+      # ↑ 两个子板块的入口页，有卡片导航
+      - 日常随笔: blog/posts/index.md
+      # ↑ 生活感悟、零散思考、读书笔记、音乐
+      - AI实践: blog/ai-practice/index.md
+      # ↑ AI辅助建模/写作/编程的经验、工具评测、Prompt工程
+
+  # ---------- 关于页 ----------
+  # 个人介绍：你是谁、做过什么、联系方式、建站说明
   - 关于: about.md
+
+
+# ============================================================
+# 第 3 部分：主题（theme）—— 控制网站外观
+# ============================================================
+# 主题决定了网站长什么样。Material 是目前最流行的 MkDocs 主题，
+# 功能强、好看、移动端适配好，所以选它。
+
 theme:
-  name: material            # 用 Material 这套主题
-  language: zh              # 界面文字用中文（搜索框提示、目录标题等）
-  font: false               # 不加载 Google 字体 —— 国内访问更快
+  name: material
+  # ↑ 用哪套主题。material = Material for MkDocs，目前最好用的主题。
+  # 换成其他主题名也可以，但大部分功能是 Material 独有的，不建议换。
 
-  features:                 # 功能开关：想开哪个就加一行，想关就加 # 注释掉
-    - navigation.tabs       # 顶部标签导航（个人站观感的关键一项）
-    - navigation.top        # 回到顶部按钮
-    - navigation.footer     # 内容页底部的「上一页 / 下一页」
-                            #   关掉时 Material 根本不渲染那个 nav，
-                            #   所以光写 CSS 是隐藏不掉它的（首页改用 front matter 的 hide: [footer]）
-    - search.highlight      # 搜索结果高亮关键词
-    - content.code.copy     # 代码块右上角一键复制
+  language: zh
+  # ↑ 界面文字用什么语言。zh = 中文，搜索框提示、"上一页/下一页"、
+  # "本页由 GitHub 提供"这些系统文字都会变成中文。
 
-  palette:                  # 配色方案：两套（深色 / 浅色）
+  font: false
+  # ↑ 是否加载 Google 字体。
+  #   false = 不加载，用系统自带字体 → 国内访问更快，也不会因为墙而卡住
+  #   true = 加载 Google 字体（Roboto + Inter）→ 好看但国内可能加载慢
+  # 选 false 是因为国内访问 Google Fonts 不稳定，系统字体已经够用了。
+
+  # features：功能开关
+  # 【怎么用】想开哪个功能就加一行，想关就加 # 注释掉
+  features:
+    - navigation.tabs
+    # ↑ 顶部标签导航。一级菜单显示在顶部横排，而不是侧边栏。
+    # 这是个人站观感的关键——有了它才像"网站"，没有就像"文档"。
+
+    - navigation.top
+    # ↑ 回到顶部按钮。页面往下滚时，右下角出现一个↑按钮，点一下回到顶部。
+
+    - navigation.footer
+    # ↑ 内容页底部的「上一页 / 下一页」导航。
+    # 关掉时 Material 根本不渲染那个 nav，所以光写 CSS 是隐藏不掉它的。
+    # 首页如果不想要，可以在首页的 front matter 里写 hide: [footer]。
+
+    - search.highlight
+    # ↑ 搜索结果高亮关键词。搜到"矩阵"后，页面里的"矩阵"会高亮显示。
+
+    - content.code.copy
+    # ↑ 代码块右上角一键复制按钮。访客看代码时点一下就复制，很方便。
+
+  # palette：配色方案（深色 + 浅色两套）
+  # 跟随系统自动切换，访客也可以点右上角按钮手动切换。
+  # 【注意】scheme 的名字必须和 CSS 文件里 [data-md-color-scheme="xxx"] 完全一致，
+  # 否则切换时颜色不生效。
+  palette:
+    # 深色模式（系统偏好深色时自动启用）
     - media: "(prefers-color-scheme: dark)"
-      scheme: starry        # ← 必须与 CSS 里 [data-md-color-scheme="starry"] 完全一致
-      primary: custom       # ← custom = 颜色全部交给我的 CSS 处理
+      scheme: starry
+      # ↑ 深色模式的名字，对应 starry-academic.css 里的 starry 配色
+      primary: custom
+      # ↑ custom = 主色调全部交给我的 CSS 处理，不用 Material 默认色
       toggle:
         icon: material/weather-night
+        # ↑ 深色模式下显示的图标（月亮）
         name: 切换到浅色模式
+        # ↑ 鼠标悬停时的提示文字
+
+    # 浅色模式（系统偏好浅色时自动启用）
     - media: "(prefers-color-scheme: light)"
-      scheme: parchment     # ← 浅色那套，对应 CSS 里的 parchment
+      scheme: parchment
+      # ↑ 浅色模式的名字，对应 CSS 里的 parchment 配色
       primary: custom
       toggle:
         icon: material/white-balance-sunny
+        # ↑ 浅色模式下显示的图标（太阳）
         name: 切换到深色模式
 
-# ---------- 插件 ----------
+
+# ============================================================
+# 第 4 部分：插件（plugins）
+# ============================================================
+# 插件是扩展 MkDocs 功能的额外模块。目前只用了搜索插件，
+# 但搜索插件的中文配置很关键，必须写对。
+
 plugins:
   - search:
       # 【为什么必须显式写 lang，不能靠 theme.language: zh 自动带出来】
@@ -139,53 +268,119 @@ plugins:
       # 搜「线性空间」永远命中不了（lunr 只做整词匹配，不做子串匹配）。
       # 补上 zh 才会启用 jieba 中文分词 —— 就是 requirements.txt 里那个 jieba。
       lang:
-        - zh
-        - en
+        - zh   # 中文分词（用 jieba）
+        - en   # 英文分词（默认）
 
-# ---------- 4. 自定义样式 ----------
-extra_css:                  # 这里的文件最后加载，所以能覆盖 Material 默认外观
-  - stylesheets/starry-academic.css   # 全站视觉系统（配色/字体/组件/玻璃）
-  - stylesheets/home.css              # 首页版式（Hero/节奏/网格），必须排在后面
 
-# ---------- 5. Markdown 扩展 ----------
+# ============================================================
+# 第 5 部分：自定义样式（extra_css）
+# ============================================================
+# 这里列的 CSS 文件会在主题默认样式【之后】加载，
+# 所以能覆盖 Material 的默认外观——这就是"自定义主题"的原理。
+# 顺序很重要：后面的文件能覆盖前面的。
+
+extra_css:
+  - stylesheets/starry-academic.css
+  # ↑ 全站视觉系统：配色变量、字体、组件样式、玻璃态效果。
+  # 这是网站的"皮肤"，改颜色主要改这个文件顶部的 --sa-* 变量。
+
+  - stylesheets/home.css
+  # ↑ 首页专属版式：Hero区域、节奏、卡片网格。
+  # 必须排在 starry-academic.css 后面，这样首页样式能覆盖全站默认样式。
+
+
+# ============================================================
+# 第 6 部分：Markdown 扩展（markdown_extensions）
+# ============================================================
+# Markdown 本身语法很简单，这些扩展让它支持更多高级语法：
+# 彩色提示框、图标、代码高亮、数学公式、脚注等等。
+# 【原则】用到哪个加哪个，加了就要会用，不用的别加（增加构建时间）。
+
 markdown_extensions:
-  - attr_list               # 支持 { align=center } 这类属性写法
-  - md_in_html              # 支持在 HTML 标签里写 Markdown（首页卡片需要它）
-  - admonition              # 支持 !!! note / !!! tip 彩色提示框
-  - meta                    # 支持页面顶部 hide: 隐藏侧边栏（首页落地页要用）
 
-  # ★ 图标语法 :material-xxx: —— 缺了它，图标会原样显示成 ":material-pencil:{ .lg }" 这堆文本
-  #   这是 Material 官方推荐的图标方案，依赖 material 自带的两套翻译器
+  # ---------- 基础扩展 ----------
+  - attr_list
+  # ↑ 支持给元素加属性，比如 { align=center }、{ .class-name }。
+  # 首页卡片的图标大小 { .lg .middle } 就靠它。
+
+  - md_in_html
+  # ↑ 支持在 HTML 标签里写 Markdown。
+  # 首页的 <div class="grid cards" markdown> 里面写 Markdown 就靠它，
+  # 没有它，HTML标签里的 Markdown 会原样显示成文本。
+
+  - admonition
+  # ↑ 支持彩色提示框：!!! note "标题"、!!! tip、!!! warning、!!! danger。
+  # 这是 Material 最常用的扩展之一，写笔记、加注意事项都靠它。
+
+  - meta
+  # ↑ 支持页面顶部的 front matter（--- 包裹的元数据），
+  # 比如 hide: [footer] 隐藏页脚、title: 自定义标题。首页要用。
+
+  # ---------- 图标扩展 ----------
+  # ★ 图标语法 :material-xxx: —— 缺了它，图标会原样显示成
+  # ":material-pencil:{ .lg }" 这堆文本，而不是渲染成图标。
+  # 这是 Material 官方推荐的图标方案，依赖 material 自带的两套翻译器。
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
-  # 代码块 + Mermaid 流程图（写数模笔记会用）
+  # ---------- 代码高亮 + 流程图 ----------
   - pymdownx.highlight:
       anchor_linenums: true
+      # ↑ 代码行号可以作为锚点链接，比如 #L10 直接跳到第10行
   - pymdownx.inlinehilite
+  # ↑ 行内代码高亮，比如 `print("hello")` 会带语法高亮
   - pymdownx.superfences:
+      # ↑ 增强代码块，支持嵌套代码块、自定义代码块类型
       custom_fences:
+        # 自定义 Mermaid 流程图代码块：```mermaid ... ```
         - name: mermaid
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
 
-  # 数学公式（配合 javascripts/mathjax.js）
+  # ---------- 数学公式 ----------
+  # 配合 javascripts/mathjax.js 渲染 LaTeX 公式。
+  # $行内公式$ 或 $$独立公式$$
   - pymdownx.arithmatex:
       generic: true
+      # ↑ generic 模式 = 用标准的 \( \) 和 \[ \] 包裹公式，
+      # MathJax 能直接识别。不用 generic 的话格式不一样，容易出问题。
 
-  # 其他常用
-  - footnotes               # 脚注
+  # ---------- 其他常用 ----------
+  - footnotes
+  # ↑ 脚注：正文里写 [^1]，页面底部写 [^1]: 解释内容。
+  # 写学术内容时引用文献很方便。
+
   - toc:
-      permalink: true         # 标题锚点
+      permalink: true
+      # ↑ 标题锚点：鼠标悬停在标题上时，标题旁边出现 # 符号，
+      # 点一下就能复制这个标题的直接链接。方便分享具体段落。
 
-# ---------- 6. 脚本 ----------
-# ① 首页动态问候语（按时间变化："早上好/下午好/晚上好，我是衍煜"）
-# ② MathJax 公式渲染：先加载自己的配置，再加载 MathJax 本体
-#    【重要】MathJax 本体已下载到本地 javascripts/vendor/，不再依赖 CDN。
-#    原因：原先用的字节跳动镜像 lf26-cdn-tos.bytecdntp.com 已失效（404），
-#    会导致全站公式完全不渲染。本地化后既快又稳定，离线也能用。
+
+# ============================================================
+# 第 7 部分：脚本（extra_javascript）
+# ============================================================
+# 这里列的 JS 文件会在页面加载时执行。
+# 顺序很重要：mathjax.js（配置）必须在 tex-mml-chtml.js（本体）之前加载，
+# 否则配置不生效。
+
 extra_javascript:
   - javascripts/home-greet.js
+  # ↑ 首页动态问候语：按时间显示"早上好/下午好/晚上好，我是衍煜"。
+  # 只在首页生效，其他页面不执行。
+
+  - javascripts/particle-bg.js
+  # ↑ 首页粒子星空背景：Canvas 动态粒子 + 鼠标交互 + 流星 + 打字机名字。
+  # 只在首页生效（检测 .home 容器），深色模式效果最佳。
+
   - javascripts/mathjax.js
+  # ↑ MathJax 配置文件：自定义宏（\R \N \Z 等数集符号）、
+  # 交叉引用（\label \ref \eqref）、自动加载扩展（amsmath/amssymb等）、
+  # 容错处理（noerrors/noundefined）、输出配置。
+  # 这是公式渲染的"大脑"，改公式行为主要改这个文件。
+
   - javascripts/vendor/tex-mml-chtml.js
+  # ↑ MathJax 本体（1.1MB），已下载到本地。
+  # 【重要】原先用的字节跳动 CDN（lf26-cdn-tos.bytecdntp.com）已失效（404），
+  # 会导致全站公式完全不渲染。本地化后既快又稳定，离线也能用。
+  # 这个文件必须排在 mathjax.js 后面，因为配置要先于本体加载。

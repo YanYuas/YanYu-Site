@@ -1,0 +1,92 @@
+py{
+  // ============================================================
+  // VS Code 任务配置
+  // 用法：Ctrl+Shift+B（默认构建），或 Ctrl+Shift+P → Tasks: Run Task
+  // ============================================================
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "mkdocs: 启动本地预览",
+      "detail": "启动 mkdocs serve，改文件自动重建（终端里 Ctrl+C 停止）",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
+      "args": ["serve", "-a", "127.0.0.1:8000"],
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "mkdocs",
+        "pattern": { "regexp": "^$" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "Building documentation",
+          "endsPattern": "Serving on"
+        }
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always",
+        "clear": true
+      }
+    },
+    {
+      // 默认构建（Ctrl+Shift+B）。
+      // 不用 --strict：竞赛作品索引里有 4 条指向「规划中作品」的链接，
+      // 是刻意保留的，strict 模式会因此中止构建。
+      "label": "mkdocs: 构建站点",
+      "detail": "执行 mkdocs build，产物输出到 site/",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
+      "args": ["build"],
+      "problemMatcher": {
+        "owner": "mkdocs",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(WARNING|ERROR)\\s+-\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        }
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      // 发布前检查用。注意：当前会因 4 条规划链接警告而中止，
+      // 这是预期内的 —— 等那几个作品页面补完就会通过。
+      "label": "mkdocs: 严格检查（发布前）",
+      "detail": "mkdocs build --strict，任何警告都视为失败",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
+      "args": ["build", "--strict"],
+      "problemMatcher": {
+        "owner": "mkdocs",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": {
+          "regexp": "^(WARNING|ERROR)\\s+-\\s+(.*)$",
+          "severity": 1,
+          "message": 2
+        }
+      },
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always"
+      }
+    },
+    {
+      "label": "站点验收",
+      "detail": "跑 tools/check_site.py：页面数、题量、讲义、内链、公式",
+      "type": "shell",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["${workspaceFolder}/tools/check_site.py"],
+      "problemMatcher": [],
+      "presentation": {
+        "panel": "dedicated",
+        "reveal": "always"
+      }
+    }
+  ]
+}
