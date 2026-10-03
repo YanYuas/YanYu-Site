@@ -1,0 +1,268 @@
+/* ==================================================================
+   cream-candy.css · 奶油糖果风（Cream Candy）主题样式
+   ------------------------------------------------------------------
+   【风格切换接口说明】
+   - 本文件集中定义了奶油糖果风的所有颜色和质感。
+   - 想新增一种风格（如海洋风 ocean、星空风 starry）：
+       1) 复制本文件，改名为 ocean.css；
+       2) 替换下面两个 scheme 块里的颜色值；
+       3) 在 mkdocs.yml 的 extra_css 中把 cream-candy.css 换成 ocean.css。
+     页面内容完全不用改，即可整体换肤。
+   - 颜色采用「设计 token(--cc-*) → Material 变量(--md-*)」两层，
+     调色时只改每个 scheme 块顶部的 --cc-* 即可。
+   ================================================================== */
+
+/* ==================================================================
+   浅色 · 奶油（cream）
+   ================================================================== */
+[data-md-color-scheme="cream"] {
+
+  /* ---- 奶油糖果设计 token（调色只改这里）---- */
+  --cc-bg:           #FFFBF5;  /* 页面暖奶油底 */
+  --cc-panel:        #FFFFFF;  /* 卡片/面板 */
+  --cc-inset:        #FBF1E7;  /* 输入框/表格底 */
+  --cc-line:         #F2E4D8;  /* 边框/分割线 */
+  --cc-text-hi:      #5C4A45;  /* 标题 暖棕黑 */
+  --cc-text-mid:     #9B7E72;  /* 正文 */
+  --cc-text-low:     #C0A89B;  /* 辅助文字 */
+  --cc-primary:      #FF8FA3;  /* 蜜桃粉 主色 */
+  --cc-primary-soft: #FFD9E0;  /* 蜜桃粉 浅 */
+  --cc-mint:         #7BD3B2;  /* 薄荷 成功 */
+  --cc-butter:       #FFD97A;  /* 奶黄 提醒 */
+  --cc-sky:          #8FC1F0;  /* 天蓝 信息 */
+  --cc-lilac:        #C9AEE8;  /* 淡紫 点缀 */
+  --cc-strawberry:   #FF6B7D;  /* 草莓红 高危 */
+
+  color-scheme: light;
+
+  /* ---- 主色（顶部导航、当前标签等）---- */
+  --md-primary-fg-color:        var(--cc-primary);
+  --md-primary-fg-color--light: var(--cc-primary-soft);
+  --md-primary-fg-color--dark:  var(--cc-strawberry);
+  --md-primary-bg-color:        var(--cc-panel);
+  --md-primary-bg-color--light: var(--cc-inset);
+  --md-primary-bg-color--dark:  var(--cc-line);
+
+  /* ---- 强调色（链接悬停、按钮）---- */
+  --md-accent-fg-color:              var(--cc-primary);
+  --md-accent-fg-color--transparent: rgba(255, 143, 163, 0.15);
+  --md-accent-bg-color:              var(--cc-panel);
+  --md-accent-bg-color--light:       var(--cc-inset);
+
+  /* ---- 默认前景/背景 ---- */
+  --md-default-fg-color:          var(--cc-text-hi);
+  --md-default-fg-color--light:   var(--cc-text-mid);
+  --md-default-fg-color--lighter: var(--cc-text-low);
+  --md-default-fg-color--lightest: var(--cc-text-low);
+  --md-default-bg-color:          var(--cc-bg);
+  --md-default-bg-color--light:   var(--cc-panel);
+  --md-default-bg-color--dark:    var(--cc-inset);
+
+  /* ---- 正文文字与链接 ---- */
+  --md-typeset-color:    var(--cc-text-mid);
+  --md-typeset-a-color:  var(--cc-primary);
+  --md-typeset-mark-color: rgba(255, 217, 122, 0.45);
+  --md-typeset-table-color: var(--cc-line);
+
+  /* ---- 代码块 ---- */
+  --md-code-fg-color:          var(--cc-text-hi);
+  --md-code-bg-color:          var(--cc-inset);
+  --md-code-hl-color:          rgba(255, 217, 122, 0.4);
+  --md-code-hl-keyword-color:  var(--cc-strawberry);
+  --md-code-hl-string-color:   var(--cc-mint);
+  --md-code-hl-number-color:   #E89B5A;
+  --md-code-hl-comment-color:  var(--cc-text-low);
+  --md-code-hl-function-color: var(--cc-sky);
+  --md-code-hl-constant-color: var(--cc-lilac);
+  --md-code-hl-name-color:     var(--cc-text-hi);
+  --md-code-hl-operator-color: var(--cc-text-mid);
+  --md-code-hl-punctuation-color: var(--cc-text-mid);
+  --md-code-hl-generic-color:  var(--cc-text-mid);
+  --md-code-hl-variable-color: var(--cc-text-hi);
+
+  /* ---- 页脚 ---- */
+  --md-footer-bg-color:        var(--cc-panel);
+  --md-footer-bg-color--dark:  var(--cc-inset);
+  --md-footer-fg-color:        var(--cc-text-hi);
+  --md-footer-fg-color--light: var(--cc-text-mid);
+  --md-footer-fg-color--lighter: var(--cc-text-low);
+
+  /* ---- 软阴影（粉调）---- */
+  --md-shadow-z1: 0 2px 6px rgba(255, 143, 163, 0.12), 0 0 0 1px var(--cc-line);
+  --md-shadow-z2: 0 6px 16px rgba(255, 143, 163, 0.18), 0 0 0 1px var(--cc-line);
+  --md-shadow-z3: 0 12px 32px rgba(255, 143, 163, 0.28), 0 0 0 1px var(--cc-line);
+  --md-shadow-z4: 0 16px 40px rgba(255, 143, 163, 0.32);
+}
+
+/* ==================================================================
+   深色 · 可可夜（cocoa）
+   ================================================================== */
+[data-md-color-scheme="cocoa"] {
+
+  /* ---- 奶油糖果设计 token（深色版）---- */
+  --cc-bg:           #2B2222;
+  --cc-panel:        #3A2F2E;
+  --cc-inset:        #332828;
+  --cc-line:         #574641;
+  --cc-text-hi:      #FCEFE6;
+  --cc-text-mid:     #C9AFA3;
+  --cc-text-low:     #8A6F66;
+  --cc-primary:      #FF9EB0;
+  --cc-primary-soft: #6B4148;
+  --cc-mint:         #8FE3C2;
+  --cc-butter:       #FFE29A;
+  --cc-sky:          #A6D2F5;
+  --cc-lilac:        #D8C2F0;
+  --cc-strawberry:   #FF8C9A;
+
+  color-scheme: dark;
+
+  --md-primary-fg-color:        var(--cc-primary);
+  --md-primary-fg-color--light: var(--cc-primary-soft);
+  --md-primary-fg-color--dark:  var(--cc-strawberry);
+  --md-primary-bg-color:        var(--cc-panel);
+  --md-primary-bg-color--light: var(--cc-inset);
+  --md-primary-bg-color--dark:  var(--cc-line);
+
+  --md-accent-fg-color:              var(--cc-primary);
+  --md-accent-fg-color--transparent: rgba(255, 158, 176, 0.18);
+  --md-accent-bg-color:              var(--cc-panel);
+  --md-accent-bg-color--light:       var(--cc-inset);
+
+  --md-default-fg-color:          var(--cc-text-hi);
+  --md-default-fg-color--light:   var(--cc-text-mid);
+  --md-default-fg-color--lighter: var(--cc-text-low);
+  --md-default-fg-color--lightest: var(--cc-text-low);
+  --md-default-bg-color:          var(--cc-bg);
+  --md-default-bg-color--light:   var(--cc-panel);
+  --md-default-bg-color--dark:    var(--cc-inset);
+
+  --md-typeset-color:    var(--cc-text-mid);
+  --md-typeset-a-color:  var(--cc-primary);
+  --md-typeset-mark-color: rgba(255, 226, 154, 0.35);
+  --md-typeset-table-color: var(--cc-line);
+
+  --md-code-fg-color:          var(--cc-text-hi);
+  --md-code-bg-color:          var(--cc-inset);
+  --md-code-hl-color:          rgba(255, 226, 154, 0.3);
+  --md-code-hl-keyword-color:  var(--cc-strawberry);
+  --md-code-hl-string-color:   var(--cc-mint);
+  --md-code-hl-number-color:   var(--cc-butter);
+  --md-code-hl-comment-color:  var(--cc-text-low);
+  --md-code-hl-function-color: var(--cc-sky);
+  --md-code-hl-constant-color: var(--cc-lilac);
+  --md-code-hl-name-color:     var(--cc-text-hi);
+  --md-code-hl-operator-color: var(--cc-text-mid);
+  --md-code-hl-punctuation-color: var(--cc-text-mid);
+  --md-code-hl-generic-color:  var(--cc-text-mid);
+  --md-code-hl-variable-color: var(--cc-text-hi);
+
+  --md-footer-bg-color:        var(--cc-panel);
+  --md-footer-bg-color--dark:  var(--cc-inset);
+  --md-footer-fg-color:        var(--cc-text-hi);
+  --md-footer-fg-color--light: var(--cc-text-mid);
+  --md-footer-fg-color--lighter: var(--cc-text-low);
+
+  --md-shadow-z1: 0 2px 6px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--cc-line);
+  --md-shadow-z2: 0 6px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px var(--cc-line);
+  --md-shadow-z3: 0 12px 32px rgba(0, 0, 0, 0.5);
+  --md-shadow-z4: 0 16px 40px rgba(0, 0, 0, 0.55);
+}
+
+/* ==================================================================
+   奶油糖果质感增强（浅色/深色通用）
+   ================================================================== */
+
+/* 圆润字体栈：标题饱满，正文清晰，代码等宽 */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.md-typeset code, .md-typeset pre, .highlight {
+  font-family: 'JetBrains Mono', 'Cascadia Code', Consolas, monospace;
+}
+
+/* 提示框（admonition）大圆角 + 软感 */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 14px;
+  border-width: 0;
+  box-shadow: var(--md-shadow-z1);
+}
+.md-typeset .admonition > .admonition-title,
+.md-typeset details > summary {
+  border-radius: 14px 14px 0 0;
+}
+
+/* 状态色提示框（语义色只表达状态）*/
+.md-typeset .admonition.note,
+.md-typeset details.note            { --md-accent-fg-color: var(--cc-sky); }
+.md-typeset .admonition.tip,
+.md-typeset details.tip             { --md-accent-fg-color: var(--cc-mint); }
+.md-typeset .admonition.warning,
+.md-typeset details.warning         { --md-accent-fg-color: var(--cc-butter); }
+.md-typeset .admonition.danger,
+.md-typeset details.danger          { --md-accent-fg-color: var(--cc-strawberry); }
+
+/* 表格圆角、表头奶咖底 */
+.md-typeset table:not([class]) {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--md-shadow-z1);
+  display: inline-block;
+  max-width: 100%;
+}
+.md-typeset table:not([class]) th {
+  background: var(--cc-inset);
+  color: var(--cc-text-hi);
+  font-weight: 700;
+}
+
+/* 代码块圆角 */
+.md-typeset pre > code,
+.highlight {
+  border-radius: 12px;
+}
+
+/* 链接：蜜桃粉 + 柔和下划线 */
+.md-typeset a {
+  text-underline-offset: 3px;
+}
+
+/* 卡片化网格（用 .grid 配合）轻微上浮 */
+.md-typeset .grid > .card {
+  border-radius: 16px;
+  box-shadow: var(--md-shadow-z1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.md-typeset .grid > .card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--md-shadow-z2);
+}
+
+/* 按钮（.md-button）糖果感 */
+.md-typeset .md-button {
+  border-radius: 999px;
+  font-weight: 600;
+}
+.md-typeset .md-button--primary {
+  background: var(--cc-primary);
+  border-color: var(--cc-primary);
+  color: #fff;
+}
+
+/* 选中文字时的蜜桃底色 */
+::selection {
+  background: rgba(255, 143, 163, 0.3);
+}
+
+/* 尊重系统"减少动效"设置 */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
