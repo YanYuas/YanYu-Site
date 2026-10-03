@@ -71,13 +71,14 @@
   left: 0;                             /* 距离视口左侧0 */
   width: 100%;                         /* 宽度铺满视口 */
   height: 100%;                        /* 高度铺满视口 */
-  /* 背景图用两层叠加：第一层是LQIP模糊占位图（内联base64，立即可用，不用等下载），
-     第二层是高清WebP（只有0.72MB，加载很快）。WebP加载完后自动覆盖在LQIP上面，
-     实现"先模糊后清晰"的渐进式加载效果，用户不会看到空白或长时间等待。
-     WebP比原PNG小91%，画质几乎无损。 */
+  /* 背景图用两层叠加：CSS多层背景图中，第一层在最上面，最后一层在最下面。
+     所以WebP高清图放第一层（上面），LQIP模糊占位图放第二层（下面）。
+     页面打开时WebP还在下载，浏览器先显示下面的LQIP（内联base64，立即可用）；
+     WebP加载完后自动显示在上面，覆盖LQIP，实现"先模糊后清晰"的渐进式加载。
+     WebP只有0.72MB，比原PNG小91%，画质几乎无损。 */
   background-image:
-    url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAANABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCH+zSBnFSR6dla2LoBIyQKoW8zF8UrsVkV/wCzSO1FbiKCoJFFHMHKf//Z'),
-    url('../assets/images/hero-bg.webp');
+    url('../assets/images/hero-bg.webp'),
+    url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAANABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCH+zSBnFSR6dla2LoBIyQKoW8zF8UrsVkV/wCzSO1FbiKCoJFFHMHKf//Z');
   background-size: cover;              /* 背景图缩放：cover = 铺满容器，可能裁剪 */
   background-position: center;         /* 背景图位置：居中 */
   z-index: -3;                         /* 层级-3：最底层，在遮罩和粒子之下 */
