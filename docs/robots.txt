@@ -1,0 +1,9 @@
+# robots.txt · 告诉搜索引擎哪些页面可以抓取
+# 这个文件放在 docs/ 根目录，构建后会出现在网站根目录 https://你的域名/robots.txt
+
+# 允许所有搜索引擎抓取整个网站
+User-agent: *
+Allow: /
+
+# 网站地图地址，帮助搜索引擎更快发现你的页面
+Sitemap: https://YanYuas.github.io/YanYu-Site/sitemap.xml

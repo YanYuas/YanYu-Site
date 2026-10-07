@@ -51,10 +51,16 @@
                  'SimKai', 'AR PL UKai CN', 'Noto Serif CJK SC',
                  'Source Han Serif SC', serif;
 
-  /* 标题用的字体 = 楷书 */
+  /* 标题用的字体 = 楷书（保留个人审美，标题短，楷体有气质） */
   --sa-font-display: var(--sa-font-kai);
-  /* 正文用的字体 = 楷书 */
-  --sa-font-body:    var(--sa-font-kai);
+  /* 正文用的字体 = 系统无衬线字体（大段数学正文用楷体会疲劳，
+     无衬线字体笔画均匀，公式符号识别更清晰，长时间阅读更舒服）
+     字体栈按平台排列：
+       Windows  → Microsoft YaHei（微软雅黑）
+       macOS    → PingFang SC（苹方）
+       Linux    → Noto Sans CJK SC */
+  --sa-font-body:    'PingFang SC', 'Microsoft YaHei', 'Noto Sans CJK SC',
+                     'Source Han Sans SC', 'Hiragino Sans GB', sans-serif;
   /* 代码用的字体：等宽字体（每个字母宽度一样，方便对齐） */
   --sa-font-mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular',
                   Consolas, 'Liberation Mono', monospace;

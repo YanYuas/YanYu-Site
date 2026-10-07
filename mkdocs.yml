@@ -26,6 +26,14 @@ site_description: 数学与应用数学本科生 · 数学建模、数学理论�
 # ↑ 网站描述。搜索引擎会显示这个，访客一眼知道你这个站是干什么的。
 # 建议用一句话说清"你是谁 + 网站有什么"。
 
+site_url: https://YanYuas.github.io/YanYu-Site/
+# ↑ 网站的完整网址。MkDocs 用它生成正确的 sitemap.xml 和 canonical 链接，
+# 搜索引擎靠这个知道你的网站正式地址是什么。
+# 格式：https://用户名.github.io/仓库名/ （末尾的 / 不能少）
+
+site_author: 衍煜
+# ↑ 网站作者名。会出现在页面 meta 标签和 RSS 订阅里。
+
 
 # ============================================================
 # 第 2 部分：导航（nav）—— 网站顶部菜单怎么排
@@ -65,8 +73,19 @@ nav:
       # ↑ 写你自己的故事：参赛经历、踩坑经验、三手协作SOP
       - 数学与算法基础: mathmodel/fundamentals/index.md
       # ↑ 算法知识库，优化模型已深挖，其他方向待补充
-      - 我的竞赛作品: mathmodel/works/index.md
-      # ↑ 国赛/华数杯/电工杯/五一杯/亚太杯，每场一页
+      - 我的竞赛作品:
+          - 总览: mathmodel/works/index.md
+          # ↑ 五场比赛的总入口，有比赛列表表格
+          - 2026国赛: mathmodel/works/cumcm-2026/index.md
+          # ↑ 高教社杯，B题无线电干扰源定位，完整度最高
+          - 2026华数杯: mathmodel/works/huashu-2026/index.md
+          # ↑ B题VLSI布图规划
+          - 2026电工杯: mathmodel/works/diangong-2026/index.md
+          # ↑ 三等奖
+          - 2026五一杯: mathmodel/works/wuyi-2026/index.md
+          # ↑ 待补充
+          - 2026亚太杯: mathmodel/works/apmcm-2026/index.md
+          # ↑ 备赛中，11月比赛
       - 优秀论文精解: mathmodel/paper-analysis/index.md
       # ↑ 读别人的优秀论文，拆方法、学技巧
       - 深入论文研究: mathmodel/research/index.md
