@@ -55,11 +55,8 @@ jieba==0.42.1
 # 注意：必须在 Git 仓库里才有效；没 commit 的新文件不会显示
 mkdocs-git-revision-date-localized-plugin==1.6.0
 
-# 让站点能直接渲染 .ipynb（Jupyter 笔记本）文件
-# 用法：把 .ipynb 放进 docs/，在 nav 里引用，就会自动变成网页
-# 启用方式：mkdocs.yml 的 plugins 下已登记
-# 注意：渲染时会执行笔记本代码，构建时间会变长
-mkdocs-jupyter==0.26.3
+# ---------- 已安装但未启用的插件（需要时在 mkdocs.yml 启用） ----------
+# （目前没有）
 
 # ---------- 可选：将来可能用到的包（先不装，需要时取消注释）----------
 # 下面这些是常见的 MkDocs 扩展，如果你需要某个功能，

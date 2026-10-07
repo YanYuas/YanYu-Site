@@ -199,6 +199,11 @@ nav:
   # 个人介绍：你是谁、做过什么、联系方式、建站说明
   - 关于: about.md
 
+  # ---------- 标签总览 ----------
+  # 按标签分类展示所有页面，访客点一个标签就能看到相关文章
+  # 页面内容由 tags 插件自动生成，不需要手动写
+  - 标签: tags.md
+
 
 # ============================================================
 # 第 3 部分：主题（theme）—— 控制网站外观
@@ -289,6 +294,32 @@ plugins:
       lang:
         - zh   # 中文分词（用 jieba）
         - en   # 英文分词（默认）
+
+  # 【git-revision-date-localized 插件】
+  #   在每个页面底部显示"最后更新于：YYYY-MM-DD"，
+  #   数据来自 Git 的提交记录——你什么时候 commit 了这个文件，就显示什么时候。
+  #   对学术网站很有用：访客能知道内容是不是最新的。
+  #   注意：GitHub Actions 构建时必须有完整的 Git 历史（checkout 的 fetch-depth 不能是 1）。
+  - git-revision-date-localized:
+      enable_creation_date: true   # 同时显示"创建于"和"最后更新于"
+      type: date                    # 只显示日期（不显示时间），格式如 2026-09-30
+      fallback_to_build_date: true  # 如果文件没有 Git 历史（比如新文件还没commit），用构建日期代替
+
+  # 【tags 标签插件】
+  #   给页面打标签，然后在一个专门的页面上按标签分类展示所有页面。
+  #   访客点一个标签，就能看到所有带这个标签的文章——类似博客的"分类"功能。
+  # 【怎么给页面打标签】
+  #   在 Markdown 文件最顶部加 front matter：
+  #     ---
+  #     tags:
+  #       - 线性代数
+  #       - 数学
+  #     ---
+  # 【标签页面在哪】
+  #   tags_file 指定的文件会自动变成"标签总览页"，不需要手动写内容。
+  #   在 nav 里引用这个文件，访客就能从导航进入标签页。
+  - tags:
+      tags_file: tags.md
 
 
 # ============================================================
@@ -403,3 +434,52 @@ extra_javascript:
   # 【重要】原先用的字节跳动 CDN（lf26-cdn-tos.bytecdntp.com）已失效（404），
   # 会导致全站公式完全不渲染。本地化后既快又稳定，离线也能用。
   # 这个文件必须排在 mathjax.js 后面，因为配置要先于本体加载。
+
+
+# ============================================================
+# 第 8 部分：额外配置（extra）
+# ============================================================
+# 这里放一些杂项配置：访问统计、社交链接、版本号等。
+
+extra:
+  # ---------- 访问统计 ----------
+  # 【怎么用】
+  #   1. 去 https://analytics.google.com 注册 Google Analytics 4（免费）
+  #   2. 创建一个"数据流"，得到一个以 G- 开头的 ID（如 G-ABC123XYZ）
+  #   3. 把下面的 G-XXXXXXXXXX 替换成你的 ID
+  #   4. 重新构建部署，等几小时后就能在 GA 后台看到访问数据
+  # 【能看到什么】
+  #   每天有多少人访问、来自哪个国家/城市、看了哪些页面、停留多久、
+  #   用什么设备（手机/电脑）、什么浏览器。
+  # 【国内替代方案】
+  #   如果 Google Analytics 在国内访问不稳定，可以用百度统计（tongji.baidu.com），
+  #   但百度统计需要手动在页面插入 JS 代码，Material 主题不直接支持。
+  #   建议先用 GA，国内访客数据可能有缺失但海外访客完整。
+  analytics:
+    provider: google
+    property: G-XXXXXXXXXX  # ← 替换为你的 Google Analytics 4 ID
+
+  # ---------- 社交链接（页脚显示） ----------
+  # 这些图标会显示在网站页脚，访客点一下就能跳到你的主页。
+  # 想加更多平台，去 https://squidfunk.github.io/mkdocs-material/setup/setting-up-social-links/
+  # 查支持的图标名称。
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/YanYuas
+      name: GitHub 主页
+    # ↑ GitHub：你的代码仓库和项目
+    # - icon: fontawesome/brands/zhihu
+    #   link: https://www.zhihu.com/people/你的ID
+    #   name: 知乎主页
+    # ↑ 知乎：数学思维文章（需要时取消注释，替换链接）
+    # - icon: fontawesome/brands/weibo
+    #   link: https://weibo.com/你的ID
+    #   name: 微博主页
+    # ↑ 微博（需要时取消注释）
+
+  # ---------- 网站版本号（可选） ----------
+  # 显示在页脚，方便你自己追踪网站迭代。
+  # 每次大改后手动更新一下版本号。
+  version:
+    provider: mike
+    # ↑ 用 mike 管理多版本（目前只有一个版本，先配置好，以后加版本不用改配置）
