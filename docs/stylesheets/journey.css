@@ -1,0 +1,554 @@
+/* ============================================================
+   journey.css · 成长之路页面专属样式（三段式过渡版）
+   ============================================================
+   【核心体验：三段式连续滚动】
+     整个页面是一个连续的 sticky 滚动区域，不硬切：
+     - 阶段一（进度 0%→70%）：左1/4信息卡 + 右3/4横向时间线
+     - 阶段二（进度 70%→80%）：过渡动画——左侧扩大、时间线淡出、简历淡入
+     - 阶段三（进度 80%→100%）：左1/3信息卡 + 右2/3简历
+
+   【布局结构】
+     .journey-sticky-wrap          滚动跑道（高度=350vh）
+     └── .journey-layout           sticky固定（100vh），左右分栏
+         ├── .journey-profile      左侧信息卡（宽度由CSS变量 --left-width 控制）
+         └── .journey-content      右侧内容区（宽度 = 100% - --left-width）
+             ├── .timeline-layer   时间线层（阶段一显示，阶段二淡出）
+             └── .resume-layer     简历层（阶段二淡入，阶段三显示）
+
+   【过渡原理】
+     JS 监听滚动进度，在 70% 时给 body 加 class="journey-phase-resume"。
+     CSS 监听这个类，用 transition 平滑过渡：
+     - --left-width: 25% → 33.3%
+     - .timeline-layer: opacity 1 → 0, pointer-events none
+     - .resume-layer: opacity 0 → 1, pointer-events auto
+   ============================================================ */
+
+/* ---------- CSS变量：控制左右宽度（过渡动画的核心） ---------- */
+:root {
+  --journey-left-width: 25%;   /* 阶段一：左侧25% */
+}
+
+/* 阶段三：左侧扩大到33.3%（由JS在滚动到70%时给html加类触发） */
+html.journey-phase-resume {
+  --journey-left-width: 33.3%;
+}
+
+/* ---------- 页面容器 ---------- */
+.journey-page {
+  width: 100%;
+}
+
+.journey-page > h1:first-child {
+  display: none;
+}
+
+/* ============================================================
+   Sticky 滚动跑道
+   ============================================================
+   高度 350vh = 3.5屏：
+   - 0-70%（0~245vh）：时间线滚动
+   - 70-80%（245~280vh）：过渡动画
+   - 80-100%（280~350vh）：简历展示
+   ============================================================ */
+
+.journey-sticky-wrap {
+  height: 350vh;
+  position: relative;
+}
+
+/* 左右分栏：sticky固定在视口 */
+.journey-layout {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+/* ============================================================
+   左侧：个人信息卡
+   ============================================================
+   宽度由 --journey-left-width 控制，过渡时 25%→33.3% 平滑变化。
+   transition 让宽度变化有动画效果。
+   ============================================================ */
+
+.journey-profile {
+  flex: 0 0 var(--journey-left-width);
+  width: var(--journey-left-width);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  border-right: 1px solid var(--sa-line);
+  background: linear-gradient(180deg, var(--sa-glass) 0%, transparent 100%);
+  /* 宽度过渡：0.8秒，和时间线淡出/简历淡入同步 */
+  transition: flex-basis 0.8s ease-in-out, width 0.8s ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+
+/* 头像：过渡时轻微放大（配合区域扩大） */
+.journey-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--sa-elevated);
+  border: 3px solid var(--sa-gold);
+  box-shadow: 0 0 30px var(--sa-accent-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: transform 0.8s ease-in-out;
+}
+
+/* 阶段三：头像放大1.15倍 */
+html.journey-phase-resume .journey-avatar {
+  transform: scale(1.15);
+}
+
+.journey-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.journey-info h2 {
+  font-family: var(--sa-font-display);
+  font-size: 1.8rem;
+  color: var(--sa-text-hi);
+  margin: 0 0 0.3rem 0;
+}
+
+.journey-info .journey-tagline {
+  color: var(--sa-accent);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.journey-info .journey-bio {
+  color: var(--sa-text-mid);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+.journey-info .journey-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.journey-info .journey-links a {
+  color: var(--sa-accent);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.journey-info .journey-links a:hover {
+  color: var(--sa-accent-soft);
+}
+
+/* 滚动提示（左下角） */
+.journey-scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: calc(var(--journey-left-width) / 2);
+  transform: translateX(-50%);
+  color: var(--sa-text-low);
+  font-size: 0.8rem;
+  text-align: center;
+  animation: bounce-hint 2s ease-in-out infinite;
+  transition: opacity 0.5s;
+  z-index: 3;
+}
+
+@keyframes bounce-hint {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ============================================================
+   右侧内容区：包含时间线层和简历层（绝对定位叠加）
+   ============================================================ */
+
+.journey-content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 两个层都绝对定位，铺满右侧内容区 */
+.timeline-layer,
+.resume-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: opacity 0.6s ease-in-out;
+}
+
+/* 时间线层：默认显示 */
+.timeline-layer {
+  opacity: 1;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 简历层：默认隐藏 */
+.resume-layer {
+  opacity: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow-y: auto;
+  padding: 2rem 2.5rem;
+}
+
+/* 阶段三：时间线淡出，简历淡入 */
+html.journey-phase-resume .timeline-layer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.journey-phase-resume .resume-layer {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
+}
+
+/* ============================================================
+   时间线层内部样式
+   ============================================================ */
+
+.journey-timeline-header {
+  padding: 2rem 2rem 1rem;
+  flex-shrink: 0;
+}
+
+.journey-timeline-header h2 {
+  font-family: var(--sa-font-display);
+  font-size: 1.6rem;
+  color: var(--sa-text-hi);
+  margin: 0 0 0.3rem 0;
+}
+
+.journey-timeline-header p {
+  color: var(--sa-text-low);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.journey-progress-bar {
+  height: 3px;
+  background: var(--sa-line);
+  margin: 0 2rem 1rem;
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.journey-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--sa-accent), var(--sa-gold));
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.journey-timeline {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 2rem 3rem;
+  align-items: stretch;
+  flex: 1;
+  will-change: transform;
+}
+
+/* ---------- 时间线卡片 ---------- */
+.timeline-card {
+  flex: 0 0 300px;
+  background: var(--sa-glass);
+  border: 1px solid var(--sa-glass-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  backdrop-filter: blur(var(--sa-blur));
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  position: relative;
+}
+
+.timeline-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: var(--sa-accent);
+}
+
+.timeline-card.important {
+  border-color: rgba(217, 188, 106, 0.4);
+}
+
+.timeline-card.important:hover {
+  border-color: var(--sa-gold);
+  box-shadow: 0 12px 40px rgba(217, 188, 106, 0.2);
+}
+
+.timeline-card .card-date {
+  font-family: var(--sa-font-display);
+  font-size: 1.3rem;
+  color: var(--sa-accent);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-card.important .card-date {
+  color: var(--sa-gold);
+}
+
+.timeline-card h3 {
+  font-family: var(--sa-font-display);
+  font-size: 1.1rem;
+  color: var(--sa-text-hi);
+  margin: 0 0 0.3rem 0;
+  line-height: 1.4;
+}
+
+.timeline-card .card-org {
+  color: var(--sa-text-low);
+  font-size: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-card .card-badge {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  align-self: flex-start;
+}
+
+.card-badge.gold {
+  background: rgba(217, 188, 106, 0.2);
+  color: var(--sa-gold);
+  border: 1px solid rgba(217, 188, 106, 0.4);
+}
+
+.card-badge.blue {
+  background: var(--sa-accent-dim);
+  color: var(--sa-accent);
+  border: 1px solid var(--sa-accent);
+}
+
+.card-badge.green {
+  background: rgba(82, 196, 160, 0.15);
+  color: var(--sa-success);
+  border: 1px solid rgba(82, 196, 160, 0.4);
+}
+
+.card-badge.gray {
+  background: var(--sa-glass-strong);
+  color: var(--sa-text-low);
+  border: 1px solid var(--sa-line);
+}
+
+.timeline-card .card-note {
+  color: var(--sa-text-mid);
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-top: auto;
+  font-style: italic;
+}
+
+.timeline-card .card-index {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.2rem;
+  font-family: var(--sa-font-display);
+  font-size: 2rem;
+  color: var(--sa-line);
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.journey-timeline-axis {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background: linear-gradient(90deg, var(--sa-accent), var(--sa-gold), var(--sa-line));
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ============================================================
+   简历层内部样式
+   ============================================================ */
+
+.resume-layer h2 {
+  font-family: var(--sa-font-display);
+  font-size: 1.8rem;
+  color: var(--sa-text-hi);
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--sa-gold);
+}
+
+.resume-section {
+  background: var(--sa-glass);
+  border: 1px solid var(--sa-glass-border);
+  border-radius: 12px;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1.2rem;
+  backdrop-filter: blur(var(--sa-blur));
+}
+
+.resume-section h3 {
+  font-family: var(--sa-font-display);
+  font-size: 1.15rem;
+  color: var(--sa-text-hi);
+  margin: 0 0 0.8rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.resume-item {
+  margin-bottom: 0.8rem;
+  padding-left: 0.8rem;
+  border-left: 2px solid var(--sa-line);
+}
+
+.resume-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-item .resume-item-title {
+  font-weight: bold;
+  color: var(--sa-text-hi);
+  font-size: 0.95rem;
+}
+
+.resume-item .resume-item-meta {
+  color: var(--sa-text-low);
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+.resume-item .resume-item-desc {
+  color: var(--sa-text-mid);
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+.resume-item .resume-item-desc ul {
+  margin: 0.2rem 0;
+  padding-left: 1rem;
+}
+
+.resume-item .resume-item-desc li {
+  margin-bottom: 0.15rem;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  padding: 0.2rem 0.7rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  background: var(--sa-glass-strong);
+  border: 1px solid var(--sa-line);
+  color: var(--sa-text-mid);
+}
+
+.skill-tag.core {
+  background: var(--sa-accent-dim);
+  border-color: var(--sa-accent);
+  color: var(--sa-accent);
+}
+
+/* ============================================================
+   响应式：手机端
+   ============================================================ */
+
+@media (max-width: 768px) {
+  .journey-sticky-wrap {
+    height: auto;
+  }
+
+  .journey-layout {
+    position: relative;
+    height: auto;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .journey-profile {
+    flex: none;
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--sa-line);
+    padding: 2rem 1.5rem;
+  }
+
+  .journey-content {
+    position: relative;
+    overflow: visible;
+    min-height: 80vh;
+  }
+
+  .timeline-layer,
+  .resume-layer {
+    position: relative;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .timeline-layer {
+    display: block;
+  }
+
+  .journey-timeline {
+    overflow-x: auto;
+    transform: none !important;
+    padding-bottom: 2rem;
+  }
+
+  .resume-layer {
+    padding: 1.5rem;
+    border-top: 1px solid var(--sa-line);
+    margin-top: 1rem;
+  }
+
+  .journey-scroll-hint {
+    display: none;
+  }
+
+  .timeline-card {
+    flex: 0 0 280px;
+  }
+
+  /* 手机端禁用过渡动画 */
+  html.journey-phase-resume {
+    --journey-left-width: 100%;
+  }
+
+  html.journey-phase-resume .journey-avatar {
+    transform: none;
+  }
+}

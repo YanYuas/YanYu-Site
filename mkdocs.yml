@@ -85,7 +85,7 @@ nav:
           - 2026五一杯: mathmodel/works/wuyi-2026/index.md
           # ↑ 待补充
           - 2026亚太杯: mathmodel/works/apmcm-2026/index.md
-          # ↑ 备赛中，11月比赛
+          # ↑ 进行中，10月比赛
       - 优秀论文精解: mathmodel/paper-analysis/index.md
       # ↑ 读别人的优秀论文，拆方法、学技巧
       - 深入论文研究: mathmodel/research/index.md
@@ -100,11 +100,11 @@ nav:
           - 总览: maththeory/advanced-algebra/index.md
           # ↑ 高等代数的总入口，介绍三领域结构和学习路线
 
-          # 方法论与研究：你自己总结的学习方法论和学术论文
-          - 方法论与研究:
-              - 从初等几何到公理化演进: maththeory/advanced-algebra/theory/从初等几何到公理化演进.md
-              - 充要图谱方法论-v2: maththeory/advanced-algebra/theory/充要图谱方法论-v2.md
-              - 几何统摄与充要图谱-学术论文: maththeory/advanced-algebra/theory/几何统摄与充要图谱-学术论文.md
+          # 方法论与研究：SNCE充要认知法的理论产物与学术验证
+          - SNCE方法论与研究:
+              - 高等代数演进史与SNCE视角: maththeory/advanced-algebra/theory/高等代数演进史与SNCE视角分析.md
+              - SNCE充要图谱方法论-v3: maththeory/advanced-algebra/theory/SNCE充要图谱方法论-v3.md
+              - SNCE应用框架与方法论验证: maththeory/advanced-algebra/theory/SNCE应用框架-线性代数方法论验证.md
 
           # 领域一：矩阵与基（F1-F7）
           # F = Field（领域），每个专题有讲义+习题集
@@ -194,6 +194,11 @@ nav:
       # ↑ 生活感悟、零散思考、读书笔记、音乐
       - AI实践: blog/ai-practice/index.md
       # ↑ AI辅助建模/写作/编程的经验、工具评测、Prompt工程
+
+  # ---------- 成长之路（灰度测试中，暂不公开导航） ----------
+  # 页面文件保留在 docs/journey/，可通过直接URL /journey/ 访问测试
+  # 正式上线时取消下面这行注释即可
+  # - 成长之路: journey/index.md
 
   # ---------- 关于页 ----------
   # 个人介绍：你是谁、做过什么、联系方式、建站说明
@@ -316,10 +321,9 @@ plugins:
   #       - 数学
   #     ---
   # 【标签页面在哪】
-  #   tags_file 指定的文件会自动变成"标签总览页"，不需要手动写内容。
-  #   在 nav 里引用这个文件，访客就能从导航进入标签页。
-  - tags:
-      tags_file: tags.md
+  #   在 nav 中引用 tags.md，Material 会自动把它变成"标签总览页"。
+  #   注意：Material 9.x 之后 tags_file 选项已弃用，直接在 nav 引用即可。
+  - tags
 
 
 # ============================================================
@@ -337,6 +341,10 @@ extra_css:
   - stylesheets/home.css
   # ↑ 首页专属版式：Hero区域、节奏、卡片网格。
   # 必须排在 starry-academic.css 后面，这样首页样式能覆盖全站默认样式。
+
+  - stylesheets/journey.css
+  # ↑ 成长之路页面专属样式：个人信息卡、纵向时间线、简历分节。
+  # 只在 journey/index.md 页面生效，不影响其他页面。
 
 
 # ============================================================
@@ -422,6 +430,10 @@ extra_javascript:
   - javascripts/particle-bg.js
   # ↑ 首页粒子星空背景：Canvas 动态粒子 + 鼠标交互 + 流星 + 打字机名字。
   # 只在首页生效（检测 .home 容器），深色模式效果最佳。
+
+  - javascripts/journey.js
+  # ↑ 成长之路页面滚动联动：向下滚动驱动横向时间线移动。
+  # 只在成长之路页面生效（检测 .journey-timeline 元素）。
 
   - javascripts/mathjax.js
   # ↑ MathJax 配置文件：自定义宏（\R \N \Z 等数集符号）、

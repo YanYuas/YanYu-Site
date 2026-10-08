@@ -39,6 +39,9 @@ jobs:
       # 第一步：拉取代码
       - name: Checkout                # 步骤名称
         uses: actions/checkout@v4     # 使用官方 checkout 动作，把代码拉到运行环境
+        with:
+          fetch-depth: 0              # 拉取完整 git 历史（git-revision-date 插件需要）
+                                      # 默认是 1（只拉最近一次提交），会导致页面更新时间显示失败
 
       # 第二步：设置 Python 环境
       - name: Setup Python

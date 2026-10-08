@@ -1,4 +1,4 @@
-py{
+{
   // ============================================================
   // VS Code 任务配置
   // 用法：Ctrl+Shift+B（默认构建），或 Ctrl+Shift+P → Tasks: Run Task
@@ -12,15 +12,7 @@ py{
       "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
       "args": ["serve", "-a", "127.0.0.1:8000"],
       "isBackground": true,
-      "problemMatcher": {
-        "owner": "mkdocs",
-        "pattern": { "regexp": "^$" },
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": "Building documentation",
-          "endsPattern": "Serving on"
-        }
-      },
+      "problemMatcher": [],
       "presentation": {
         "panel": "dedicated",
         "reveal": "always",
