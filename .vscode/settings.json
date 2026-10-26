@@ -55,5 +55,19 @@
   // ---------- 文件编码与换行 ----------
   // 统一用 UTF-8，避免中文乱码
   "files.encoding": "utf8",
-  "files.eol": "\n"            // 统一用 LF 换行符（和 .gitattributes 保持一致）
+  "files.eol": "\n",           // 统一用 LF 换行符（和 .gitattributes 保持一致）
+
+  // ---------- Markdown lint 规则 ----------
+  // 【为什么要关这些规则】
+  //   这是 MkDocs + Material 项目，不是普通 Markdown 文档：
+  //   - MD033：页面里大量用 <div> <p> 做布局（首页粒子风、玻璃态卡片），
+  //           这是 Material 主题的标准用法，md_in_html 扩展已启用，构建完全正常
+  //   - MD030：Material 图标写法是 "-   :material-xxx:"，列表标记后有3个空格，
+  //           这是官方推荐格式，不是错误
+  //   其他规则保留，帮你抓真正的问题（比如死链接、标题层级混乱）
+  "markdownlint.config": {
+    "default": true,            // 启用所有默认规则
+    "MD033": false,             // 允许内联 HTML（MkDocs 页面布局必需）
+    "MD030": false              // 允许列表标记后多个空格（Material 图标写法）
+  }
 }
