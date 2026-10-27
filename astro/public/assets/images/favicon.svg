@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="YanYuas">
+  <defs>
+    <radialGradient id="bg" cx="30%" cy="24%" r="85%">
+      <stop offset="0" stop-color="#1a2547"/>
+      <stop offset="1" stop-color="#070b18"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4d98a"/>
+      <stop offset="1" stop-color="#c79a3f"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="15" fill="url(#bg)"/>
+  <circle cx="32" cy="32" r="20" fill="none" stroke="url(#gold)" stroke-width="1.2" opacity="0.45"/>
+  <path d="M18 17 L32 34 L46 17" fill="none" stroke="url(#gold)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M32 34 V49" fill="none" stroke="url(#gold)" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="32" cy="34" r="2.6" fill="#f4ead2"/>
+  <circle cx="32" cy="9" r="1.6" fill="#f4ead2" opacity="0.8"/>
+</svg>

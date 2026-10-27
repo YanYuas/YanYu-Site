@@ -1,0 +1,18 @@
+---
+title: 交互实验台
+description: Astro + Vue islands spike：Three.js 二次曲面与 Canvas 2D 圆锥曲线
+---
+
+import QuadricLab from "../../../components/labs/QuadricLab.vue";
+import ConicLab from "../../../components/labs/ConicLab.vue";
+
+这个页面是 Phase A spike：同一个页面里放两个独立 Vue island，
+分别验证 WebGL 与 Canvas 2D 的按需加载、代码分割和交互。
+
+## 1. 二次曲面
+
+<QuadricLab client:visible />
+
+## 2. 圆锥曲线
+
+<ConicLab client:visible />

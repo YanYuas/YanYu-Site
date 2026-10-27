@@ -135,6 +135,24 @@ npm run build:geo    # 解析几何实验台
 
 细节见 [visual/README.md](visual/README.md)。
 
+## Astro 迁移 spike（Phase A）
+
+`astro/` 是长期架构迁移的 Phase A spike，**不参与当前 GitHub Pages 构建**；
+生产站点仍是 MkDocs。
+
+- 架构决策：[ARCHITECTURE.md](ARCHITECTURE.md)
+- Spike 报告：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
+- 结论：GO（公式、中文搜索、Vue islands、base path 均已验证）
+- 本地运行：
+
+```bash
+cd astro
+npm install
+npm run dev      # http://localhost:4321/YanYu-Site/
+npm run check
+npm run check:math
+```
+
 ## 设计风格
 
 星空学术风（Starry Academic）+ 金色主题：

@@ -1,0 +1,6 @@
+# Astro spike 依赖与构建产物
+node_modules/
+dist/
+.astro/
+.tmp/
+npm-debug.log*

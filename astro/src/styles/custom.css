@@ -1,0 +1,208 @@
+@import "katex/dist/katex.min.css";
+
+:root {
+  --sl-color-accent-low: #37301e;
+  --sl-color-accent: #d9bc6a;
+  --sl-color-accent-high: #f1dda0;
+  --sl-color-white: #f7f4ec;
+  --sl-color-gray-1: #ece8de;
+  --sl-color-gray-2: #d4cfc2;
+  --sl-color-gray-3: #9d988c;
+  --sl-color-gray-4: #5f5b53;
+  --sl-color-gray-5: #34322d;
+  --sl-color-gray-6: #1b1a18;
+  --sl-color-black: #0f0e0c;
+  --sl-color-bg: #0f0e0c;
+  --sl-color-bg-nav: rgba(15, 14, 12, 0.92);
+  --sl-color-bg-sidebar: #131210;
+  --sl-color-hairline: rgba(217, 188, 106, 0.22);
+  --sl-color-text: #ddd8cc;
+  --sl-color-text-accent: #f1dda0;
+}
+
+body {
+  background:
+    radial-gradient(60% 45% at 80% 0%, rgba(217, 188, 106, 0.09), transparent 60%),
+    radial-gradient(50% 40% at 0% 20%, rgba(107, 155, 255, 0.07), transparent 60%),
+    #0f0e0c;
+  color: var(--sl-color-text);
+}
+
+/* 首页 splash */
+[data-has-hero] .hero {
+  position: relative;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  background:
+    linear-gradient(90deg, rgba(15, 14, 12, 0.92), rgba(15, 14, 12, 0.45)),
+    url("/YanYu-Site/assets/images/hero-bg.webp") center / cover no-repeat;
+}
+
+[data-has-hero] .hero h1 {
+  color: var(--sl-color-white);
+  letter-spacing: 0.08em;
+}
+
+[data-has-hero] .hero .tagline {
+  color: var(--sl-color-gray-2);
+}
+
+/* 数据驱动的实验卡片 */
+.lab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2.5rem;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lab-card:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+}
+
+.lab-card strong {
+  color: var(--sl-color-white);
+  font-size: 1.05rem;
+}
+
+.lab-card code {
+  color: var(--sl-color-accent);
+  font-size: 0.8rem;
+}
+
+.lab-card span:last-child {
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.lab-card__status {
+  align-self: flex-start;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  color: var(--sl-color-gray-3);
+  font: 0.62rem/1.4 monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* 实验台 */
+.lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(260px, 0.75fr);
+  margin: 1.5rem 0 2.5rem;
+  overflow: hidden;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.lab__stage {
+  position: relative;
+  min-height: 460px;
+  background:
+    radial-gradient(60% 55% at 50% 45%, rgba(217, 188, 106, 0.12), transparent 70%),
+    #14131a;
+}
+
+.lab__stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.lab__stage canvas:active {
+  cursor: grabbing;
+}
+
+.lab__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 1.3rem;
+  border-left: 1px solid var(--sl-color-hairline);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.lab__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.lab__tabs button {
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sl-color-gray-2);
+  font: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.lab__tabs button:hover,
+.lab__tabs button.is-active {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+  background: rgba(217, 188, 106, 0.08);
+}
+
+.lab__control {
+  display: grid;
+  gap: 0.4rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+}
+
+.lab__control input {
+  width: 100%;
+  accent-color: var(--sl-color-accent);
+}
+
+.lab__desc {
+  margin: 0;
+  color: var(--sl-color-gray-2);
+  font-size: 0.84rem;
+  line-height: 1.8;
+}
+
+.lab__hint {
+  margin: auto 0 0;
+  color: var(--sl-color-gray-4);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 860px) {
+  .lab {
+    grid-template-columns: 1fr;
+  }
+
+  .lab__stage,
+  .lab__stage canvas {
+    min-height: 340px;
+  }
+
+  .lab__panel {
+    border-left: 0;
+    border-top: 1px solid var(--sl-color-hairline);
+  }
+}

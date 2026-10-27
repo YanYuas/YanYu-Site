@@ -1,0 +1,28 @@
+---
+title: 衍煜
+description: 数学与应用数学本科生 · 数学理论、解析几何与随笔
+template: splash
+hero:
+  tagline: 数学与应用数学本科生 · 建模手 · 写作者
+  actions:
+    - text: 数学理论
+      link: /YanYu-Site/maththeory/
+      icon: right-arrow
+    - text: 解析几何
+      link: /YanYu-Site/analytic-geometry/
+      variant: minimal
+---
+
+import LabGrid from "../../components/data/LabGrid.astro";
+
+## 这里有什么
+
+- 高等代数：三领域 × 七模块，讲义 + 习题
+- 解析几何：三领域 × 八模块，配交互实验台
+- 数学建模、随笔与成长记录
+
+## 实验台（数据驱动）
+
+下面这些卡片由 `src/data/labs.json` + Zod 校验生成，不是手写 HTML；后续实验只加数据，不再复制卡片。
+
+<LabGrid />

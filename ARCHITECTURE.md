@@ -3,7 +3,19 @@
 - 状态：Accepted（2026-10-27）
 - 决策：**迁移到 Astro + Starlight，Vue 3 islands，内容数据源用 Content Collections + YAML**
 - 迁移策略：**strangler（逐步替换）**，MkDocs 保持线上，Astro 版在独立分支/目录完成 parity 后切换
-- 当前状态：本文件只做决策与迁移设计，**尚未开始搬迁代码**
+- 当前状态：**Phase A spike 已完成（GO）**，代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)；MkDocs 仍是生产站点
+
+### Phase A 结果摘要
+
+- Astro build：spike 6 页 2.37 s；全量 87 docs 试验 93 页 16.56 s；
+- KaTeX：2,961 个公式 0 error；全量试构建 2,966 个 KaTeX 渲染 0 error；
+- Pagefind 中文检索可用（“线性空间” 2 条结果）；
+- Three.js island 760,658 B raw / 190,933 B gzip，与 Canvas 2D island 分开 chunk；
+- base path `/YanYu-Site` 下侧边栏、卡片、内容页跳转正常；
+- 浏览器 console/page error 0；移动端 390×844 正常；
+- 待处理：35 处 MkDocs admonitions、6 处 grid cards、缺 title 的页面、slug 大小写、图片迁移、完整首页移植。
+
+---
 
 ---
 
