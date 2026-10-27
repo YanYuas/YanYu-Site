@@ -78,7 +78,7 @@
      WebP只有0.72MB，比原PNG小91%，画质几乎无损。 */
   background-image:
     url('../assets/images/hero-bg.webp'),
-    url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABsSFBcUERsXFhceHBsgKEIrKCUlKFE6PTBCYFVlZF9VXVtqeJmBanGQc1tdhbWGkJ6jq62rZ4C8ybqmx5moq6T/2wBDARweHigjKE4rK06kbl1upKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKSkpKT/wAARCAANABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCH+zSBnFSR6dla2LoBIyQKoW8zF8UrsVkV/wCzSO1FbiKCoJFFHMHKf//Z');
+    url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAANABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwCl/YEnlzMELFBkDPUVatvDyTWnmnIH866i9cWdlNPEo3ohYZ9awtO1WQwQho0YF8EHof8AOalyk9UKyW5QXw+USM8ktyO2B70V2exXfJHTpRT52HIj/9k=');
   background-size: cover;              /* 背景图缩放：cover = 铺满容器，可能裁剪 */
   background-position: center;         /* 背景图位置：居中 */
   z-index: -3;                         /* 层级-3：最底层，在遮罩和粒子之下 */
@@ -159,30 +159,36 @@
    一、Hero 区（首页最上方的大标题区域）
    ================================================================== */
 
-/* Hero 容器
-   占据首屏的主要视线，包含：问候语 + 名字 + 副标题 + 按钮
-   用 flex 布局让内容垂直居中，min-height 保证至少占60%视口高度 */
+/* Hero 容器（桌面两栏：左文字 / 右 3D）
+    占首屏主要视线，包含：问候语 + 名字 + 副标题 + 说明 + 按钮 + 数据 + 3D 画布
+    手机上退回单列，见后面的响应式规则 */
 .home .hero {
-  text-align: center;                  /* 文字水平居中 */
-  padding: 7rem 1rem 4rem;             /* 内边距：上7rem（大，防止名字被截断）左右1rem 下4rem */
-  position: relative;                  /* 相对定位 */
-  min-height: 60vh;                    /* 最小高度：60%视口高度，让内容更舒展 */
-  display: flex;                       /* 弹性布局 */
-  flex-direction: column;              /* 子元素垂直排列 */
-  justify-content: center;             /* 子元素垂直居中 */
+  text-align: left;                     /* 桌面左对齐，更像编辑排版 */
+  padding: 6rem clamp(1.5rem, 5vw, 4rem) 4rem;
+  position: relative;
+  min-height: 78vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  column-gap: clamp(1.5rem, 4vw, 4rem);
+}
+
+/* 除 3D 画布外，文字元素都放左栏 */
+.home .hero > :not(.hero-visual) {
+  grid-column: 1;
 }
 
 /* 问候语（"早上好，我是" / "夜深了，我是"）
    小字、大字距，像钟楼报时一样有仪式感
    初始透明，由CSS动画在0.3秒后淡入 */
 .home .hero .greet {
-  font-size: 1rem;                     /* 字号：1rem（比正文稍小） */
+  font-size: 0.95rem;                  /* 字号：比正文稍小 */
   font-weight: 500;                    /* 字重：500（中等粗细） */
-  letter-spacing: 0.4em;               /* 字间距：0.4em（很大，营造仪式感） */
-  text-indent: 0.4em;                  /* 首行缩进：0.4em（补偿字间距导致的视觉偏移） */
+  letter-spacing: 0.34em;              /* 字间距：较大，营造仪式感 */
+  text-indent: 0;                      /* 左对齐时不需要补偿缩进 */
   color: #ffd700;                      /* 文字颜色：金色 #ffd700，和名字呼应 */
   text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);  /* 文字阴影：金色发光，10px模糊，50%不透明 */
-  margin: 0 0 1rem;                    /* 外边距：底部1rem（和名字拉开距离） */
+  margin: 0 0 0.8rem;                  /* 外边距：底部0.8rem（和名字拉开距离） */
   opacity: 0;                          /* 初始透明度：0（完全透明，等动画淡入） */
   animation: greetFadeIn 1s ease 0.3s forwards;  /* 动画：1秒淡入，延迟0.3秒开始，forwards=结束后保持最终状态 */
 }
@@ -209,14 +215,14 @@
    渐变文字原理：用 background 做渐变，然后 background-clip: text 把背景裁剪到文字形状，
    再把文字填充设为透明，这样文字就显示出渐变背景了 */
 .home .hero h1 {
-  font-size: clamp(3.5rem, 9vw, 5.5rem);  /* 响应式字号：最小3.5rem，随视口宽度9vw，最大5.5rem */
+  font-size: clamp(3.2rem, 7.5vw, 5rem);  /* 响应式字号：桌面略收敛，给右栏留空间 */
   font-weight: 800;                    /* 字重：800（超粗，有冲击力） */
   line-height: 1.1;                    /* 行高：1.1（紧凑，避免名字占太高） */
-  letter-spacing: 0.25em;              /* 字间距：0.25em（大，有设计感） */
-  text-indent: 0.25em;                 /* 首行缩进：0.25em（补偿字间距） */
+  letter-spacing: 0.16em;              /* 字间距：0.16em（左对齐时更克制） */
+  text-indent: 0;                      /* 左对齐不需要补偿缩进 */
   border-bottom: none;                 /* 去掉 Material 默认的 h1 底部分割线 */
   padding-bottom: 0;                   /* 去掉默认底部内边距 */
-  margin: 0 0 1.5rem;                  /* 外边距：底部1.5rem（和副标题拉开距离） */
+  margin: 0 0 1.2rem;                  /* 外边距：底部1.2rem（和副标题拉开距离） */
 
   /* 渐变背景：从暖橙金(#ffb347)→金色(#ffd700)→亮金白(#fff8dc)→金色→暖橙金
      五个色标形成对称渐变，中间最亮，两端偏橙 */
@@ -288,12 +294,12 @@
    名字下面的一句话介绍，由 JS 控制打字机效果逐字打出
    初始透明，名字打完后 JS 会设 opacity:1 并加 .typing 类显示光标 */
 .home .hero .hero-subtitle {
-  font-size: 1.2rem;                    /* 字号：1.2rem（比名字小，比正文大） */
+  font-size: 1.1rem;                    /* 字号：比名字小，比正文大 */
   font-weight: 400;                     /* 字重：400（正常） */
-  letter-spacing: 0.2em;                /* 字间距：0.2em（适中） */
+  letter-spacing: 0.14em;                /* 字间距：适中 */
   color: #e8dcc8;                       /* 文字颜色：暖白色，和金色主题呼应 */
   text-shadow: 0 0 8px rgba(255, 220, 150, 0.3);  /* 柔和暖金发光 */
-  margin: 0 0 2.5rem;                   /* 外边距：底部2.5rem（和按钮拉开距离） */
+  margin: 0 0 1.2rem;                   /* 外边距：底部1.2rem */
   min-height: 1.8rem;                   /* 最小高度：1.8rem（占位，避免打字时高度跳动） */
   opacity: 0;                            /* 初始透明 */
   transition: opacity 0.5s ease;        /* 透明度过渡：0.5秒，JS设opacity时平滑变化 */
@@ -316,16 +322,169 @@
   50% { opacity: 0; }                    /* 隐藏 */
 }
 
+/* ---------- Hero 的一句话说明 ---------- */
+.home .hero .hero-note {
+  margin: 0 0 2rem;
+  max-width: 34ch;
+  color: rgba(232, 220, 200, 0.7);
+  font-size: 0.92rem;
+  line-height: 1.9;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: noteFadeIn 1s ease 1.1s forwards;
+}
+
+@keyframes noteFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Hero 数据条（21 模块 / 672 题 / 46 万字） ---------- */
+.home .hero .hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  margin-top: 2rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 215, 0, 0.18);
+  opacity: 0;
+  animation: statsFadeIn 1s ease 2.4s forwards;
+}
+
+.home .hero .hero-stats span {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: rgba(232, 220, 200, 0.55);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+}
+
+.home .hero .hero-stats strong {
+  color: #ffd700;
+  font-family: var(--sa-font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-shadow: 0 0 16px rgba(255, 215, 0, 0.22);
+}
+
+@keyframes statsFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Hero 右侧 3D 画布 ---------- */
+.home .hero .hero-visual {
+  grid-column: 2;
+  grid-row: 1 / span 6;
+  position: relative;
+  justify-self: center;
+  align-self: center;
+  width: min(100%, 520px);
+  aspect-ratio: 1 / 1;
+  opacity: 0;
+  pointer-events: none;
+  animation: visualFadeIn 1.4s ease 1.4s forwards;
+}
+
+.home .hero .hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 9%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(7, 11, 24, 0.35), rgba(7, 11, 24, 0.08) 58%, transparent 72%);
+  filter: blur(10px);
+}
+
+/* WebGL 不可用时的静态装饰：一圈细金线，保证右栏不空白 */
+.home .hero .hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border: 1px solid rgba(255, 215, 0, 0.28);
+  border-radius: 50%;
+  transform: rotate(-18deg) scaleY(0.68);
+  transition: opacity 0.8s ease;
+}
+
+.home .hero .hero-visual.is-ready::after {
+  opacity: 0;
+}
+
+.home .hero .hero-visual canvas {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.home .hero .hero-visual.is-ready canvas {
+  opacity: 0.92;
+}
+
+.home .hero .hero-visual.is-failed canvas {
+  display: none;
+}
+
+@keyframes visualFadeIn {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* 浅色模式下 Hero 的说明/数据/3D 光晕 */
+[data-md-color-scheme="parchment"] .home .hero .hero-note {
+  color: rgba(107, 83, 48, 0.78);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-stats {
+  border-top-color: rgba(139, 105, 20, 0.22);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-stats span {
+  color: rgba(107, 83, 48, 0.62);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-stats strong {
+  color: #8b6914;
+  text-shadow: 0 0 14px rgba(139, 105, 20, 0.18);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual::before {
+  background: radial-gradient(circle, rgba(255, 253, 245, 0.62), rgba(255, 253, 245, 0.12) 60%, transparent 75%);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual::after {
+  border-color: rgba(139, 105, 20, 0.28);
+}
+
 /* 按钮组容器
    三个按钮水平排列，居中，允许换行
    初始透明，2秒后淡入（等名字和副标题打字机打完） */
 .home .hero .hero-buttons {
   display: flex;                         /* 弹性布局 */
-  justify-content: center;               /* 水平居中 */
+  justify-content: flex-start;           /* 桌面左对齐（手机上改回居中） */
   flex-wrap: wrap;                       /* 允许换行（屏幕窄时按钮自动换行） */
   gap: 0.8rem;                           /* 按钮之间间距：0.8rem */
   opacity: 0;                            /* 初始透明 */
   animation: buttonsFadeIn 1s ease 2s forwards;  /* 动画：1秒淡入，延迟2秒，结束后保持 */
+}
+
+/* md_in_html 会在按钮组里生成一个 <p>，让三个 a 在这个 p 里横排 */
+.home .hero .hero-buttons p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.8rem;
+  margin: 0;
+}
+
+/* 首页大标题不显示 toc 的 ¶ 锚点，保持干净 */
+.home .hero h1 .headerlink {
+  display: none;
 }
 
 /* 按钮组淡入动画关键帧
@@ -686,6 +845,48 @@
    四、响应式适配（手机端，≤600px）
    ================================================================== */
 
+/* 平板 / 窄屏：Hero 退回单列居中，隐藏 3D（home-3d.js 也会跳过加载） */
+@media (max-width: 1000px) {
+  .home .hero {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 6rem 1.5rem 4rem;
+    min-height: auto;
+  }
+
+  .home .hero > :not(.hero-visual) {
+    grid-column: auto;
+  }
+
+  .home .hero .hero-visual {
+    display: none;
+  }
+
+  .home .hero .hero-note {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .home .hero .hero-buttons,
+  .home .hero .hero-stats {
+    justify-content: center;
+  }
+
+  .home .hero .hero-buttons p {
+    justify-content: center;
+  }
+
+  .home .hero h1 {
+    letter-spacing: 0.25em;
+    text-indent: 0.25em;
+  }
+
+  .home .hero .greet {
+    text-indent: 0.4em;
+  }
+}
+
 /* 屏幕宽度小于600px时（手机），调整首页布局 */
 @media (max-width: 600px) {
   /* Hero 区：减小上下内边距，取消最小高度限制
@@ -716,6 +917,12 @@
     gap: 0.6rem;                            /* 按钮间距减小到0.6rem */
   }
 
+  .home .hero .hero-buttons p {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
   /* 按钮：手机上占满80%宽度，文字居中
      竖排时按钮太窄不好看，占满宽度更舒服 */
   .home .hero .md-button {
@@ -735,7 +942,10 @@
 @media (prefers-reduced-motion: reduce) {
   .home .greet,
   .home .hero-subtitle,
+  .home .hero-note,
   .home .hero-buttons,
+  .home .hero-stats,
+  .home .hero-visual,
   .home .grid.cards > ul > li,
   .home .home-foot {
     opacity: 1 !important;

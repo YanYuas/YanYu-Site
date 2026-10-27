@@ -445,6 +445,12 @@ extra_javascript:
   # ↑ 首页粒子星空背景：Canvas 动态粒子 + 鼠标交互 + 流星 + 打字机名字。
   # 只在首页生效（检测 .home 容器），深色模式效果最佳。
 
+  - javascripts/home-3d.js
+  # ↑ 首页 Hero 右侧的 Three.js 二次型线框。
+  # 只在首页、桌面宽度、支持 WebGL 时才懒加载 vendor/hero-3d.bundle.js；
+  # 手机/减少动效/加载失败都会自动降级，不阻塞首屏。
+  # 源码在 visual/src/hero3d.js，改完用 visual/ 里的 rollup 重新打包。
+
   - javascripts/journey.js
   # ↑ 成长之路页面滚动联动：向下滚动驱动横向时间线移动。
   # 只在成长之路页面生效（检测 .journey-timeline 元素）。
