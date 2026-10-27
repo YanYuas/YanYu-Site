@@ -67,3 +67,10 @@ _archive/
 # ---------- 旧方案归档（已整合完毕，不进Git） ----------
 # 旧版数模网站方案，有价值的内容已移到手册/和docs/stylesheets/
 旧方案/
+
+# ---------- P2 可视化原型 ----------
+# Three.js 技术验证目录：源码入库，依赖与构建产物不入库
+visual/node_modules/
+visual/dist/
+visual/.vite/
+.tmp-npm-cache/

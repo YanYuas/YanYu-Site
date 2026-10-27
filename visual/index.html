@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>二次型曲面 · P2 视觉原型</title>
+    <link rel="stylesheet" href="./src/style.css" />
+  </head>
+  <body>
+    <main class="lab">
+      <div class="lab__stage">
+        <canvas id="scene" aria-label="二次型曲面的三维交互演示"></canvas>
+        <div class="lab__fallback" id="fallback" hidden>
+          当前浏览器无法启用 WebGL，已退回静态说明。<br />
+          在支持 WebGL2 的桌面浏览器中打开可以看到交互曲面。
+        </div>
+      </div>
+
+      <aside class="lab__panel">
+        <p class="lab__eyebrow">P2 · VISUAL LAB</p>
+        <h1>二次型的几何</h1>
+        <p class="lab__lede">
+          <span class="mono">xᵀAx = 1</span> 的三种典型形状。
+          拖动旋转，滚轮缩放；这个页面只是技术原型，还没有接进 MkDocs。
+        </p>
+
+        <div class="lab__modes" role="group" aria-label="曲面类型">
+          <button class="mode is-active" data-surface="ellipsoid">椭球面</button>
+          <button class="mode" data-surface="hyperboloid">单叶双曲面</button>
+          <button class="mode" data-surface="paraboloid">双曲抛物面</button>
+        </div>
+
+        <dl class="lab__meta">
+          <div><dt>技术</dt><dd>Three.js + Vite</dd></div>
+          <div><dt>预算</dt><dd>首屏后懒加载，目标 &lt; 300 KB gzip</dd></div>
+          <div><dt>降级</dt><dd>无 WebGL / 减少动效时静态化</dd></div>
+        </dl>
+        <p class="lab__hint" id="hint">拖动旋转 · 滚轮缩放</p>
+      </aside>
+    </main>
+
+    <!-- 原型不依赖构建：直接用浏览器原生 import map 指向 npm 安装的 three。
+         正式接入站点时再用 Vite 打包成单文件。 -->
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "./node_modules/three/build/three.module.js",
+          "three/addons/": "./node_modules/three/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

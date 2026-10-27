@@ -75,6 +75,7 @@ YanYu-Site/
 ├── _archive/                    # 存档（不参与构建）
 │   └── literature/              # 海灵传说小说（180章）
 ├── tools/                       # 维护脚本（验收 / 改名 / 内容修复）
+├── visual/                      # P2 视觉原型（Three.js，暂不参与构建）
 ├── overrides/                   # 自定义模板（404 页面）
 ├── .github/workflows/           # GitHub Actions 自动部署
 ├── mkdocs.yml                   # 网站总配置（已详细注释）
@@ -113,6 +114,12 @@ Markdown 链接、`mkdocs.yml` 的 nav，并自动补上旧 URL 的 redirect：
   有坏链或警告就不会发布。
 - 旧 URL 由 `mkdocs-redirects` 负责跳转；`rename_page.py` 会自动维护映射。
 - 手动改文件名后，记得补 `mkdocs.yml` 的 `redirect_maps`，否则旧链接会 404。
+
+## P2 视觉原型
+
+`visual/` 是视觉升级阶段的技术验证目录（Three.js + Vite），
+目前包含「二次型曲面」的交互原型；**不参与 MkDocs 构建，也不会上线**。
+运行方式和接入计划见 [visual/README.md](visual/README.md)。
 
 ## 设计风格
 

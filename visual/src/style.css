@@ -1,0 +1,196 @@
+:root {
+  --ink: #070b18;
+  --ink-2: #0d1428;
+  --gold: #d8b25c;
+  --gold-soft: rgba(216, 178, 92, 0.55);
+  --paper: #f4ead2;
+  --muted: rgba(244, 234, 210, 0.62);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(60% 50% at 18% 12%, rgba(64, 82, 150, 0.35), transparent 70%),
+    radial-gradient(50% 45% at 85% 80%, rgba(120, 78, 150, 0.22), transparent 70%),
+    linear-gradient(160deg, var(--ink) 0%, var(--ink-2) 55%, #05070f 100%);
+}
+
+.lab {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(320px, 0.8fr);
+  min-height: 100vh;
+}
+
+.lab__stage {
+  position: relative;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+#scene {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 60vh;
+  touch-action: none;
+  cursor: grab;
+}
+
+#scene:active {
+  cursor: grabbing;
+}
+
+.lab__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  text-align: center;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.lab__panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+  padding: clamp(2rem, 6vw, 5rem);
+  border-left: 1px solid rgba(216, 178, 92, 0.16);
+  background: rgba(7, 11, 24, 0.55);
+  backdrop-filter: blur(18px);
+}
+
+.lab__eyebrow {
+  margin: 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.34em;
+  color: var(--gold);
+}
+
+h1 {
+  margin: 0;
+  font-family: "KaiTi", "STKaiti", "Kaiti SC", serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+}
+
+.lab__lede {
+  margin: 0;
+  max-width: 34ch;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+.mono {
+  color: var(--gold);
+  font-family: "Cascadia Code", Consolas, monospace;
+}
+
+.lab__modes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.mode {
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(216, 178, 92, 0.28);
+  border-radius: 999px;
+  background: rgba(216, 178, 92, 0.04);
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.mode:hover,
+.mode:focus-visible {
+  border-color: var(--gold-soft);
+  color: var(--paper);
+}
+
+.mode.is-active {
+  border-color: var(--gold);
+  background: rgba(216, 178, 92, 0.16);
+  color: var(--paper);
+}
+
+.lab__meta {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(216, 178, 92, 0.14);
+  border-bottom: 1px solid rgba(216, 178, 92, 0.14);
+}
+
+.lab__meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lab__meta dt {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.lab__meta dd {
+  margin: 0;
+  color: var(--gold);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.lab__hint {
+  margin: 0;
+  color: rgba(244, 234, 210, 0.45);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+}
+
+@media (max-width: 860px) {
+  .lab {
+    grid-template-columns: 1fr;
+  }
+
+  .lab__stage {
+    min-height: 52vh;
+  }
+
+  #scene {
+    min-height: 52vh;
+  }
+
+  .lab__panel {
+    border-left: 0;
+    border-top: 1px solid rgba(216, 178, 92, 0.16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mode {
+    transition: none;
+  }
+}
