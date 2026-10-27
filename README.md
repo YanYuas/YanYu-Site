@@ -117,7 +117,8 @@ Markdown 链接、`mkdocs.yml` 的 nav，并自动补上旧 URL 的 redirect：
 
 ## P2 视觉升级
 
-- **首页 Hero 已接入 Three.js**：桌面端右侧显示缓慢旋转的二次型线框，
+- **首页 Hero 已接入 Three.js**：桌面端右侧按
+  「椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环」交替展示二次型线框，
   只在首页、>1000px、支持 WebGL 时懒加载；手机/减少动效/加载失败都会降级。
 - `visual/` 是视觉实验与 Three.js 源码目录；正式产物在
   `docs/javascripts/vendor/hero-3d.bundle.js`，由 `docs/javascripts/home-3d.js` 加载。
@@ -136,4 +137,4 @@ npm run build:hero
 星空学术风（Starry Academic）+ 金色主题：
 - 深色模式：深蓝底 + 金色文字 + 玻璃态卡片
 - 浅色模式：暖白底 + 深金文字 + 暖白玻璃态
-- 首页：两栏 Hero（左文字 / 右 Three.js 二次型线框）+ 史诗插画背景（Ken Burns 缩放）+ 暖白粒子 + 流星 + 打字机名字
+- 首页：两栏 Hero（左文字 / 右 Three.js 四种曲面交替）+ 史诗插画背景（Ken Burns 缩放）+ 暖白粒子 + 流星 + 打字机名字

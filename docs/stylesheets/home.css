@@ -430,6 +430,95 @@
   display: none;
 }
 
+/* HUD：右下角/底部的小标签，告诉访客当前展示的是哪种曲面 */
+.home .hero .hero-visual__hud {
+  position: absolute;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: rgba(244, 234, 210, 0.62);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+}
+
+.home .hero .hero-visual__no {
+  color: #ffd700;
+  font-family: var(--sa-font-mono);
+  font-size: 0.7rem;
+}
+
+.home .hero .hero-visual__name {
+  color: #f4ead2;
+  font-family: var(--sa-font-display);
+  font-size: 0.88rem;
+  letter-spacing: 0.08em;
+}
+
+.home .hero .hero-visual__formula {
+  color: rgba(244, 234, 210, 0.5);
+  font-family: var(--sa-font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0;
+}
+
+.home .hero .hero-visual__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 3.5%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.4rem;
+}
+
+.home .hero .hero-visual__dots span {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: rgba(255, 215, 0, 0.22);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.home .hero .hero-visual__dots span.is-active {
+  background: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.home .hero .hero-visual.is-failed .hero-visual__hud,
+.home .hero .hero-visual.is-failed .hero-visual__dots {
+  display: none;
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__hud {
+  color: rgba(107, 83, 48, 0.66);
+  text-shadow: none;
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__no {
+  color: #8b6914;
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__name {
+  color: #5c4a22;
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__formula {
+  color: rgba(107, 83, 48, 0.55);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__dots span {
+  background: rgba(139, 105, 20, 0.22);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-visual__dots span.is-active {
+  background: #8b6914;
+  box-shadow: 0 0 8px rgba(139, 105, 20, 0.35);
+}
+
 @keyframes visualFadeIn {
   from { opacity: 0; transform: translateY(18px) scale(0.97); }
   to   { opacity: 1; transform: translateY(0) scale(1); }

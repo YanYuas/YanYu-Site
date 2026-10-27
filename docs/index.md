@@ -72,6 +72,12 @@ title: 首页
 
 <div class="hero-visual" aria-hidden="true">
   <canvas id="hero-3d"></canvas>
+  <div class="hero-visual__hud">
+    <span class="hero-visual__no" id="hero-3d-no">01</span>
+    <span class="hero-visual__name" id="hero-3d-name">椭球面</span>
+    <span class="hero-visual__formula" id="hero-3d-formula">xᵀAx = 1</span>
+  </div>
+  <div class="hero-visual__dots" id="hero-3d-dots"></div>
 </div>
 
 </div>

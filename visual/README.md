@@ -31,7 +31,7 @@ npm run build:hero
 ```
 
 输出：`docs/javascripts/vendor/hero-3d.bundle.js`（提交进仓库；CI 不需要 Node）。
-当前产物：约 524 KB，gzip 后约 126 KB。
+当前产物：约 526 KB，gzip 后约 127 KB。
 
 > `npm run build`（Vite）是独立实验页的构建方式；当前 DSH 沙箱禁止子进程管道，
 > Vite 8 在沙箱里会报 `spawn EPERM`，普通本机/CI 正常。
@@ -39,10 +39,14 @@ npm run build:hero
 
 ## 首页 hero 的实现
 
-- 形状：一个缓慢旋转的二次型椭球线框 + 星点
+- 形状：四种曲面交替展示，顺序为
+  **椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环**，每种停留 8–9 秒，
+  切换时 760ms 交叉淡入淡出 + 轻微缩放；不做顶点形变（拓扑不同，形变会穿模）
+- HUD：底部显示 `01 / 椭球面 / xᵀAx = 1` 这样的编号、名称、公式，
+  下方四段小横线表示当前轮次
 - 加载：只在首页、桌面宽度（>1000px）、支持 WebGL 时，
   通过 `docs/javascripts/home-3d.js` 在空闲时间动态 `import()`
-- 降级：手机/平板不加载；`prefers-reduced-motion` 只渲染一帧静态画面；
+- 降级：手机/平板不加载；`prefers-reduced-motion` 只渲染第一帧静态画面；
   WebGL 失败时保留 CSS 金线装饰，不出现空白画布
 - 主题：从 `--sa-gold` 读取颜色，深/浅模式自动变化
 - 清理：暴露 `dispose()`，退出/重建时可释放几何体、材质、renderer
