@@ -94,8 +94,8 @@
 - Canvas 2D island：3,805 B / 1,947 B；
 - Pagefind：562.7 KB（对比 MkDocs 8.86 MB）。
 
-> dist raw 偏大主要来自 63 个大小写 alias 页面；它们当前是完整页面而非 meta redirect。
-> canonical 已指向 lowercase；Phase D 再决定是否改成轻量 redirect 页面。
+> dist raw 偏大主要来自 Windows 大小写不敏感文件系统把 uppercase/lowercase alias
+> 合并到同一物理路径；Ubuntu Astro Check artifact 约 3.35 MB，Linux 下 alias 是轻量 redirect。
 
 ---
 

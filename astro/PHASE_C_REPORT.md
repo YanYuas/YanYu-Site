@@ -74,6 +74,11 @@
 | 旧 sitemap URL | 87/87 200 |
 | 新 sitemap URL | 87/87 200 |
 | 浏览器 console/page error | 0 / 0 |
+| Ubuntu Astro Check workflow | **success**（check/math/build/link/upload） |
+
+Ubuntu artifact 约 **3.35 MB**，明显小于 Windows 本地的 23 MB；
+这确认了本地“大小写 alias 重复页面”是 Windows 大小写不敏感文件系统造成的现象，
+Linux 构建下 alias 是轻量 redirect。
 
 浏览器已验证：
 
@@ -99,16 +104,15 @@
 - 增加 Ubuntu Astro Check workflow（`.github/workflows/astro-check.yml`）。
 
 > 本地 Windows 下大小写 alias 会落到同一物理路径，看起来像完整重复页面；
-> 这是 Windows 大小写不敏感文件系统的表现。Ubuntu CI 会按 Linux 语义生成
-> 轻量 redirect，Phase D 再验证 dist 体积。
+> 这是 Windows 大小写不敏感文件系统的表现。Ubuntu CI 已通过，artifact 约 3.35 MB，
+> 说明 Linux 构建下 alias 是轻量 redirect；Phase D 再决定是否彻底移除本地 alias 目录。
 
 ---
 
 ## 6. 遗留到 Phase D
 
 1. 完整首页移植（两栏 Hero + 3D 轮播）。
-2. 大小写 alias 在 Linux 下的体积/redirect 验证与优化。
-3. tags 聚合页。
-4. Starlight 404 fallback warning（内置 404）。
-5. GitHub Actions 切换 Astro 构建 / Pages 部署与回滚方案。
-6. 实验 presets / reset / 参数 URL 编码等增强。
+2. tags 聚合页。
+3. Starlight 404 fallback warning（内置 404）。
+4. GitHub Actions 切换 Astro 构建 / Pages 部署与回滚方案。
+5. 实验 presets / reset / 参数 URL 编码等增强。
