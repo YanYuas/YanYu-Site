@@ -3,7 +3,7 @@
 - 状态：Accepted（2026-10-27）
 - 决策：**迁移到 Astro + Starlight，Vue 3 islands，内容数据源用 Content Collections + YAML**
 - 迁移策略：**strangler（逐步替换）**，MkDocs 保持线上，Astro 版在独立分支/目录完成 parity 后切换
-- 当前状态：**Phase A spike 已完成（GO）**，代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)；MkDocs 仍是生产站点
+- 当前状态：**Phase A spike（GO）+ Phase B 内容迁移完成**；代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md) 与 [astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)；MkDocs 仍是生产站点
 
 ### Phase A 结果摘要
 
@@ -14,6 +14,16 @@
 - base path `/YanYu-Site` 下侧边栏、卡片、内容页跳转正常；
 - 浏览器 console/page error 0；移动端 390×844 正常；
 - 待处理：35 处 MkDocs admonitions、6 处 grid cards、缺 title 的页面、slug 大小写、图片迁移、完整首页移植。
+
+### Phase B 结果摘要
+
+- 85 个内容页迁入 Astro，保留自定义首页与实验台；87 个 sitemap URL 新旧均可访问；
+- `astro check` 0/0/0，内部链接 0 broken，KaTeX 2,951 个渲染 0 error；
+- 35 处 admonitions、4 处 grid cards、105 个 `.md` 链接已转换；
+- 侧边栏由 `mkdocs.yml` nav 生成并折叠；redirects 生成；
+- Pagefind 562.7 KB，中文搜索可用；
+- 已知：大小写 alias 页面当前返回完整内容，dist raw 偏大；Phase D 优化；
+- 下一步：Phase C 实验迁移、Phase D 完整首页/切换。
 
 ---
 

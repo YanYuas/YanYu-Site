@@ -72,6 +72,43 @@ body {
   transform: translateY(-2px);
 }
 
+/* 迁移后的 Material grid cards（HTML 版） */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.025);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+a.card:hover {
+  border-color: var(--sl-color-accent);
+  transform: translateY(-2px);
+}
+
+.card strong {
+  color: var(--sl-color-white);
+  font-size: 1.02rem;
+}
+
+.card span {
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
 .lab-card strong {
   color: var(--sl-color-white);
   font-size: 1.05rem;

@@ -4,6 +4,8 @@ import vue from "@astrojs/vue";
 import { unified } from "@astrojs/markdown-remark";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import sidebar from "./src/data/sidebar.generated.mjs";
+import redirects from "./src/data/redirects.generated.mjs";
 
 const markdownProcessor = unified({
   remarkPlugins: [remarkMath],
@@ -31,6 +33,7 @@ const markdownProcessor = unified({
           "\\empty": "\\varnothing",
         },
         throwOnError: false,
+        strict: false,
       },
     ],
   ],
@@ -43,6 +46,7 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  redirects,
   markdown: {
     processor: markdownProcessor,
   },
@@ -58,31 +62,7 @@ export default defineConfig({
       locales: {
         root: { label: "简体中文", lang: "zh-CN" },
       },
-      sidebar: [
-        { label: "首页", link: "/" },
-        {
-          label: "数学理论",
-          items: [
-            { label: "板块导览", link: "/maththeory/" },
-            {
-              label: "高等代数",
-              items: [
-                {
-                  label: "G1 · 线性空间与子空间",
-                  link: "/maththeory/advanced-algebra/linear-space/g1/",
-                },
-              ],
-            },
-            {
-              label: "解析几何",
-              items: [
-                { label: "总览", link: "/analytic-geometry/" },
-                { label: "交互实验台", link: "/analytic-geometry/lab/" },
-              ],
-            },
-          ],
-        },
-      ],
+      sidebar,
     }),
     vue(),
   ],

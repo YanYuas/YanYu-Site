@@ -1,0 +1,52 @@
+---
+title: "领域一 · 矩阵与基"
+---
+
+<!--
+  ============================================================
+  matrix-basis/index.md · 领域一 · 矩阵与基（F1-F7）
+  ============================================================
+  【这个页面是干什么的】
+    高等代数三领域架构中的"领域一"导览页。
+    从坐标与基底出发，处理「对象的具体计算与结构分类」。
+    这个领域的答案都是可算的——每个概念最终都能落到具体数字上。
+
+  【页面结构】
+    1. # 领域一·矩阵与基：页面标题
+    2. > 引用块：一句话说明这个领域关心什么
+    3. ## 模块清单：7个模块的表格（F1-F7）
+    4. 返回链接：回到高等代数总览页
+
+  【表格列说明】
+    - 模块：代号 F1-F7
+    - 标题：模块名称
+    - 一句话几何锚定：这个模块在几何上是什么
+    - 内容：讲义和习题集的链接
+
+  【怎么添加新模块】
+    1. 在 matrix-basis/ 下新建文件夹（如 F8-xxx/）
+    2. 放 讲义.md 和 习题集.md
+    3. 在本页表格里加一行
+  ============================================================
+-->
+
+
+> 从坐标与基底出发，处理「对象的具体计算与结构分类」。这个领域的答案都是**可算的**——每个概念最终都能落到具体数字上。
+
+---
+
+## 模块清单
+
+| 模块 | 标题 | 一句话几何锚定 | 内容 |
+|---|---|---|---|
+| **F1** | 基底与坐标 | 高等代数几何视域的第一把钥匙 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/习题集/) |
+| **F2** | 矩阵运算与分块 | 复合变换的代数语言 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/习题集/) |
+| **F3** | 行列式 | 有向体积的代数 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/习题集/) |
+| **F4** | 特征理论 | 不变方向上的伸缩因子 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/习题集/) |
+| **F5** | 相似与标准形 | 换基视角下的变换等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/习题集/) |
+| **F6** | λ矩阵与若尔当标准形 | 亏损矩阵的终极分类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/习题集/) |
+| **F7** | 矩阵分解 | 几何变换的因式分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/习题集/) |
+
+---
+
+[← 返回高等代数总览](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/)

@@ -1,10 +1,9 @@
-﻿import fs from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 function walk(dir, out=[]) { for (const n of fs.readdirSync(dir)) { const p=path.join(dir,n); const s=fs.statSync(p); if(s.isDirectory()) walk(p,out); else out.push(p);} return out; }
 const files=walk("dist");
 let total=0, gz=0;
-const rows=[];
 for(const f of files){ const b=fs.readFileSync(f); total+=b.length; if(/\.(js|css|html|json|xml|svg)$/.test(f)) gz += zlib.gzipSync(b,{level:9}).length; }
 console.log("dist files", files.length, "raw MB", (total/1048576).toFixed(2), "gzip MB", (gz/1048576).toFixed(2));
 const js=files.filter(f=>f.endsWith(".js")).map(f=>{const b=fs.readFileSync(f); return {f:path.basename(f),raw:b.length,gz:zlib.gzipSync(b,{level:9}).length};}).sort((a,b)=>b.raw-a.raw);

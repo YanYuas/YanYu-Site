@@ -1,0 +1,52 @@
+---
+title: "领域二 · 线性空间"
+---
+
+<!--
+  ============================================================
+  linear-space/index.md · 领域二 · 线性空间（G1-G7）
+  ============================================================
+  【这个页面是干什么的】
+    高等代数三领域架构中的"领域二"导览页。
+    如果说领域一关心「怎么算」，这个领域关心「在什么舞台上算」。
+    把向量空间从具体的 Rⁿ 解放出来，研究它的骨架、度量与各种构造。
+
+  【页面结构】
+    1. # 领域二·线性空间：页面标题
+    2. > 引用块：一句话说明这个领域关心什么
+    3. ## 模块清单：7个模块的表格（G1-G7）
+    4. 返回链接：回到高等代数总览页
+
+  【表格列说明】
+    - 模块：代号 G1-G7
+    - 标题：模块名称
+    - 一句话几何锚定：这个模块在几何上是什么
+    - 内容：讲义和习题集的链接
+
+  【怎么添加新模块】
+    1. 在 linear-space/ 下新建文件夹（如 G8-xxx/）
+    2. 放 讲义.md 和 习题集.md
+    3. 在本页表格里加一行
+  ============================================================
+-->
+
+
+> 如果说领域一关心「怎么算」，这个领域关心「在什么舞台上算」。这里把向量空间从具体的 Rⁿ 解放出来，研究它的骨架、度量与各种构造。
+
+---
+
+## 模块清单
+
+| 模块 | 标题 | 一句话几何锚定 | 内容 |
+|---|---|---|---|
+| **G1** | 线性空间的定义与基本性质 | 公理化空间观 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/习题集/) |
+| **G2** | 基维数与同构 | 舞台的骨架与标尺 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/习题集/) |
+| **G3** | 内积空间与正交性 | 骨架的度量与垂直 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/习题集/) |
+| **G4** | 商空间 | 折叠的舞台与等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/习题集/) |
+| **G5** | 解析几何嵌入 | 欧几里得几何的代数翻译 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/习题集/) |
+| **G6** | 仿射空间 | 无原点的几何与点向量分离 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/习题集/) |
+| **G7** | 二次型与曲面 | 对称矩阵的合同分类与二次曲面 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/习题集/) |
+
+---
+
+[← 返回高等代数总览](/YanYu-Site/maththeory/advanced-algebra/linear-space/)

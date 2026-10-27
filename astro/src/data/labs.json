@@ -4,13 +4,13 @@
     "title": "二次曲面",
     "formula": "xᵀAx = 1",
     "description": "椭球面 / 单叶双曲面 / 马鞍面，拖动旋转与尺度滑杆。",
-    "status": "spike"
+    "status": "beta"
   },
   {
     "slug": "conic",
     "title": "圆锥曲线",
     "formula": "r = p / (1 + e cos θ)",
     "description": "离心率 e 与半通径 p：椭圆、抛物线、双曲线的连续过渡。",
-    "status": "spike"
+    "status": "beta"
   }
 ]

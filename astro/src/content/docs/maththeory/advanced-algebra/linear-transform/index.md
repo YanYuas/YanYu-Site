@@ -1,0 +1,53 @@
+---
+title: "领域三 · 线性变换"
+---
+
+<!--
+  ============================================================
+  linear-transform/index.md · 领域三 · 线性变换（T1-T7）
+  ============================================================
+  【这个页面是干什么的】
+    高等代数三领域架构中的"领域三"导览页。
+    前两个领域分别处理「怎么算」和「在什么舞台上」，
+    这个领域处理「映射本身」。视角从矩阵转向算子，
+    研究变换作用在空间上留下的不变量。
+
+  【页面结构】
+    1. # 领域三·线性变换：页面标题
+    2. > 引用块：一句话说明这个领域关心什么
+    3. ## 模块清单：7个模块的表格（T1-T7）
+    4. 返回链接：回到高等代数总览页
+
+  【表格列说明】
+    - 模块：代号 T1-T7
+    - 标题：模块名称
+    - 一句话几何锚定：这个模块在几何上是什么
+    - 内容：讲义和习题集的链接
+
+  【怎么添加新模块】
+    1. 在 linear-transform/ 下新建文件夹（如 T8-xxx/）
+    2. 放 讲义.md 和 习题集.md
+    3. 在本页表格里加一行
+  ============================================================
+-->
+
+
+> 前两个领域分别处理「怎么算」和「在什么舞台上」，这个领域处理「映射本身」。视角从矩阵转向**算子**，研究变换作用在空间上留下的不变量。
+
+---
+
+## 模块清单
+
+| 模块 | 标题 | 一句话几何锚定 | 内容 |
+|---|---|---|---|
+| **T1** | 线性变换的定义与基本性质 | 空间之间的保持结构映射 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/习题集/) |
+| **T2** | 矩阵表示与相似 | 换基定理的深层几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/习题集/) |
+| **T3** | 核像与不变子空间 | 变换的内在几何结构 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/习题集/) |
+| **T4** | 特征理论的算子视角 | 从不变子空间到谱的几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/习题集/) |
+| **T5** | 对角化与谱定理 | 从判据到正规算子的谱分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/习题集/) |
+| **T6** | Jordan标准形的算子构造 | 从广义特征空间到 Jordan 链 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/习题集/) |
+| **T7** | 特殊线性变换与应用 | 从投影幂等到矩阵指数的几何全景 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/习题集/) |
+
+---
+
+[← 返回高等代数总览](/YanYu-Site/maththeory/advanced-algebra/linear-transform/)

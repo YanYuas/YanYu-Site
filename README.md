@@ -141,8 +141,9 @@ npm run build:geo    # 解析几何实验台
 生产站点仍是 MkDocs。
 
 - 架构决策：[ARCHITECTURE.md](ARCHITECTURE.md)
-- Spike 报告：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
-- 结论：GO（公式、中文搜索、Vue islands、base path 均已验证）
+- Phase A 报告：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
+- Phase B 报告：[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)
+- 结论：Phase A GO；Phase B 内容迁移完成（生产仍为 MkDocs）
 - 本地运行：
 
 ```bash
@@ -151,6 +152,7 @@ npm install
 npm run dev      # http://localhost:4321/YanYu-Site/
 npm run check
 npm run check:math
+npm run check:links
 ```
 
 ## 设计风格

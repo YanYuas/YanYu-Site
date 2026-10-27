@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "check:math": "node scripts/check-math.mjs",
+    "check:links": "node scripts/check-links.mjs",
     "measure": "node scripts/measure.mjs",
     "check:browser": "node scripts/browser-check.mjs"
   },
