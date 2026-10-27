@@ -55,6 +55,11 @@ jieba==0.42.1
 # 注意：必须在 Git 仓库里才有效；没 commit 的新文件不会显示
 mkdocs-git-revision-date-localized-plugin==1.6.0
 
+# 页面/目录改名后的旧 URL 重定向（旧地址 → 新地址，避免外链 404）
+# 启用方式：mkdocs.yml 的 plugins.redirects.redirect_maps
+# 注意：映射的 key 是 docs/ 下的 Markdown 源路径，不是最终 URL。
+mkdocs-redirects==1.2.2
+
 # ---------- 已安装但未启用的插件（需要时在 mkdocs.yml 启用） ----------
 # （目前没有）
 

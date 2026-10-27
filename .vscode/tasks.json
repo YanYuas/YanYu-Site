@@ -21,13 +21,12 @@
     },
     {
       // 默认构建（Ctrl+Shift+B）。
-      // 不用 --strict：竞赛作品索引里有 4 条指向「规划中作品」的链接，
-      // 是刻意保留的，strict 模式会因此中止构建。
+      // 日常预览用这个，不跑 strict；发布前请用下面的「严格检查」。
       "label": "mkdocs: 构建站点",
-      "detail": "执行 mkdocs build，产物输出到 site/",
+      "detail": "执行 mkdocs build --clean，产物输出到 site/",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
-      "args": ["build"],
+      "args": ["build", "--clean"],
       "problemMatcher": {
         "owner": "mkdocs",
         "fileLocation": ["relative", "${workspaceFolder}"],
@@ -47,13 +46,13 @@
       }
     },
     {
-      // 发布前检查用。注意：当前会因 4 条规划链接警告而中止，
-      // 这是预期内的 —— 等那几个作品页面补完就会通过。
+      // 发布前检查用：任何 WARNING 都会中止构建。
+      // CI 的部署流程用的也是这个命令；当前应能通过。
       "label": "mkdocs: 严格检查（发布前）",
-      "detail": "mkdocs build --strict，任何警告都视为失败",
+      "detail": "mkdocs build --clean --strict，任何警告都视为失败",
       "type": "shell",
       "command": "${workspaceFolder}/.venv/Scripts/mkdocs.exe",
-      "args": ["build", "--strict"],
+      "args": ["build", "--clean", "--strict"],
       "problemMatcher": {
         "owner": "mkdocs",
         "fileLocation": ["relative", "${workspaceFolder}"],

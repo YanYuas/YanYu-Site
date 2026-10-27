@@ -31,10 +31,17 @@ permissions:
   pages: write                        # 写入 GitHub Pages
   id-token: write                     # 身份验证令牌
 
+# 同一时间只允许一个部署；新提交会取消排队中的旧构建，
+# 避免旧构建后完成把新版本覆盖掉。
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 # 任务：只有一个部署任务
 jobs:
   deploy:
     runs-on: ubuntu-latest            # 在最新版 Ubuntu 上运行
+    timeout-minutes: 20               # 构建/部署超时保护
     steps:
       # 第一步：拉取代码
       - name: Checkout                # 步骤名称
@@ -60,16 +67,23 @@ jobs:
         uses: actions/configure-pages@v5
 
       # 第五步：构建网站
-      - name: Build with MkDocs
-        run: mkdocs build --clean     # 清理旧构建，重新生成 site/ 目录
+      # --clean：先清空 site/，避免旧页面残留
+      # --strict：任何 WARNING 都视为失败（坏链、缺失页面、插件警告都会挡住部署）
+      - name: Build with MkDocs (strict)
+        run: mkdocs build --clean --strict
 
-      # 第六步：上传构建产物
+      # 第六步：站点验收
+      # 检查页面数、题量、讲义完整性、内链；不通过则停止部署。
+      - name: Verify site
+        run: python tools/check_site.py
+
+      # 第七步：上传构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: site/                 # 上传 site/ 目录（构建产物）
 
-      # 第七步：部署到 GitHub Pages
+      # 第八步：部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

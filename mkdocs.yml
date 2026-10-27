@@ -325,6 +325,19 @@ plugins:
   #   注意：Material 9.x 之后 tags_file 选项已弃用，直接在 nav 引用即可。
   - tags
 
+  # 【redirects 重定向插件】
+  #   页面/目录改名后，旧 URL 不会立刻消失：插件会在旧地址生成一个跳转页，
+  #   访客从旧链接进来会自动跳到新地址（比直接 404 友好，外部链接也不会断）。
+  #   2026-10 竞赛作品目录从 xxx-2026 改成 01_…_2026，这里补上旧→新的映射。
+  #   以后改名，优先用 tools/rename_page.py，它会自动把新映射写进来。
+  - redirects:
+      redirect_maps:
+        'mathmodel/works/wuyi-2026/index.md': 'mathmodel/works/01_51MCM-2026/index.md'
+        'mathmodel/works/diangong-2026/index.md': 'mathmodel/works/02_EEMCM-2026/index.md'
+        'mathmodel/works/huashu-2026/index.md': 'mathmodel/works/03_HSMCM-2026/index.md'
+        'mathmodel/works/cumcm-2026/index.md': 'mathmodel/works/04_CUMCM-2026/index.md'
+        'mathmodel/works/apmcm-2026/index.md': 'mathmodel/works/06_APMCM-2026/index.md'
+
 
 # ============================================================
 # 第 5 部分：自定义样式（extra_css）
