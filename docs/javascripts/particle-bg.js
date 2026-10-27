@@ -303,7 +303,14 @@
     const heroButtons = document.querySelector('.hero .hero-buttons');
 
     if (heroTitle) {
-      const nameText = heroTitle.textContent;
+      // 标题里可能有 toc 自动生成的 ¶ 锚点（.headerlink），
+      // textContent 会把它也算进去，打字机会打出多余的 ¶。
+      // 这里只取正文文本，跳过 .headerlink。
+      const nameText = Array.from(heroTitle.childNodes)
+        .filter((node) => !(node.nodeType === 1 && node.classList.contains("headerlink")))
+        .map((node) => node.textContent)
+        .join("")
+        .trim();
       // 延迟一点开始，让粒子先动起来
       setTimeout(() => {
         // 名字打字机
