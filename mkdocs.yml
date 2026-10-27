@@ -181,8 +181,24 @@ nav:
                   - 讲义: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集.md
 
-      - 解析几何: maththeory/analytic-geometry/index.md
-      # ↑ 坐标/向量/二次曲面 + Three.js 交互实验；与高代 G5/G7 互相链接
+      - 解析几何:
+          - 总览: maththeory/analytic-geometry/index.md
+          - 交互实验台: maththeory/analytic-geometry/lab.md
+          - 领域一 · 坐标与向量:
+              - 领域导览: maththeory/analytic-geometry/coordinates/index.md
+              - A1 · 坐标系与坐标变换: maththeory/analytic-geometry/coordinates/A1-coordinate-frame.md
+              - A2 · 向量代数与度量: maththeory/analytic-geometry/coordinates/A2-vector-metric.md
+          - 领域二 · 曲线与曲面:
+              - 领域导览: maththeory/analytic-geometry/curves-surfaces/index.md
+              - B1 · 直线与平面: maththeory/analytic-geometry/curves-surfaces/B1-line-plane.md
+              - B2 · 圆锥曲线: maththeory/analytic-geometry/curves-surfaces/B2-conic.md
+              - B3 · 二次曲面: maththeory/analytic-geometry/curves-surfaces/B3-quadric.md
+              - B4 · 参数曲线与曲面: maththeory/analytic-geometry/curves-surfaces/B4-parametric.md
+          - 领域三 · 变换与分类:
+              - 领域导览: maththeory/analytic-geometry/transformations/index.md
+              - C1 · 等距与仿射变换: maththeory/analytic-geometry/transformations/C1-isometry-affine.md
+              - C2 · 二次型与分类: maththeory/analytic-geometry/transformations/C2-classification.md
+      # ↑ 三领域八模块；坐标/向量/曲线/曲面/变换 + 交互实验台
 
   # ---------- 随笔（两个子板块） ----------
   # 文学创作（海灵传说）暂存在 _archive/literature/，不参与构建。
@@ -465,6 +481,10 @@ extra_javascript:
   # ↑ 解析几何专题的三维实验台加载器。
   # 只在存在 #geo-canvas 的页面懒加载 vendor/analytic-geometry.bundle.js；
   # 源码在 visual/src/analytic.js，改完用 npm run build:geo 重新打包。
+
+  - javascripts/analytic-2d.js
+  # ↑ 解析几何专题的 2D 实验：圆锥曲线、线性变换（纯 Canvas 2D，无依赖）。
+  # 只在存在 #conic-canvas / #transform-canvas 的页面初始化。
 
   - javascripts/journey.js
   # ↑ 成长之路页面滚动联动：向下滚动驱动横向时间线移动。

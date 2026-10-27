@@ -120,8 +120,8 @@ Markdown 链接、`mkdocs.yml` 的 nav，并自动补上旧 URL 的 redirect：
 
 - **首页 Hero**：桌面端右侧按「椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环」交替展示，
   悬停暂停、切换时交叉淡入；只在 >1000px 且支持 WebGL 时懒加载。
-- **解析几何专题**：`maththeory/analytic-geometry/` 内嵌 Three.js 实验台，
-  可切换椭球/双曲面/马鞍面/平面，拖动旋转、滑杆调尺度。
+- **解析几何专题**：`maththeory/analytic-geometry/` 采用三领域八模块结构，
+  并配交互实验台：3D 二次曲面/平面/环面/莫比乌斯环，2D 圆锥曲线、2D 线性变换。
 - `visual/` 是视觉实验与 Three.js 源码目录；正式产物在
   `docs/javascripts/vendor/`，由 `docs/javascripts/*.js` 按页面懒加载。
 - 改完源码后重新打包：

@@ -9,7 +9,8 @@
   由 `docs/javascripts/home-3d.js` 在桌面端懒加载。
 - ✅ 解析几何实验台：`src/analytic.js` → 打包到
   `docs/javascripts/vendor/analytic-geometry.bundle.js`，用于
-  `maththeory/analytic-geometry/` 页面（切换曲面、拖动旋转、滑杆调尺度）。
+  `maththeory/analytic-geometry/lab.md`（3D：二次曲面/平面/环面/莫比乌斯环）；
+  另有两个 2D 实验（圆锥曲线、线性变换）在 `docs/javascripts/analytic-2d.js`。
 - 🧪 `visual/index.html` + `src/main.js`：独立的三种二次型曲面实验页（不发布）。
 - ⏭️ 下一个接入点：高等代数 G7「二次型与曲面」的讲义附录。
 

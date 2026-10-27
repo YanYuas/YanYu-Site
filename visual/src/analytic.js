@@ -22,6 +22,8 @@ const DEFAULTS = {
   ellipsoid: 1.2,
   hyperboloid: 1.2,
   saddle: 1.2,
+  torus: 1.2,
+  mobius: 1.2,
 };
 
 const COPY = {
@@ -29,6 +31,8 @@ const COPY = {
   hyperboloid: "x² + y² − z² = 1；单叶双曲面，沿 z 轴无限延伸，颈部最细。",
   saddle: "z = x² − y²；两个主方向曲率相反，是典型的鞍点几何。",
   plane: "Ax + By + Cz = D；法向量 n=(A,B,C) 决定平面的朝向，箭头就是 n。",
+  torus: "(R+r cos v) 绕轴旋转生成的环面；两个半径 R、r 决定“胖瘦”。",
+  mobius: "只有一个面的非定向曲面；沿中线走一圈，法向量会反向。",
 };
 
 function parametric(fn, uSeg, vSeg, uMax, vMax) {
@@ -100,6 +104,38 @@ function quadricGeometry(key, a) {
   );
 }
 
+function torusGeometry(a) {
+  const R = 1.25 * a;
+  const r = 0.42 * a;
+  return parametric(
+    (u, v) => [
+      (R + r * Math.cos(v)) * Math.cos(u),
+      r * Math.sin(v),
+      (R + r * Math.cos(v)) * Math.sin(u),
+    ],
+    80,
+    28,
+    Math.PI * 2,
+    Math.PI * 2
+  );
+}
+
+function mobiusGeometry(a) {
+  const R = 1.2 * a;
+  const width = 0.48 * a;
+  return parametric(
+    (u, v) => {
+      const t = (v - 0.5) * 2 * width;
+      const c = Math.cos(u / 2);
+      return [(R + t * c) * Math.cos(u), t * Math.sin(u / 2), (R + t * c) * Math.sin(u)];
+    },
+    160,
+    8,
+    Math.PI * 2,
+    1
+  );
+}
+
 export function initAnalyticLab() {
   const canvas = document.getElementById("geo-canvas");
   if (!canvas) return;
@@ -107,6 +143,7 @@ export function initAnalyticLab() {
   const fallback = document.getElementById("geo-fallback");
   const desc = document.getElementById("geo-desc");
   const slider = document.getElementById("geo-a");
+  const sliderValue = document.getElementById("geo-a-value");
   const sliderWrap = slider ? slider.closest(".geo-lab__control") : null;
   const tabs = Array.from(document.querySelectorAll(".geo-lab__tabs button"));
 
@@ -207,7 +244,11 @@ export function initAnalyticLab() {
     if (current === "plane") {
       makePlane();
     } else {
-      const geometry = quadricGeometry(current, currentA);
+      let geometry;
+      if (current === "torus") geometry = torusGeometry(currentA);
+      else if (current === "mobius") geometry = mobiusGeometry(currentA);
+      else geometry = quadricGeometry(current, currentA);
+
       const solid = new MeshBasicMaterial({
         color: gold,
         transparent: true,
@@ -222,8 +263,14 @@ export function initAnalyticLab() {
         opacity: 0.55,
         side: DoubleSide,
       });
-      group.add(new Mesh(geometry, solid));
-      group.add(new Mesh(geometry, wire));
+      const solidMesh = new Mesh(geometry, solid);
+      const wireMesh = new Mesh(geometry, wire);
+      if (current === "mobius") {
+        // 莫比乌斯环的带面在 xz 平面，稍微立起来看扭转
+        solidMesh.rotation.x = -0.9;
+        wireMesh.rotation.x = -0.9;
+      }
+      group.add(solidMesh, wireMesh);
     }
 
     if (desc) desc.textContent = COPY[current];
@@ -235,6 +282,7 @@ export function initAnalyticLab() {
     current = key;
     currentA = DEFAULTS[key] || 1.2;
     if (slider) slider.value = String(currentA);
+    if (sliderValue) sliderValue.textContent = currentA.toFixed(2);
     tabs.forEach((tab) => {
       const active = tab.dataset.geo === key;
       tab.classList.toggle("is-active", active);
@@ -250,6 +298,7 @@ export function initAnalyticLab() {
   if (slider) {
     slider.addEventListener("input", () => {
       currentA = Number.parseFloat(slider.value) || 1.2;
+      if (sliderValue) sliderValue.textContent = currentA.toFixed(2);
       if (current !== "plane") render();
     });
   }
