@@ -216,6 +216,8 @@ nav:
 theme:
   name: material
   custom_dir: overrides
+  favicon: assets/images/favicon.svg
+  # ↑ 自定义 favicon（深蓝底 + 金色 Y / 轨道）。不写这一行会用 Material 默认图标。
   # ↑ 本地覆盖模板的目录。目前只放了自定义 404 页面（overrides/404.html）。
   #   没有这一行，overrides/ 里的模板不会生效，404 会退回 Material 默认英文页。
   # ↑ 用哪套主题。material = Material for MkDocs，目前最好用的主题。
