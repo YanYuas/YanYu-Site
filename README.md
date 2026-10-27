@@ -143,7 +143,8 @@ npm run build:geo    # 解析几何实验台
 - 架构决策：[ARCHITECTURE.md](ARCHITECTURE.md)
 - Phase A 报告：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
 - Phase B 报告：[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)
-- 结论：Phase A GO；Phase B 内容迁移完成（生产仍为 MkDocs）
+- Phase C 报告：[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)
+- 结论：Phase A GO；Phase B 内容迁移完成；Phase C 实验平台完成（生产仍为 MkDocs）
 - 本地运行：
 
 ```bash

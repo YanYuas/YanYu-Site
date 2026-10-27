@@ -1,5 +1,6 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
+import LabShell from "./LabShell.vue";
 
 const canvas = ref(null);
 const e = ref(0.6);
@@ -154,11 +155,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="lab" id="conic">
-    <div class="lab__stage">
+  <LabShell title="圆锥曲线" formula="r = p / (1 + e cos θ)" :description="copy">
+    <template #stage>
       <canvas ref="canvas"></canvas>
-    </div>
-    <aside class="lab__panel">
+    </template>
+    <template #controls>
       <label class="lab__control">
         <span>离心率 e <b>{{ Number(e).toFixed(2) }}</b></span>
         <input v-model.number="e" type="range" min="0.2" max="1.8" step="0.01" />
@@ -167,8 +168,7 @@ onBeforeUnmount(() => {
         <span>半通径 p <b>{{ Number(p).toFixed(2) }}</b></span>
         <input v-model.number="p" type="range" min="0.5" max="3" step="0.05" />
       </label>
-      <p class="lab__desc">{{ copy }}</p>
       <p class="lab__hint">焦点在原点 · 虚线为准线 · 坐标单位为 1</p>
-    </aside>
-  </div>
+    </template>
+  </LabShell>
 </template>

@@ -1,10 +1,11 @@
 # Astro Migration
 
-Phase A spike + Phase B content migration for the long-term Astro + Starlight + Vue migration.
+Phase A spike + Phase B content migration + Phase C lab platform.
 **Not the production site.** Production is still the MkDocs site at the repository root.
 
 - Phase A report: [SPIKE_REPORT.md](./SPIKE_REPORT.md)
 - Phase B report: [MIGRATION_REPORT.md](./MIGRATION_REPORT.md)
+- Phase C report: [PHASE_C_REPORT.md](./PHASE_C_REPORT.md)
 
 ## Commands
 
@@ -22,9 +23,10 @@ npm run check:links
 - Starlight docs shell, dark/gold theme override;
 - custom splash home + data-driven lab cards (`src/data/labs.json` + Zod);
 - all 85 migrated MkDocs content pages (custom home + lab kept separately);
-- two Vue islands:
-  - `QuadricLab.vue` — Three.js, ellipsoid / hyperboloid / saddle;
-  - `ConicLab.vue` — Canvas 2D, conic focus-directrix;
+- 6 interactive labs behind `LabExplorer.vue` + `labs.json` registry:
+  - VectorLab / LinePlaneLab / ConicLab / QuadricLab / ParametricLab / TransformLab;
+  - each lab is an async chunk; shared `LabShell.vue` layout;
+  - hash deep links (`#vector`, `#quadric`, `#transform`, …).
 - generated sidebar from `mkdocs.yml` nav (`src/data/sidebar.generated.mjs`);
 - generated redirects (`src/data/redirects.generated.mjs`);
 - i18n collection (zh-CN);

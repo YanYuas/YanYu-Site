@@ -46,6 +46,12 @@ export default defineConfig({
   build: {
     format: "directory",
   },
+  vite: {
+    build: {
+      // Three.js + OrbitControls 共享 chunk 约 756 KB raw / 191 KB gzip。
+      chunkSizeWarningLimit: 800,
+    },
+  },
   redirects,
   markdown: {
     processor: markdownProcessor,

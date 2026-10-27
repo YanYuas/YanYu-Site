@@ -1,0 +1,45 @@
+name: Astro Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: astro
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: astro/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Astro check
+        run: npm run check
+
+      - name: Formula check
+        run: npm run check:math
+
+      - name: Build
+        run: npm run build
+
+      - name: Internal link check
+        run: npm run check:links
+
+      - name: Upload dist
+        uses: actions/upload-artifact@v4
+        with:
+          name: astro-dist
+          path: astro/dist
+          retention-days: 7

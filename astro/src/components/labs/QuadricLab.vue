@@ -2,6 +2,7 @@
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import LabShell from "./LabShell.vue";
 
 const canvas = ref(null);
 const shape = ref("ellipsoid");
@@ -196,11 +197,11 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="lab" id="quadric">
-    <div class="lab__stage">
+  <LabShell title="二次曲面" formula="xᵀAx = 1" :description="copy">
+    <template #stage>
       <canvas ref="canvas"></canvas>
-    </div>
-    <aside class="lab__panel">
+    </template>
+    <template #controls>
       <div class="lab__tabs" role="tablist" aria-label="曲面类型">
         <button
           v-for="[key, label] in Object.entries(LABELS)"
@@ -215,8 +216,7 @@ onBeforeUnmount(() => {
         <span>尺度 a <b>{{ scale.toFixed(2) }}</b></span>
         <input v-model.number="scale" type="range" min="0.6" max="1.8" step="0.05" />
       </label>
-      <p class="lab__desc">{{ copy }}</p>
       <p class="lab__hint">拖动旋转 · 滚轮缩放 · 切换曲面</p>
-    </aside>
-  </div>
+    </template>
+  </LabShell>
 </template>

@@ -3,7 +3,7 @@
 - 状态：Accepted（2026-10-27）
 - 决策：**迁移到 Astro + Starlight，Vue 3 islands，内容数据源用 Content Collections + YAML**
 - 迁移策略：**strangler（逐步替换）**，MkDocs 保持线上，Astro 版在独立分支/目录完成 parity 后切换
-- 当前状态：**Phase A spike（GO）+ Phase B 内容迁移完成**；代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md) 与 [astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)；MkDocs 仍是生产站点
+- 当前状态：**Phase A spike（GO）+ Phase B 内容迁移 + Phase C 实验平台完成**；代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)、[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)、[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)；MkDocs 仍是生产站点
 
 ### Phase A 结果摘要
 

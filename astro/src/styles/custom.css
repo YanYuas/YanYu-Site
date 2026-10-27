@@ -136,6 +136,117 @@ a.card:hover {
   text-transform: uppercase;
 }
 
+/* 实验平台 */
+.lab-explorer {
+  margin: 1.5rem 0 2.5rem;
+}
+
+.lab-explorer__tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+}
+
+.lab-explorer__tabs button {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--sl-color-gray-2);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.lab-explorer__tabs button:hover,
+.lab-explorer__tabs button.is-active {
+  border-color: var(--sl-color-accent);
+  color: var(--sl-color-accent-high);
+  background: rgba(217, 188, 106, 0.08);
+}
+
+.lab-explorer__meta {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.9rem;
+  margin-bottom: 0.6rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.8rem;
+}
+
+.lab-explorer__meta code {
+  color: var(--sl-color-accent);
+  font-size: 0.8rem;
+}
+
+.lab-explorer__meta em {
+  margin-left: auto;
+  padding: 0.08rem 0.4rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  font-style: normal;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lab-explorer__loading {
+  padding: 2rem;
+  color: var(--sl-color-gray-3);
+  text-align: center;
+}
+
+.lab-shell__head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.6rem;
+}
+
+.lab-shell__title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+}
+
+.lab-shell__title strong {
+  color: var(--sl-color-white);
+  font-size: 1rem;
+  letter-spacing: 0.04em;
+}
+
+.lab-shell__title code {
+  color: var(--sl-color-accent);
+  font-size: 0.78rem;
+}
+
+.lab-shell__desc {
+  margin: 0;
+  color: var(--sl-color-gray-3);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.lab__readout {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--sl-color-gray-3);
+  font: 0.76rem/1.6 monospace;
+}
+
+.lab__readout b {
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+}
+
 /* 实验台 */
 .lab {
   display: grid;

@@ -52,17 +52,41 @@ console.log("BLOG title:", await page.title());
 console.log("BLOG cards:", await page.locator(".card").count());
 await page.screenshot({ path: path.join(out, "phaseb-blog.png") });
 
-// Lab: two islands
+// Lab: LabExplorer + async lab chunks
 requests.length = 0;
 await page.goto(`${base}/maththeory/analytic-geometry/lab/`, { waitUntil: "networkidle" });
 await page.waitForTimeout(1200);
-console.log("LAB canvases:", await page.locator("canvas").count());
+console.log("LAB explorer tabs:", await page.locator(".lab-explorer__tabs button").count());
+console.log("LAB initial canvases:", await page.locator("canvas").count());
 const labChunks = [...new Set(requests.filter((u) => u.includes("/_astro/") && u.endsWith(".js")))].map((u) => u.split("/").pop());
-console.log("LAB JS chunks:", JSON.stringify(labChunks));
-await page.screenshot({ path: path.join(out, "phaseb-lab.png") });
+console.log("LAB JS chunks initial:", JSON.stringify(labChunks));
+await page.screenshot({ path: path.join(out, "phasec-lab-vector.png") });
+
+await page.locator(".lab-explorer__tabs button", { hasText: "二次曲面" }).click();
+await page.waitForTimeout(900);
+console.log("LAB quadric canvases:", await page.locator("canvas").count());
+const quadricChunks = [...new Set(requests.filter((u) => u.includes("/_astro/") && u.endsWith(".js")))].map((u) => u.split("/").pop());
+console.log("LAB JS chunks after quadric:", JSON.stringify(quadricChunks));
+await page.screenshot({ path: path.join(out, "phasec-lab-quadric.png") });
 await page.locator(".lab__tabs button", { hasText: "单叶双曲面" }).click();
 await page.waitForTimeout(400);
-await page.screenshot({ path: path.join(out, "phaseb-lab-hyperboloid.png") });
+await page.screenshot({ path: path.join(out, "phasec-lab-hyperboloid.png") });
+
+// Cycle all other labs
+for (const label of ["直线与平面", "圆锥曲线", "参数曲面", "线性变换"]) {
+  await page.locator(".lab-explorer__tabs button", { hasText: label }).click();
+  await page.waitForTimeout(800);
+  const n = await page.locator("canvas").count();
+  console.log(`LAB ${label}: canvases=${n}`);
+  if (label === "参数曲面" || label === "线性变换" || label === "直线与平面") {
+    await page.screenshot({ path: path.join(out, `phasec-lab-${label}.png`) });
+  }
+}
+
+// Deep link
+await page.goto(`${base}/maththeory/analytic-geometry/lab/#transform`, { waitUntil: "networkidle" });
+await page.waitForTimeout(900);
+console.log("DEEPLINK active:", await page.locator(".lab-explorer__tabs button.is-active").innerText());
 
 // Search full index
 await page.goto(`${base}/`, { waitUntil: "networkidle" });

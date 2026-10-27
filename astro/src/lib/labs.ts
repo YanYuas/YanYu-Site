@@ -6,6 +6,7 @@ const LabSchema = z.object({
   title: z.string().min(1),
   formula: z.string().min(1),
   description: z.string().min(1),
+  component: z.string().min(1),
   status: z.enum(["spike", "beta", "stable"]),
 });
 

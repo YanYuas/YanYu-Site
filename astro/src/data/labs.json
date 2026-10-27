@@ -1,9 +1,18 @@
 [
   {
-    "slug": "quadric",
-    "title": "二次曲面",
-    "formula": "xᵀAx = 1",
-    "description": "椭球面 / 单叶双曲面 / 马鞍面，拖动旋转与尺度滑杆。",
+    "slug": "vector",
+    "title": "向量与度量",
+    "formula": "a · b, |a × b|",
+    "description": "两个向量的长度与夹角，实时读出点积、叉积和面积。",
+    "component": "VectorLab",
+    "status": "beta"
+  },
+  {
+    "slug": "line-plane",
+    "title": "直线与平面",
+    "formula": "sin θ = |s · n| / (|s||n|)",
+    "description": "改变平面法向与直线方向，观察直线与平面的夹角。",
+    "component": "LinePlaneLab",
     "status": "beta"
   },
   {
@@ -11,6 +20,31 @@
     "title": "圆锥曲线",
     "formula": "r = p / (1 + e cos θ)",
     "description": "离心率 e 与半通径 p：椭圆、抛物线、双曲线的连续过渡。",
+    "component": "ConicLab",
+    "status": "beta"
+  },
+  {
+    "slug": "quadric",
+    "title": "二次曲面",
+    "formula": "xᵀAx = 1",
+    "description": "椭球面 / 单叶双曲面 / 马鞍面，拖动旋转与尺度滑杆。",
+    "component": "QuadricLab",
+    "status": "beta"
+  },
+  {
+    "slug": "parametric",
+    "title": "参数曲面",
+    "formula": "r(u,v) = (R + r cos v)(cos u, sin u)",
+    "description": "环面与莫比乌斯环：参数化、法向与可定向性。",
+    "component": "ParametricLab",
+    "status": "beta"
+  },
+  {
+    "slug": "transform",
+    "title": "线性变换",
+    "formula": "x ↦ Ax",
+    "description": "2×2 矩阵实时变换网格、单位圆与基向量；读取行列式。",
+    "component": "TransformLab",
     "status": "beta"
   }
 ]
