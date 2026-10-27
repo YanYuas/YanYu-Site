@@ -17,22 +17,25 @@
   if (!home) return;
 
   // ---------- 数据条数字递增 ----------
-  const numbers = document.querySelectorAll(".hero-stats strong");
-  numbers.forEach((element) => {
-    const target = Number.parseInt(element.textContent, 10);
-    if (!Number.isFinite(target)) return;
-    const duration = 900;
-    const start = performance.now();
-    element.textContent = "0";
+  // 数据条本身有 2.4s 的淡入延迟，数字递增也等到那时再开始，
+  // 否则数字会在不可见状态下就涨完。
+  window.setTimeout(() => {
+    document.querySelectorAll(".hero-stats strong").forEach((element) => {
+      const target = Number.parseInt(element.textContent, 10);
+      if (!Number.isFinite(target)) return;
+      const duration = 900;
+      const start = performance.now();
+      element.textContent = "0";
 
-    function tick(now) {
-      const progress = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      element.textContent = String(Math.round(target * eased));
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  });
+      function tick(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        element.textContent = String(Math.round(target * eased));
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }, 2200);
 
   // ---------- 首屏之外的卡片滚动进场 ----------
   const cards = Array.from(document.querySelectorAll(".home .grid.cards > ul > li"));

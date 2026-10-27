@@ -143,3 +143,20 @@ tags:
   —— SNCE理论指导下的条目模板、命题类型化与理解深度分级规范
 - [SNCE应用框架与方法论验证](theory/SNCE应用框架-线性代数方法论验证.md)
   —— 三领域架构的设计论证、八项缺陷的SNCE理论验证与文献对话
+
+---
+
+## 延伸资源：3Blue1Brown
+
+3Blue1Brown（3b1b）的《线性代数的本质》适合配合本体系建立几何直觉：
+
+- [Essence of Linear Algebra 官方专题页](https://www.3blue1brown.com/topics/linear-algebra)
+- [3b1b/videos：视频动画源码](https://github.com/3b1b/videos)
+  —— 内容采用 **CC BY-NC-SA 4.0**，非商业使用需署名并以相同方式共享；
+- [3b1b/manim：动画引擎](https://github.com/3b1b/manim)
+  —— **MIT** 许可，可以用它生成自己的数学动画。
+
+> 建议顺序：向量 → 线性变换 → 矩阵乘法 → 行列式 → 特征向量。
+> 对应到本站，就是 G1–G2（空间与基）→ T1–T2（变换与矩阵）→ F4/T4（特征理论）→ F3（行列式）。
+
+相关专题：[解析几何](../analytic-geometry/index.md)（含二次曲面三维交互实验）。
