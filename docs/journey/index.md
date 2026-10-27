@@ -2,6 +2,8 @@
 title: 成长之路
 hide:
   - toc
+tags:
+  - 成长
 ---
 
 <!--
@@ -317,9 +319,11 @@ hide:
 <div class="resume-section">
 <h3>📧 联系方式</h3>
 <div class="resume-item-desc">
-- **邮箱**：2562696772@qq.com
-- **GitHub**：[github.com/YanYuas](https://github.com/YanYuas)
-- **所在地**：四川成都
+<ul>
+<li><strong>邮箱</strong>：2562696772@qq.com</li>
+<li><strong>GitHub</strong>：<a href="https://github.com/YanYuas">github.com/YanYuas</a></li>
+<li><strong>所在地</strong>：四川成都</li>
+</ul>
 </div>
 </div>
 

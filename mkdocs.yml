@@ -82,7 +82,7 @@ nav:
           - 2026五一杯: mathmodel/works/01_51MCM-2026/index.md
           # ↑ 待补充
           - 2026亚太杯: mathmodel/works/06_APMCM-2026/index.md
-          # ↑ 进行中，10月比赛
+          # ↑ 进行中，11月比赛
       - 优秀论文精解: mathmodel/paper-analysis/index.md
       # ↑ 读别人的优秀论文，拆方法、学技巧
       - 深入论文研究: mathmodel/research/index.md
@@ -215,6 +215,9 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
+  # ↑ 本地覆盖模板的目录。目前只放了自定义 404 页面（overrides/404.html）。
+  #   没有这一行，overrides/ 里的模板不会生效，404 会退回 Material 默认英文页。
   # ↑ 用哪套主题。material = Material for MkDocs，目前最好用的主题。
   # 换成其他主题名也可以，但大部分功能是 Material 独有的，不建议换。
 
@@ -450,22 +453,22 @@ extra_javascript:
 # 这里放一些杂项配置：访问统计、社交链接、版本号等。
 
 extra:
-  # ---------- 访问统计 ----------
+  # ---------- 访问统计（暂未启用） ----------
   # 【怎么用】
   #   1. 去 https://analytics.google.com 注册 Google Analytics 4（免费）
   #   2. 创建一个"数据流"，得到一个以 G- 开头的 ID（如 G-ABC123XYZ）
   #   3. 把下面的 G-XXXXXXXXXX 替换成你的 ID
   #   4. 重新构建部署，等几小时后就能在 GA 后台看到访问数据
-  # 【能看到什么】
-  #   每天有多少人访问、来自哪个国家/城市、看了哪些页面、停留多久、
-  #   用什么设备（手机/电脑）、什么浏览器。
+  # 【为什么默认注释掉】
+  #   占位 ID 也会被写进每个页面，浏览器会去加载一个无效的 gtag 脚本，
+  #   产生一次无意义的请求和控制台报错。没有真实 ID 之前不要打开。
   # 【国内替代方案】
   #   如果 Google Analytics 在国内访问不稳定，可以用百度统计（tongji.baidu.com），
   #   但百度统计需要手动在页面插入 JS 代码，Material 主题不直接支持。
   #   建议先用 GA，国内访客数据可能有缺失但海外访客完整。
-  analytics:
-    provider: google
-    property: G-XXXXXXXXXX  # ← 替换为你的 Google Analytics 4 ID
+  # analytics:
+  #   provider: google
+  #   property: G-XXXXXXXXXX  # ← 替换为你的 Google Analytics 4 ID
 
   # ---------- 社交链接（页脚显示） ----------
   # 这些图标会显示在网站页脚，访客点一下就能跳到你的主页。

@@ -42,6 +42,9 @@
      javascripts/vendor/tex-mml-chtml.js 是 MathJax 库本体（1.1MB）。
      原先用的字节跳动 CDN 已失效（404），会导致全站公式完全不渲染。
      下载到本地后既快又稳定，离线也能用。
+     注意：只放 JS 本体还不够，CHTML 需要字体文件（output/chtml/fonts/woff-v2）
+     和按需扩展（input/tex/extensions）；这些已经一起放进 vendor 目录。
+     否则浏览器会请求不存在的字体/扩展，公式字形会退回系统字体。
    ================================================================== */
 
 // window.MathJax 是 MathJax 的全局配置对象
@@ -95,37 +98,42 @@ window.MathJax = {
     // ---- 自动加载扩展 ----
     // MathJax 把很多不常用的功能拆成了扩展，需要时才加载。
     // 这里配置哪些命令对应哪个扩展，MathJax 遇到时自动加载。
-    // （本地 tex-mml-chtml.js 已包含所有扩展，不需要联网下载）
+    // 【本地部署说明】javascripts/vendor/ 下已经同时放了：
+    //   - tex-mml-chtml.js（本体）
+    //   - output/chtml/fonts/woff-v2/（CHTML 字体，23 个 woff）
+    //   - input/tex/extensions/（按需扩展，MathJax 会用相对路径自动加载）
+    // 所以这里不要再依赖 CDN；新增扩展包时要把对应的 .js 一起放进 extensions/。
     autoload: {
-      // amsmath 扩展：align、gather、multline 等对齐环境
-      align: ['amsmath'],
-      alignat: ['amsmath'],
-      gather: ['amsmath'],
-      multline: ['amsmath'],
-      flalign: ['amsmath'],
-      // cases 扩展：大括号方程组
-      cases: ['amsmath'],
-      // 矩阵扩展
-      matrix: ['amsmath'],
-      pmatrix: ['amsmath'],
-      bmatrix: ['amsmath'],
-      vmatrix: ['amsmath'],
-      Vmatrix: ['amsmath'],
+      // ams 扩展：align、gather、multline、矩阵、equation 等环境
+      // （ams 已经打进本体，这里写 ['ams'] 是为了让 autoload 的包名合法）
+      align: ['ams'],
+      alignat: ['ams'],
+      gather: ['ams'],
+      multline: ['ams'],
+      flalign: ['ams'],
+      // cases 环境（大括号方程组）
+      cases: ['ams'],
+      // 矩阵环境
+      matrix: ['ams'],
+      pmatrix: ['ams'],
+      bmatrix: ['ams'],
+      vmatrix: ['ams'],
+      Vmatrix: ['ams'],
       // 其他常用环境
-      equation: ['amsmath'],
-      eqnarray: ['amsmath'],
-      // amssymb 扩展：更多数学符号（\mathbb、\mathcal 等）
-      mathbb: ['amssymb'],
-      mathcal: ['amssymb'],
-      mathfrak: ['amssymb'],
-      mathscr: ['amssymb'],
+      equation: ['ams'],
+      eqnarray: ['ams'],
+      // AMS 符号（\mathbb、\mathcal、\mathfrak、\mathscr）
+      mathbb: ['ams'],
+      mathcal: ['ams'],
+      mathfrak: ['ams'],
+      mathscr: ['ams'],
       // 颜色扩展
       color: ['color'],
       textcolor: ['color'],
       // 新定义扩展
       newcommand: ['newcommand'],
-      // 文本扩展
-      text: ['text'],
+      // 文本扩展（\text 里的文字；包名是 textmacros，不是 text）
+      text: ['textmacros'],
       // 上划线/下划线扩展
       cancel: ['cancel'],
       // 化学公式扩展（如果需要写化学式）

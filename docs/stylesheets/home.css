@@ -723,3 +723,23 @@
     text-align: center;                     /* 文字居中 */
   }
 }
+
+/* ==================================================================
+   五、可访问性：减少动态效果（prefers-reduced-motion）
+   ==================================================================
+   starry-academic.css 里有一条全局规则：用户开启"减少动态效果"时，
+   把所有 animation 设为 none !important。
+   但首页的问候语、按钮、卡片、页脚初始都是 opacity: 0，
+   依赖动画淡入；动画被禁用后会永远停在透明状态。
+   所以这里显式恢复它们的不透明度，保证内容始终可见。 */
+@media (prefers-reduced-motion: reduce) {
+  .home .greet,
+  .home .hero-subtitle,
+  .home .hero-buttons,
+  .home .grid.cards > ul > li,
+  .home .home-foot {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}

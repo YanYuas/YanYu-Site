@@ -16,6 +16,10 @@
   const homeEl = document.querySelector('.home');
   if (!homeEl) return;
 
+  // 尊重系统设置：用户开启"减少动态效果"时，不画粒子、不打字，
+  // 直接显示完整文案（否则动画被 CSS 禁用后，文字会停留在初始状态）
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   // ---------- 创建 Canvas ----------
   // 挂到 .home 内部，而不是 body —— 因为 .home 有 z-index:1 创建了层叠上下文，
   // 挂在 body 上的 canvas 会被整个 .home（包括背景图）盖住。
