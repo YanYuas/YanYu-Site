@@ -59,6 +59,7 @@ YanYu-Site/
 │   │   └── research/            # 深入论文研究
 │   ├── maththeory/              # 数学理论板块
 │   │   ├── advanced-algebra/    # 高等代数（三领域七模块）
+│   │   ├── analytic-geometry/   # 解析几何专题（含 Three.js 交互实验）
 │   │   └── probability-theory/  # 概率论（骨架，建设中）
 │   ├── blog/                    # 随笔板块
 │   │   ├── posts/               # 日常随笔
@@ -117,20 +118,22 @@ Markdown 链接、`mkdocs.yml` 的 nav，并自动补上旧 URL 的 redirect：
 
 ## P2 视觉升级
 
-- **首页 Hero 已接入 Three.js**：桌面端右侧按
-  「椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环」交替展示二次型线框，
-  只在首页、>1000px、支持 WebGL 时懒加载；手机/减少动效/加载失败都会降级。
+- **首页 Hero**：桌面端右侧按「椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环」交替展示，
+  悬停暂停、切换时交叉淡入；只在 >1000px 且支持 WebGL 时懒加载。
+- **解析几何专题**：`maththeory/analytic-geometry/` 内嵌 Three.js 实验台，
+  可切换椭球/双曲面/马鞍面/平面，拖动旋转、滑杆调尺度。
 - `visual/` 是视觉实验与 Three.js 源码目录；正式产物在
-  `docs/javascripts/vendor/hero-3d.bundle.js`，由 `docs/javascripts/home-3d.js` 加载。
-- 改完 `visual/src/hero3d.js` 后重新打包：
+  `docs/javascripts/vendor/`，由 `docs/javascripts/*.js` 按页面懒加载。
+- 改完源码后重新打包：
 
 ```bash
 cd visual
 npm install
-npm run build:hero
+npm run build:hero   # 首页 hero
+npm run build:geo    # 解析几何实验台
 ```
 
-细节和下一步（G7 交互附录）见 [visual/README.md](visual/README.md)。
+细节见 [visual/README.md](visual/README.md)。
 
 ## 设计风格
 

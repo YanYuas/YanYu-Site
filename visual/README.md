@@ -7,6 +7,9 @@
 
 - ✅ 首页 hero：`src/hero3d.js` → 打包到 `docs/javascripts/vendor/hero-3d.bundle.js`，
   由 `docs/javascripts/home-3d.js` 在桌面端懒加载。
+- ✅ 解析几何实验台：`src/analytic.js` → 打包到
+  `docs/javascripts/vendor/analytic-geometry.bundle.js`，用于
+  `maththeory/analytic-geometry/` 页面（切换曲面、拖动旋转、滑杆调尺度）。
 - 🧪 `visual/index.html` + `src/main.js`：独立的三种二次型曲面实验页（不发布）。
 - ⏭️ 下一个接入点：高等代数 G7「二次型与曲面」的讲义附录。
 
@@ -22,16 +25,21 @@ python -m http.server 8080 --directory visual
 打开 http://127.0.0.1:8080/ 。
 用浏览器原生 `importmap` 直接加载 `node_modules` 里的 three，不需要 Vite。
 
-## 重新打包首页 hero 3D
+## 重新打包
 
 ```bash
 cd visual
 npm install
-npm run build:hero
+npm run build:hero   # 首页 hero 轮播
+npm run build:geo    # 解析几何实验台
 ```
 
-输出：`docs/javascripts/vendor/hero-3d.bundle.js`（提交进仓库；CI 不需要 Node）。
-当前产物：约 526 KB，gzip 后约 127 KB。
+输出：
+
+- `docs/javascripts/vendor/hero-3d.bundle.js`（约 527 KB，gzip 127 KB）
+- `docs/javascripts/vendor/analytic-geometry.bundle.js`（约 550 KB，gzip 132 KB）
+
+两个产物都提交进仓库；CI 不需要 Node。
 
 > `npm run build`（Vite）是独立实验页的构建方式；当前 DSH 沙箱禁止子进程管道，
 > Vite 8 在沙箱里会报 `spawn EPERM`，普通本机/CI 正常。

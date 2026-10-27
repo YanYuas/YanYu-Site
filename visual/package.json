@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "build:hero": "rollup -c rollup.config.mjs",
+    "build:geo": "rollup -c rollup.analytic.config.mjs",
     "preview": "vite preview"
   },
   "dependencies": {

@@ -181,6 +181,9 @@ nav:
                   - 讲义: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义.md
                   - 习题集: maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集.md
 
+      - 解析几何: maththeory/analytic-geometry/index.md
+      # ↑ 坐标/向量/二次曲面 + Three.js 交互实验；与高代 G5/G7 互相链接
+
   # ---------- 随笔（两个子板块） ----------
   # 文学创作（海灵传说）暂存在 _archive/literature/，不参与构建。
   # 以后想挂回来，把目录移回 docs/blog/literature/，在这里加回子菜单就行。
@@ -361,6 +364,9 @@ extra_css:
   # ↑ 成长之路页面专属样式：个人信息卡、纵向时间线、简历分节。
   # 只在 journey/index.md 页面生效，不影响其他页面。
 
+  - stylesheets/analytic.css
+  # ↑ 解析几何专题的三维实验台样式（.geo-lab 命名空间）。
+
 
 # ============================================================
 # 第 6 部分：Markdown 扩展（markdown_extensions）
@@ -446,10 +452,19 @@ extra_javascript:
   # 只在首页生效（检测 .home 容器），深色模式效果最佳。
 
   - javascripts/home-3d.js
-  # ↑ 首页 Hero 右侧的 Three.js 二次型线框。
+  # ↑ 首页 Hero 右侧的 Three.js 二次型/莫比乌斯环轮播。
   # 只在首页、桌面宽度、支持 WebGL 时才懒加载 vendor/hero-3d.bundle.js；
   # 手机/减少动效/加载失败都会自动降级，不阻塞首屏。
   # 源码在 visual/src/hero3d.js，改完用 visual/ 里的 rollup 重新打包。
+
+  - javascripts/home-motion.js
+  # ↑ 首页动效增强：数据条数字递增、首屏之外的卡片滚动进场。
+  # 关闭 JS 或开启减少动效时不会隐藏任何内容。
+
+  - javascripts/analytic-geometry.js
+  # ↑ 解析几何专题的三维实验台加载器。
+  # 只在存在 #geo-canvas 的页面懒加载 vendor/analytic-geometry.bundle.js；
+  # 源码在 visual/src/analytic.js，改完用 npm run build:geo 重新打包。
 
   - javascripts/journey.js
   # ↑ 成长之路页面滚动联动：向下滚动驱动横向时间线移动。

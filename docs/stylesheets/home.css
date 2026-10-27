@@ -375,17 +375,56 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Hero 下方通往解析几何专题的轻量入口 */
+.home .hero .hero-link {
+  margin: 1.2rem 0 0;
+  font-size: 0.84rem;
+  letter-spacing: 0.06em;
+  opacity: 0;
+  animation: noteFadeIn 1s ease 2.7s forwards;
+}
+
+.home .hero .hero-link a {
+  color: rgba(255, 215, 0, 0.78);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.28);
+  padding-bottom: 0.15rem;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.home .hero .hero-link a:hover {
+  color: #ffd700;
+  border-bottom-color: rgba(255, 215, 0, 0.7);
+}
+
+[data-md-color-scheme="parchment"] .home .hero .hero-link a {
+  color: #8b6914;
+  border-bottom-color: rgba(139, 105, 20, 0.3);
+}
+
+/* 卡片滚动进场：只有 JS 开启时对“首屏之外”的卡片启用，避免闪烁 */
+.home.reveal-enabled .grid.cards > ul > li.will-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: none;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.home.reveal-enabled .grid.cards > ul > li.will-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ---------- Hero 右侧 3D 画布 ---------- */
 .home .hero .hero-visual {
   grid-column: 2;
-  grid-row: 1 / span 6;
+  grid-row: 1 / span 7;
   position: relative;
   justify-self: center;
   align-self: center;
   width: min(100%, 520px);
   aspect-ratio: 1 / 1;
   opacity: 0;
-  pointer-events: none;
+  pointer-events: auto;
   animation: visualFadeIn 1.4s ease 1.4s forwards;
 }
 
@@ -1034,6 +1073,7 @@
   .home .hero-note,
   .home .hero-buttons,
   .home .hero-stats,
+  .home .hero-link,
   .home .hero-visual,
   .home .grid.cards > ul > li,
   .home .home-foot {

@@ -235,8 +235,23 @@ export function initHero3D(canvas) {
   let current = makeObject(0);
   let transition = null;
   let currentIndex = 0;
+  let paused = false;
   let nextSwitchAt = performance.now() + SURFACES[0].dwell;
   setHUD(0);
+
+  const wrapper = canvas.parentElement;
+  const onEnter = () => {
+    paused = true;
+  };
+  const onLeave = () => {
+    paused = false;
+    // 离开时重新给当前形状一个完整停留时间，避免立刻切换
+    nextSwitchAt = performance.now() + current.surface.dwell;
+  };
+  if (!reduceMotion) {
+    wrapper.addEventListener("pointerenter", onEnter);
+    wrapper.addEventListener("pointerleave", onLeave);
+  }
 
   const pointer = { x: 0, y: 0 };
   const onPointerMove = (event) => {
@@ -292,7 +307,7 @@ export function initHero3D(canvas) {
   function frame() {
     const now = performance.now();
 
-    if (!reduceMotion && !transition && visible && !document.hidden && now >= nextSwitchAt) {
+    if (!reduceMotion && !transition && visible && !document.hidden && !paused && now >= nextSwitchAt) {
       startTransition((currentIndex + 1) % SURFACES.length, now);
     }
 
@@ -333,6 +348,8 @@ export function initHero3D(canvas) {
     cancelAnimationFrame(raf);
     resizeObserver.disconnect();
     window.removeEventListener("pointermove", onPointerMove);
+    wrapper.removeEventListener("pointerenter", onEnter);
+    wrapper.removeEventListener("pointerleave", onLeave);
     if (transition) {
       transition.to.geometry.dispose();
       transition.to.material.dispose();

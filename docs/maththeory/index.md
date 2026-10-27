@@ -28,6 +28,14 @@ tags:
 
     [进入](advanced-algebra/index.md)
 
+-   :material-axis-arrow:{ .lg .middle } __解析几何__
+
+    ---
+
+    坐标 · 向量 · 二次曲面 · 三维交互实验
+
+    [进入](analytic-geometry/index.md)
+
 </div>
 
 ---
