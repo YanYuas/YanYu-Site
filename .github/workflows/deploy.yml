@@ -1,89 +1,59 @@
-# ================================================================
-# deploy.yml · GitHub Actions 自动部署到 GitHub Pages
-# ================================================================
-# 【这个文件是干什么的】
-#   每次你 git push 到 main 分支，GitHub 会自动运行这个脚本：
-#   1. 安装 Python 和依赖
-#   2. 运行 mkdocs build 构建网站
-#   3. 把构建产物（site/ 目录）部署到 GitHub Pages
-#
-# 【使用前提】
-#   1. 仓库已经推送到 GitHub
-#   2. 仓库 Settings → Pages → Source 选择 "GitHub Actions"
-#   3. 不需要手动配置，push 后自动部署
-#
-# 【怎么看部署状态】
-#   GitHub 仓库页面 → Actions 标签页，可以看到每次部署的日志
-# ================================================================
+name: deploy
 
-name: deploy                          # 工作流名称，显示在 Actions 页面
-
-# 触发条件：push 到 main 分支时触发
 on:
   push:
     branches:
-      - main                          # 只在 main 分支 push 时触发
-  workflow_dispatch:                  # 允许在 GitHub 网页上手动触发
+      - main
+  workflow_dispatch:
 
-# 权限设置：允许 Actions 写入 GitHub Pages
 permissions:
-  contents: read                      # 读取仓库内容
-  pages: write                        # 写入 GitHub Pages
-  id-token: write                     # 身份验证令牌
+  contents: read
+  pages: write
+  id-token: write
 
-# 同一时间只允许一个部署；新提交会取消排队中的旧构建，
-# 避免旧构建后完成把新版本覆盖掉。
 concurrency:
   group: pages
   cancel-in-progress: true
 
-# 任务：只有一个部署任务
 jobs:
   deploy:
-    runs-on: ubuntu-latest            # 在最新版 Ubuntu 上运行
-    timeout-minutes: 20               # 构建/部署超时保护
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: astro
+
     steps:
-      # 第一步：拉取代码
-      - name: Checkout                # 步骤名称
-        uses: actions/checkout@v4     # 使用官方 checkout 动作，把代码拉到运行环境
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          fetch-depth: 0              # 拉取完整 git 历史（git-revision-date 插件需要）
-                                      # 默认是 1（只拉最近一次提交），会导致页面更新时间显示失败
+          node-version: 24
+          cache: npm
+          cache-dependency-path: astro/package-lock.json
 
-      # 第二步：设置 Python 环境
-      - name: Setup Python
-        uses: actions/setup-python@v5 # 使用官方 setup-python 动作
-        with:
-          python-version: 3.12        # 使用 Python 3.12
+      - name: Install
+        run: npm ci
 
-      # 第三步：安装依赖
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+      - name: Astro check
+        run: npm run check
 
-      # 第四步：配置 GitHub Pages
+      - name: Build
+        run: npm run build
+
+      - name: Internal link check
+        run: npm run check:links
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # 第五步：构建网站
-      # --clean：先清空 site/，避免旧页面残留
-      # --strict：任何 WARNING 都视为失败（坏链、缺失页面、插件警告都会挡住部署）
-      - name: Build with MkDocs (strict)
-        run: mkdocs build --clean --strict
-
-      # 第六步：站点验收
-      # 检查页面数、题量、讲义完整性、内链；不通过则停止部署。
-      - name: Verify site
-        run: python tools/check_site.py
-
-      # 第七步：上传构建产物
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/                 # 上传 site/ 目录（构建产物）
+          path: astro/dist
 
-      # 第八步：部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

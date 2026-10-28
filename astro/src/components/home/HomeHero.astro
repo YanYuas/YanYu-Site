@@ -1,0 +1,83 @@
+---
+import DefaultHero from "@astrojs/starlight/components/Hero.astro";
+import Hero3D from "./Hero3D.vue";
+
+const route = Astro.locals.starlightRoute;
+const isHome =
+  route.id === "index" ||
+  route.entry?.id === "index" ||
+  route.entry?.id === "";
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+{
+  isHome ? (
+    <section class="home-hero">
+      <div class="home-hero__bg" aria-hidden="true" />
+      <div class="home-hero__inner">
+        <div class="home-hero__copy">
+          <p class="home-hero__greet">你好，我是</p>
+          <h1 class="home-hero__name">衍煜</h1>
+          <p class="home-hero__subtitle">数学与应用数学 · 建模手 · 写作者</p>
+          <p class="home-hero__note">
+            把做过的、想过的、踩过的坑，整理成可复用的知识。
+          </p>
+
+          <div class="home-hero__actions">
+            <a class="home-btn home-btn--primary" href={`${base}/mathmodel/`}>
+              数学建模
+            </a>
+            <a class="home-btn home-btn--primary" href={`${base}/maththeory/`}>
+              数学理论
+            </a>
+            <a class="home-btn" href={`${base}/blog/`}>
+              随笔
+            </a>
+          </div>
+
+          <div class="home-hero__stats">
+            <span><strong data-count="21">21</strong>高代模块</span>
+            <span><strong data-count="672">672</strong>精编习题</span>
+            <span><strong data-count="46">46</strong>万字讲义</span>
+          </div>
+
+          <p class="home-hero__link">
+            <a href={`${base}/maththeory/analytic-geometry/`}>
+              探索解析几何专题 →
+            </a>
+          </p>
+        </div>
+
+        <Hero3D client:visible />
+      </div>
+    </section>
+  ) : (
+    <DefaultHero {...Astro.props} />
+  )
+}
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!reduce) {
+    const numbers = document.querySelectorAll(".home-hero__stats strong[data-count]");
+    const targets = Array.from(numbers).map((el) => ({
+      el,
+      target: Number.parseInt(el.textContent || "0", 10),
+    }));
+    window.setTimeout(() => {
+      targets.forEach(({ el, target }) => {
+        if (!Number.isFinite(target)) return;
+        const start = performance.now();
+        const duration = 900;
+        el.textContent = "0";
+        const tick = (now: number) => {
+          const p = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = String(Math.round(target * eased));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, 700);
+  }
+</script>

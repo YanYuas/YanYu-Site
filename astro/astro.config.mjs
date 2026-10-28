@@ -62,6 +62,9 @@ export default defineConfig({
       description: "数学与应用数学本科生 · 数学理论、解析几何与随笔",
       favicon: "/assets/images/favicon.svg",
       customCss: ["./src/styles/custom.css"],
+      components: {
+        Hero: "./src/components/home/HomeHero.astro",
+      },
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/YanYuas" },
       ],

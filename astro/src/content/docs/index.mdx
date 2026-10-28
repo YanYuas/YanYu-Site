@@ -1,35 +1,44 @@
 ---
-title: 衍煜
+title: 首页
 description: 数学与应用数学本科生 · 数学理论、解析几何与随笔
 template: splash
 hero:
-  tagline: 数学与应用数学本科生 · 建模手 · 写作者
-  actions:
-    - text: 数学理论
-      link: /YanYu-Site/maththeory/
-      icon: right-arrow
-    - text: 解析几何
-      link: /YanYu-Site/maththeory/analytic-geometry/
-      variant: minimal
-    - text: 数学建模
-      link: /YanYu-Site/mathmodel/
-      variant: minimal
-    - text: 随笔
-      link: /YanYu-Site/blog/
-      variant: minimal
+  tagline: 数学与应用数学 · 建模手 · 写作者
 ---
 
 import LabGrid from "../../components/data/LabGrid.astro";
 
-## 这里有什么
+<div class="home-sections">
 
-- [高等代数](/YanYu-Site/maththeory/advanced-algebra/)：三领域 × 七模块，讲义 + 习题
-- [解析几何](/YanYu-Site/maththeory/analytic-geometry/)：三领域 × 八模块，配交互实验台
-- [数学建模](/YanYu-Site/mathmodel/)：竞赛复盘、算法基础与论文精解
-- [随笔](/YanYu-Site/blog/)：日常记录与 AI 实践
+## 三个入口
+
+<div class="card-grid home-entry-grid">
+  <a class="card" href="/YanYu-Site/mathmodel/">
+    <strong>数学建模</strong>
+    <span>建模手复盘 · 优化模型 · 竞赛记录</span>
+  </a>
+  <a class="card" href="/YanYu-Site/maththeory/">
+    <strong>数学理论</strong>
+    <span>高等代数 · 21 模块 / 672 题 · 几何锚定</span>
+  </a>
+  <a class="card" href="/YanYu-Site/blog/">
+    <strong>随笔</strong>
+    <span>日常随笔 · AI 实践 · 持续更新</span>
+  </a>
+</div>
 
 ## 实验台（数据驱动）
 
-下面这些卡片由 `src/data/labs.json` + Zod 校验生成，不是手写 HTML；后续实验只加数据，不再复制卡片。
+下面这些卡片由 `src/data/labs.json` + Zod 校验生成；后续实验只加数据，不再复制卡片。
 
 <LabGrid />
+
+<div class="home-foot">
+  <a href="/YanYu-Site/about/">关于我</a>
+  <span>·</span>
+  <a href="https://github.com/YanYuas">GitHub</a>
+  <span>·</span>
+  <span>© 2026 衍煜</span>
+</div>
+
+</div>

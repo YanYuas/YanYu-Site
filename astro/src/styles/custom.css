@@ -136,6 +136,292 @@ a.card:hover {
   text-transform: uppercase;
 }
 
+/* ============================================================
+   首页 Hero
+   ============================================================ */
+
+:root {
+  --sa-gold: #d9bc6a;
+  --sa-gold-light: #f1dda0;
+}
+
+.home-hero {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: hidden;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  background: #0f0e0c;
+}
+
+.home-hero__bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(15, 14, 12, 0.94) 0%, rgba(15, 14, 12, 0.7) 45%, rgba(15, 14, 12, 0.35) 100%),
+    url("/YanYu-Site/assets/images/hero-bg.webp") center / cover no-repeat;
+  z-index: 0;
+}
+
+.home-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  width: min(1180px, calc(100% - 3rem));
+  min-height: 74vh;
+  margin: 0 auto;
+  padding: 4.5rem 0 3.5rem;
+}
+
+.home-hero__copy {
+  max-width: 560px;
+}
+
+.home-hero__greet {
+  margin: 0 0 0.7rem;
+  color: var(--sa-gold);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.34em;
+  text-shadow: 0 0 10px rgba(217, 188, 106, 0.45);
+}
+
+.home-hero__name {
+  margin: 0 0 0.7rem;
+  font-size: clamp(3.4rem, 8vw, 5.4rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: 0.06em;
+  background: linear-gradient(120deg, #f7e8b0, #d9bc6a 45%, #b8923f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home-hero__subtitle {
+  margin: 0 0 1rem;
+  color: var(--sl-color-gray-1);
+  font-size: clamp(0.95rem, 1.6vw, 1.12rem);
+  letter-spacing: 0.12em;
+}
+
+.home-hero__note {
+  max-width: 30rem;
+  margin: 0 0 1.5rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.9rem;
+  line-height: 1.9;
+}
+
+.home-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-bottom: 1.6rem;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  color: var(--sl-color-gray-1);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.home-btn:hover {
+  border-color: var(--sa-gold);
+  color: var(--sa-gold-light);
+}
+
+.home-btn--primary {
+  border-color: var(--sa-gold);
+  background: var(--sa-gold);
+  color: #17140c;
+  font-weight: 600;
+}
+
+.home-btn--primary:hover {
+  background: var(--sa-gold-light);
+  color: #17140c;
+}
+
+.home-hero__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin-bottom: 1.3rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+}
+
+.home-hero__stats span {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+
+.home-hero__stats strong {
+  color: var(--sa-gold-light);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.home-hero__link {
+  margin: 0;
+  font-size: 0.82rem;
+}
+
+.home-hero__link a {
+  color: var(--sa-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(217, 188, 106, 0.4);
+}
+
+/* 3D 视觉 */
+.hero-visual {
+  position: relative;
+  min-height: 440px;
+  border: 1px solid rgba(217, 188, 106, 0.22);
+  border-radius: 22px;
+  overflow: hidden;
+  background:
+    radial-gradient(55% 50% at 50% 45%, rgba(217, 188, 106, 0.1), transparent 70%),
+    rgba(255, 255, 255, 0.015);
+}
+
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border: 1px solid rgba(217, 188, 106, 0.18);
+  border-radius: 50%;
+  box-shadow: 0 0 60px rgba(217, 188, 106, 0.08) inset;
+  pointer-events: none;
+}
+
+.hero-visual canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 440px;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.hero-visual.is-ready canvas {
+  opacity: 1;
+}
+
+.hero-visual__hud {
+  position: absolute;
+  left: 1.1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: var(--sl-color-gray-2);
+  font: 0.7rem/1.5 monospace;
+  letter-spacing: 0.1em;
+  pointer-events: none;
+}
+
+.hero-visual__no {
+  color: var(--sa-gold);
+}
+
+.hero-visual__name {
+  color: var(--sl-color-white);
+}
+
+.hero-visual__formula {
+  color: var(--sl-color-gray-3);
+}
+
+.hero-visual__dots {
+  position: absolute;
+  right: 1rem;
+  bottom: 1.1rem;
+  display: flex;
+  gap: 0.35rem;
+  pointer-events: none;
+}
+
+.hero-visual__dots span {
+  width: 1.3rem;
+  height: 2px;
+  background: rgba(217, 188, 106, 0.25);
+  transition: background 0.25s ease;
+}
+
+.hero-visual__dots span.is-active {
+  background: var(--sa-gold);
+}
+
+.home-sections {
+  width: min(1120px, calc(100% - 3rem));
+  margin: 0 auto;
+  padding: 2.5rem 0 3rem;
+}
+
+.home-sections h2 {
+  color: var(--sl-color-white);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+}
+
+.home-entry-grid {
+  margin-bottom: 2.5rem;
+}
+
+.home-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--sl-color-hairline);
+  color: var(--sl-color-gray-3);
+  font-size: 0.78rem;
+}
+
+.home-foot a {
+  color: var(--sl-color-gray-2);
+  text-decoration: none;
+}
+
+.home-foot a:hover {
+  color: var(--sa-gold);
+}
+
+@media (max-width: 1000px) {
+  .home-hero__inner {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-visual canvas {
+    transition: none;
+  }
+}
+
 /* 实验平台 */
 .lab-explorer {
   margin: 1.5rem 0 2.5rem;
