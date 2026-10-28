@@ -1,0 +1,7 @@
+# robots.txt
+# https://yanyuas.github.io/YanYu-Site/robots.txt
+
+User-agent: *
+Allow: /
+
+Sitemap: https://yanyuas.github.io/YanYu-Site/sitemap-index.xml
