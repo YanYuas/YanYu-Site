@@ -6,32 +6,65 @@ hero:
   tagline: 数学与应用数学 · 建模手 · 写作者
 ---
 
-import LabGrid from "../../components/data/LabGrid.astro";
-
 <div class="home-sections">
 
-## 三个入口
+## 三个世界
 
 <div class="card-grid home-entry-grid">
-  <a class="card" href="/YanYu-Site/mathmodel/">
+  <a class="card home-entry" href="/YanYu-Site/mathmodel/">
+    <span class="home-entry__kicker">FORM · 建模</span>
     <strong>数学建模</strong>
-    <span>建模手复盘 · 优化模型 · 竞赛记录</span>
+    <span>从赛题到论文：建模手复盘、算法基础、竞赛记录。</span>
+    <em>进入 →</em>
   </a>
-  <a class="card" href="/YanYu-Site/maththeory/">
+  <a class="card home-entry" href="/YanYu-Site/maththeory/">
+    <span class="home-entry__kicker">STRUCTURE · 理论</span>
     <strong>数学理论</strong>
-    <span>高等代数 · 21 模块 / 672 题 · 几何锚定</span>
+    <span>高等代数 21 模块 / 672 题，解析几何 8 模块 / 交互实验。</span>
+    <em>进入 →</em>
   </a>
-  <a class="card" href="/YanYu-Site/blog/">
+  <a class="card home-entry" href="/YanYu-Site/blog/">
+    <span class="home-entry__kicker">TRACE · 随笔</span>
     <strong>随笔</strong>
-    <span>日常随笔 · AI 实践 · 持续更新</span>
+    <span>日常记录、AI 实践、阅读与写作；持续更新。</span>
+    <em>读一读 →</em>
   </a>
 </div>
 
-## 实验台（数据驱动）
+## 精选入口
 
-下面这些卡片由 `src/data/labs.json` + Zod 校验生成；后续实验只加数据，不再复制卡片。
+<div class="editorial-grid">
+  <a class="editorial-card" href="/YanYu-Site/maththeory/advanced-algebra/">
+    <span class="editorial-card__no">01</span>
+    <strong>高等代数</strong>
+    <span>三领域 × 七模块，以几何为锚点的知识体系。</span>
+  </a>
+  <a class="editorial-card" href="/YanYu-Site/maththeory/analytic-geometry/">
+    <span class="editorial-card__no">02</span>
+    <strong>解析几何</strong>
+    <span>坐标、向量、曲线、曲面；从方程到三维实验。</span>
+  </a>
+  <a class="editorial-card" href="/YanYu-Site/mathmodel/works/">
+    <span class="editorial-card__no">03</span>
+    <strong>竞赛作品</strong>
+    <span>建模手视角的赛题理解、算法与分析复盘。</span>
+  </a>
+  <a class="editorial-card" href="/YanYu-Site/blog/ai-practice/">
+    <span class="editorial-card__no">04</span>
+    <strong>AI 实践</strong>
+    <span>把 AI 当作工具，而不是答案；记录真实使用经验。</span>
+  </a>
+</div>
 
-<LabGrid />
+<section class="manifesto">
+  <p class="manifesto__kicker">WATER · FIRE · LIGHT</p>
+  <h2>以水为思，以火为行</h2>
+  <p>
+    数学是水：安静、深、可以容纳一切结构；
+    建模是火：把理解烧成可执行的方案。
+    而写作，是把两者留下的光，交给下一个需要它的人。
+  </p>
+</section>
 
 <div class="home-foot">
   <a href="/YanYu-Site/about/">关于我</a>
