@@ -1,11 +1,12 @@
-# Astro Migration
+# Astro Site
 
-Phase A spike + Phase B content migration + Phase C lab platform.
-**Not the production site.** Production is still the MkDocs site at the repository root.
+Phase A–D complete. **This is the production site** since 2026-10-28.
+MkDocs is kept only as a manual rollback (`deploy-mkdocs.yml`).
 
 - Phase A report: [SPIKE_REPORT.md](./SPIKE_REPORT.md)
 - Phase B report: [MIGRATION_REPORT.md](./MIGRATION_REPORT.md)
 - Phase C report: [PHASE_C_REPORT.md](./PHASE_C_REPORT.md)
+- Phase D report: [PHASE_D_REPORT.md](./PHASE_D_REPORT.md)
 
 ## Commands
 

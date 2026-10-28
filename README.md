@@ -135,16 +135,18 @@ npm run build:geo    # 解析几何实验台
 
 细节见 [visual/README.md](visual/README.md)。
 
-## Astro 迁移 spike（Phase A）
+## Astro 生产站（Phase D 完成）
 
-`astro/` 是长期架构迁移的 Phase A spike，**不参与当前 GitHub Pages 构建**；
-生产站点仍是 MkDocs。
+**生产站点已切换为 Astro 构建**，部署 workflow 为 `.github/workflows/deploy.yml`；
+MkDocs 保留为手动回滚：`.github/workflows/deploy-mkdocs.yml`。
 
 - 架构决策：[ARCHITECTURE.md](ARCHITECTURE.md)
-- Phase A 报告：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
-- Phase B 报告：[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)
-- Phase C 报告：[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)
-- 结论：Phase A GO；Phase B 内容迁移完成；Phase C 实验平台完成（生产仍为 MkDocs）
+- Phase A：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
+- Phase B：[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)
+- Phase C：[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)
+- Phase D：[astro/PHASE_D_REPORT.md](astro/PHASE_D_REPORT.md)
+- 内容源：`astro/src/content/docs/`（`docs/` 只用于 MkDocs 回滚/历史）
+- 数据源：`astro/src/data/`
 - 本地运行：
 
 ```bash
@@ -156,9 +158,15 @@ npm run check:math
 npm run check:links
 ```
 
+回滚：
+
+```bash
+gh workflow run deploy-mkdocs.yml --ref main
+```
+
 ## 设计风格
 
 星空学术风（Starry Academic）+ 金色主题：
 - 深色模式：深蓝底 + 金色文字 + 玻璃态卡片
 - 浅色模式：暖白底 + 深金文字 + 暖白玻璃态
-- 首页：两栏 Hero（左文字 / 右 Three.js 四种曲面交替）+ 史诗插画背景（Ken Burns 缩放）+ 暖白粒子 + 流星 + 打字机名字
+- 首页：两栏 Hero（左文字 / 右 Three.js 四种曲面交替）+ 风格化史诗插画背景 + 数据条 + 6 个实验入口

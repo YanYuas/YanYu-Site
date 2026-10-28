@@ -2,8 +2,8 @@
 
 - 状态：Accepted（2026-10-27）
 - 决策：**迁移到 Astro + Starlight，Vue 3 islands，内容数据源用 Content Collections + YAML**
-- 迁移策略：**strangler（逐步替换）**，MkDocs 保持线上，Astro 版在独立分支/目录完成 parity 后切换
-- 当前状态：**Phase A spike（GO）+ Phase B 内容迁移 + Phase C 实验平台完成**；代码在 `astro/`，报告见 [astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)、[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)、[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)；MkDocs 仍是生产站点
+- 迁移策略：**strangler（逐步替换）**；Phase A–D 已完成，生产已切换为 Astro
+- 当前状态：**Phase D 完成，生产站点 = Astro**；代码在 `astro/`，报告见 [astro/PHASE_D_REPORT.md](astro/PHASE_D_REPORT.md)；MkDocs 通过 `deploy-mkdocs.yml` 手动回滚
 
 ### Phase A 结果摘要
 
@@ -24,6 +24,22 @@
 - Pagefind 562.7 KB，中文搜索可用；
 - 已知：大小写 alias 页面当前返回完整内容，dist raw 偏大；Phase D 优化；
 - 下一步：Phase C 实验迁移、Phase D 完整首页/切换。
+
+### Phase C 结果摘要
+
+- LabShell / LabExplorer / labs.json 注册表；
+- 6 个实验：向量、直线与平面、圆锥曲线、二次曲面、参数曲面、线性变换；
+- 每实验独立 async chunk；Three 共享 chunk gzip 约 189 KB；
+- `astro check` 0/0/0，内部链接 0 broken，旧/新 87/87 URL 200；
+- Ubuntu Astro Check workflow 通过。
+
+### Phase D 结果摘要
+
+- 自定义 Starlight Hero：两栏首页 + 三入口 + 6 实验卡片 + 页脚；
+- 首页 Three.js 四曲面轮播/HUD，桌面懒加载、移动端隐藏；
+- 生产 workflow 切换为 Astro（`deploy.yml`），MkDocs 回滚 workflow 保留；
+- 线上首页、实验台、搜索、旧 URL、sitemap/robots 验证通过；
+- 旧 redirect 的 base 前缀修复。
 
 ---
 
