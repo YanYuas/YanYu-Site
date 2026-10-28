@@ -32,16 +32,16 @@ const processor = unified()
   .use(remarkRehype, { allowDangerousHtml: true })
   .use(rehypeKatex, { throwOnError: true, macros });
 
-const root = path.resolve("..", "docs");
+const root = path.resolve("src", "content", "docs");
 const files = [];
 function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
     const stat = fs.statSync(full);
     if (stat.isDirectory()) {
-      if (name === "_archive" || name === "node_modules") continue;
+      if (name === "_archive" || name === "node_modules" || name === "i18n") continue;
       walk(full);
-    } else if (name.endsWith(".md")) {
+    } else if (name.endsWith(".md") || name.endsWith(".mdx")) {
       files.push(full);
     }
   }
