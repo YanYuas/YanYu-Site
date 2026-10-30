@@ -21,11 +21,11 @@ tags:
 
 | 时间 | 比赛 | 题目 | 角色 | 结果 | 详情 |
 |---|---|---|---|---|---|
-| 2026.05.01 | 五一杯 | A题 | 建模手 | 未完成 | [查看](/YanYu-Site/mathmodel/works/01_51mcm-2026/) |
-| 2026.05.23 | 电工杯 | B题 嵌入式养老站点 | 建模手 | 三等奖 | [查看](/YanYu-Site/mathmodel/works/02_eemcm-2026/) |
-| 2026.08.07 | 华数杯 | B题 VLSI布图规划 | 建模手 | 未完成 | [查看](/YanYu-Site/mathmodel/works/03_hsmcm-2026/) |
-| 2026.09.10 | 高教社杯 | B题 无线电干扰源定位 | 建模手 | 优秀参与 | [查看](/YanYu-Site/mathmodel/works/04_cumcm-2026/) |
-| 2026.11 | 亚太杯 | 备赛中 | 建模手 | — | [查看](/YanYu-Site/mathmodel/works/06_apmcm-2026/) |
+| 2026.05.01 | 五一杯 | A题 | 建模手 | 未完成 | [查看](/YanYu-Site/mathmodel/works/01_51MCM-2026/) |
+| 2026.05.23 | 电工杯 | B题 嵌入式养老站点 | 建模手 | 三等奖 | [查看](/YanYu-Site/mathmodel/works/02_EEMCM-2026/) |
+| 2026.08.07 | 华数杯 | B题 VLSI布图规划 | 建模手 | 未完成 | [查看](/YanYu-Site/mathmodel/works/03_HSMCM-2026/) |
+| 2026.09.10 | 高教社杯 | B题 无线电干扰源定位 | 建模手 | 优秀参与 | [查看](/YanYu-Site/mathmodel/works/04_CUMCM-2026/) |
+| 2026.11 | 亚太杯 | 备赛中 | 建模手 | — | [查看](/YanYu-Site/mathmodel/works/06_APMCM-2026/) |
 
 <!-- 05_MTMCM-2026 先保留页面占位；确认比赛全称与基本信息后，再补进上表和导航。 -->
 

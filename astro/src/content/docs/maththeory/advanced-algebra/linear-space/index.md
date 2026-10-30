@@ -39,13 +39,13 @@ title: "领域二 · 线性空间"
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **G1** | 线性空间的定义与基本性质 | 公理化空间观 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/习题集/) |
-| **G2** | 基维数与同构 | 舞台的骨架与标尺 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/习题集/) |
-| **G3** | 内积空间与正交性 | 骨架的度量与垂直 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/习题集/) |
-| **G4** | 商空间 | 折叠的舞台与等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/习题集/) |
-| **G5** | 解析几何嵌入 | 欧几里得几何的代数翻译 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/习题集/) |
-| **G6** | 仿射空间 | 无原点的几何与点向量分离 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/习题集/) |
-| **G7** | 二次型与曲面 | 对称矩阵的合同分类与二次曲面 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/习题集/) |
+| **G1** | 线性空间的定义与基本性质 | 公理化空间观 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/习题集/) |
+| **G2** | 基维数与同构 | 舞台的骨架与标尺 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G2-基维数与同构/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G2-基维数与同构/习题集/) |
+| **G3** | 内积空间与正交性 | 骨架的度量与垂直 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/习题集/) |
+| **G4** | 商空间 | 折叠的舞台与等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G4-商空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G4-商空间/习题集/) |
+| **G5** | 解析几何嵌入 | 欧几里得几何的代数翻译 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/习题集/) |
+| **G6** | 仿射空间 | 无原点的几何与点向量分离 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G6-仿射空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G6-仿射空间/习题集/) |
+| **G7** | 二次型与曲面 | 对称矩阵的合同分类与二次曲面 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/习题集/) |
 
 ---
 

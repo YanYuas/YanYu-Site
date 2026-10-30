@@ -49,7 +49,7 @@ title: "2026 亚太杯数学建模竞赛"
 
 <!--
 :::note[比赛未开始]
-本页面为占位，比赛结束后参照 [国赛范本](/YanYu-Site/mathmodel/works/04_cumcm-2026/) 补充完整内容。
+本页面为占位，比赛结束后参照 [国赛范本](/YanYu-Site/mathmodel/works/04_CUMCM-2026/) 补充完整内容。
 :::
 
 -->

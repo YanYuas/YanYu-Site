@@ -10,6 +10,7 @@
     "check": "astro check",
     "check:math": "node scripts/check-math.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "fix:case": "node scripts/fix-route-case.mjs",
     "verify": "npm run check && npm run check:math && npm run build && npm run check:links",
     "measure": "node scripts/measure.mjs",
     "check:browser": "node scripts/browser-check.mjs"

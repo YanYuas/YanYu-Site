@@ -20,9 +20,15 @@ const sectionNames: Record<string, string> = {
   about: "关于",
 };
 
-function pagePath(id: string): string {
-  const clean = id.replace(/(^|\/)index$/, "");
-  return clean ? `/${clean}/` : "/";
+/** Use the real file path: Astro content IDs can be lowercased, routes are not. */
+function entryPath(entry: { id: string; filePath?: string }): string {
+  const raw = entry.filePath ?? entry.id;
+  const normalized = raw
+    .replace(/\\/g, "/")
+    .replace(/^.*?src\/content\/docs\//, "")
+    .replace(/\.(md|mdx)$/, "")
+    .replace(/(^|\/)index$/, "");
+  return normalized ? `/${normalized}/` : "/";
 }
 
 function sectionName(id: string): string {
@@ -45,7 +51,7 @@ export async function getTagPages(): Promise<TagGroup[]> {
         title: entry.data.title,
         description: entry.data.description ?? "",
         section: sectionName(entry.id),
-        href: `${base}${pagePath(entry.id)}`,
+        href: `${base}${entryPath(entry)}`,
       });
       map.set(tag, list);
     }

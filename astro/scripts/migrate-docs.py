@@ -50,8 +50,9 @@ ADMONITION_TYPES = {
 
 
 def slug(segment: str) -> str:
-    # Astro/Starlight strips periods from content slugs (e.g. `01.随机` -> `01随机`).
-    return segment.lower().replace(" ", "-").replace(".", "")
+    # Astro preserves path-segment case on Linux/GitHub Pages.
+    # Only normalize spaces and dots; do NOT lowercase (`G1` must stay `G1`).
+    return segment.replace(" ", "-").replace(".", "")
 
 
 def route_for_rel(rel: str) -> str:

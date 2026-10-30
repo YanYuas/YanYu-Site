@@ -19,10 +19,10 @@ tags:
 
 | 模块 | 核心问题 | 实验 |
 |---|---|---|
-| [B1 · 直线与平面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b1-line-plane/) | 点向式/一般式、夹角、距离、平面束 | — |
-| [B2 · 圆锥曲线](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b2-conic/) | 离心率如何统一椭圆/抛物线/双曲线 | 2D 圆锥曲线实验 |
-| [B3 · 二次曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b3-quadric/) | 特征值符号如何决定曲面类型 | 3D 二次曲面实验 |
-| [B4 · 参数曲线与曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b4-parametric/) | 参数方程、切向量、环面、莫比乌斯环 | 3D 参数曲面实验 |
+| [B1 · 直线与平面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B1-line-plane/) | 点向式/一般式、夹角、距离、平面束 | — |
+| [B2 · 圆锥曲线](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B2-conic/) | 离心率如何统一椭圆/抛物线/双曲线 | 2D 圆锥曲线实验 |
+| [B3 · 二次曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B3-quadric/) | 特征值符号如何决定曲面类型 | 3D 二次曲面实验 |
+| [B4 · 参数曲线与曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B4-parametric/) | 参数方程、切向量、环面、莫比乌斯环 | 3D 参数曲面实验 |
 
 ## 学习建议
 

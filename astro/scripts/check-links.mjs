@@ -4,15 +4,24 @@ import path from "node:path";
 const dist = path.resolve("dist");
 const base = "/YanYu-Site";
 const files = [];
+const allFiles = [];
 function walk(dir) {
   for (const name of fs.readdirSync(dir)) {
     const full = path.join(dir, name);
     const stat = fs.statSync(full);
     if (stat.isDirectory()) walk(full);
-    else if (name.endsWith(".html")) files.push(full);
+    else {
+      allFiles.push(full);
+      if (name.endsWith(".html")) files.push(full);
+    }
   }
 }
 walk(dist);
+
+// GitHub Pages is case-sensitive; do not rely on Windows' case-insensitive fs.
+const fileSet = new Set(
+  allFiles.map((file) => path.relative(dist, file).replace(/\\/g, "/"))
+);
 
 const broken = new Map();
 const seen = new Set();
@@ -30,11 +39,14 @@ for (const file of files) {
     } catch {
       decoded = url;
     }
+    let relative = decoded.replace(/^\/+/, "");
     let target;
-    if (decoded.endsWith("/")) target = path.join(dist, decoded, "index.html");
-    else if (path.extname(decoded)) target = path.join(dist, decoded);
-    else target = path.join(dist, decoded, "index.html");
-    if (fs.existsSync(target) && fs.statSync(target).isFile()) continue;
+    if (!relative) target = "index.html";
+    else if (relative.endsWith("/")) target = `${relative}index.html`;
+    else if (path.posix.extname(relative)) target = relative;
+    else target = `${relative}/index.html`;
+
+    if (fileSet.has(target)) continue;
     const key = `${path.relative(dist, file)} -> ${url}`;
     if (!seen.has(key)) {
       seen.add(key);
