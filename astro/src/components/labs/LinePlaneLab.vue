@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
 <template>
   <LabShell title="直线与平面" formula="sin θ = |s · n| / (|s||n|)" description="法向量 n 决定平面朝向；方向向量 s 与它的互余角决定线面角。">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <label class="lab__control">

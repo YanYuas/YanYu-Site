@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
 <template>
   <LabShell title="圆锥曲线" formula="r = p / (1 + e cos θ)" :description="copy">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <label class="lab__control">

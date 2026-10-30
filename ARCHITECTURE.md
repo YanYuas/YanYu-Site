@@ -3,7 +3,8 @@
 - 状态：Accepted（2026-10-27）
 - 决策：**迁移到 Astro + Starlight，Vue 3 islands，内容数据源用 Content Collections + YAML**
 - 迁移策略：**strangler（逐步替换）**；Phase A–D 已完成，生产已切换为 Astro
-- 当前状态：**Phase D 完成，生产站点 = Astro**；代码在 `astro/`，报告见 [astro/PHASE_D_REPORT.md](astro/PHASE_D_REPORT.md)；MkDocs 通过 `deploy-mkdocs.yml` 手动回滚
+- 当前状态：**生产站点 = Astro**；代码在 `astro/`，报告见 [astro/PHASE_D_REPORT.md](astro/PHASE_D_REPORT.md)；MkDocs 通过 `deploy-mkdocs.yml` 手动回滚
+- 2026-10-30 现状：97 页 / 106 HTML / 96 sitemap；首页无实验室；`/tags/` 与自定义 404 已上线；公开 URL 统一小写；`deploy` 与 `deploy-mkdocs` 均已实测
 
 ### Phase A 结果摘要
 

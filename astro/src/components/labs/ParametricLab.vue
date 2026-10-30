@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
 <template>
   <LabShell title="参数曲面" :formula="shape === 'torus' ? 'r(u,v)=(R+r cos v)(cos u, sin u)' : '莫比乌斯参数方程'" :description="copy">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <div class="lab__tabs" role="tablist" aria-label="参数曲面">

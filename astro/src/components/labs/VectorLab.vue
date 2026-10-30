@@ -124,7 +124,7 @@ onBeforeUnmount(() => {
 <template>
   <LabShell title="向量与度量" formula="a · b, |a × b|" description="点积管角度，叉积管面积；拖动旋转看第三个方向。">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <label class="lab__control">

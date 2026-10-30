@@ -199,7 +199,7 @@ onBeforeUnmount(() => {
 <template>
   <LabShell title="二次曲面" formula="xᵀAx = 1" :description="copy">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <div class="lab__tabs" role="tablist" aria-label="曲面类型">

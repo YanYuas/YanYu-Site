@@ -118,7 +118,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
 <template>
   <LabShell title="线性变换" formula="x ↦ Ax" :description="`det(A)=${det}；单位圆变成椭圆，网格随矩阵实时变形。`">
     <template #stage>
-      <canvas ref="canvas"></canvas>
+      <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
     <template #controls>
       <label class="lab__control">
