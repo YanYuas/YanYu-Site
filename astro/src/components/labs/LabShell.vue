@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from "vue";
+
 defineProps({
   title: { type: String, required: true },
   formula: { type: String, default: "" },
@@ -6,6 +8,22 @@ defineProps({
 });
 
 defineEmits(["reset"]);
+
+const copied = ref(false);
+let timer;
+
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(window.location.href);
+    copied.value = true;
+    clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      copied.value = false;
+    }, 1800);
+  } catch {
+    copied.value = false;
+  }
+}
 </script>
 
 <template>
@@ -23,7 +41,12 @@ defineEmits(["reset"]);
       </div>
       <aside class="lab__panel">
         <slot name="controls" />
-        <button class="lab__reset" type="button" @click="$emit('reset')">重置参数</button>
+        <div class="lab__actions">
+          <button class="lab__reset" type="button" @click="$emit('reset')">重置参数</button>
+          <button class="lab__share" type="button" @click="copyLink">
+            {{ copied ? "已复制" : "复制参数链接" }}
+          </button>
+        </div>
       </aside>
     </div>
   </section>

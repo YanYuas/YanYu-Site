@@ -1791,8 +1791,15 @@ nav.sidebar {
   }
 }
 
-.lab__reset {
+.lab__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   margin-top: 0.9rem;
+}
+
+.lab__reset,
+.lab__share {
   padding: 0.45rem 0.7rem;
   border: 1px solid var(--sl-color-hairline);
   border-radius: 8px;
@@ -1803,10 +1810,12 @@ nav.sidebar {
   cursor: pointer;
 }
 
-.lab__reset:hover {
+.lab__reset:hover,
+.lab__share:hover {
   border-color: var(--sa-fire);
   color: var(--sa-fire);
 }
+
 
 /* 桌面端极慢的“呼吸”镜头；移动端和减少动效时关闭 */
 @media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
