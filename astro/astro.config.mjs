@@ -68,6 +68,11 @@ export default defineConfig({
           content:
             "try{if(!localStorage.getItem('starlight-theme'))localStorage.setItem('starlight-theme','light')}catch(e){}",
         },
+        {
+          tag: "script",
+          content:
+            "(()=>{const set=()=>{const n=document.querySelectorAll('.pagefind-ui__search-input');n.forEach(i=>{if(!i.getAttribute('aria-label'))i.setAttribute('aria-label','站内搜索')});if(n.length)o.disconnect()};const o=new MutationObserver(set);o.observe(document.documentElement,{childList:true,subtree:true});set()})()",
+        },
       ],
       components: {
         Hero: "./src/components/home/HomeHero.astro",
