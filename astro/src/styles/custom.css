@@ -1808,6 +1808,30 @@ nav.sidebar {
   color: var(--sa-fire);
 }
 
+/* 桌面端极慢的“呼吸”镜头；移动端和减少动效时关闭 */
+@media (min-width: 1001px) and (prefers-reduced-motion: no-preference) {
+  .home-hero__bg {
+    transform-origin: 58% 30%;
+    will-change: transform;
+    animation: hero-drift 30s ease-in-out infinite alternate;
+  }
+
+  .home-hero:hover .home-hero__bg {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes hero-drift {
+  from {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.045) translate3d(-0.6%, -0.5%, 0);
+  }
+}
+
+
 
 
 
