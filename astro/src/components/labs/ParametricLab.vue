@@ -3,12 +3,22 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const shape = ref("torus");
 const R = ref(1.2);
 const r = ref(0.42);
 const copy = ref("环面：两个半径 R、r 决定胖瘦；沿 u 方向闭合。");
+const defaults = { shape: "torus", R: 1.2, r: 0.42 };
+
+useLabUrl({ shape, R, r });
+
+function reset() {
+  shape.value = defaults.shape;
+  R.value = defaults.R;
+  r.value = defaults.r;
+}
 
 let renderer;
 let scene;
@@ -163,7 +173,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <LabShell title="参数曲面" :formula="shape === 'torus' ? 'r(u,v)=(R+r cos v)(cos u, sin u)' : '莫比乌斯参数方程'" :description="copy">
+  <LabShell title="参数曲面" :formula="shape === 'torus' ? 'r(u,v)=(R+r cos v)(cos u, sin u)' : '莫比乌斯参数方程'" :description="copy" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>

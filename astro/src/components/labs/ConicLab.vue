@@ -1,11 +1,20 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const e = ref(0.6);
 const p = ref(1.5);
 const copy = ref("拖动离心率，观察椭圆 → 抛物线 → 双曲线的连续变化。");
+const defaults = { e: 0.6, p: 1.5 };
+
+useLabUrl({ e, p });
+
+function reset() {
+  e.value = defaults.e;
+  p.value = defaults.p;
+}
 
 let plot = null;
 let resizeObserver;
@@ -155,7 +164,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <LabShell title="圆锥曲线" formula="r = p / (1 + e cos θ)" :description="copy">
+  <LabShell title="圆锥曲线" formula="r = p / (1 + e cos θ)" :description="copy" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>

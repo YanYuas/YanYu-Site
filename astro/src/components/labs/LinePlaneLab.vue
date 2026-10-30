@@ -3,12 +3,22 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const tilt = ref(35);
 const azimuth = ref(30);
 const lineAngle = ref(20);
 const angleText = ref("");
+const defaults = { tilt: 35, azimuth: 30, lineAngle: 20 };
+
+useLabUrl({ tilt, azimuth, lineAngle });
+
+function reset() {
+  tilt.value = defaults.tilt;
+  azimuth.value = defaults.azimuth;
+  lineAngle.value = defaults.lineAngle;
+}
 
 let renderer;
 let scene;
@@ -129,7 +139,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <LabShell title="直线与平面" formula="sin θ = |s · n| / (|s||n|)" description="法向量 n 决定平面朝向；方向向量 s 与它的互余角决定线面角。">
+  <LabShell title="直线与平面" formula="sin θ = |s · n| / (|s||n|)" description="法向量 n 决定平面朝向；方向向量 s 与它的互余角决定线面角。" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>

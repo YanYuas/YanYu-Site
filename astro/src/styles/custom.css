@@ -1791,6 +1791,24 @@ nav.sidebar {
   }
 }
 
+.lab__reset {
+  margin-top: 0.9rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-size: 0.76rem;
+  cursor: pointer;
+}
+
+.lab__reset:hover {
+  border-color: var(--sa-fire);
+  color: var(--sa-fire);
+}
+
+
 
 
 

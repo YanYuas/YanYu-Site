@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const lenA = ref(1.6);
@@ -11,6 +12,15 @@ const angle = ref(55);
 const dot = ref("");
 const crossLen = ref("");
 const crossValue = ref("");
+const defaults = { lenA: 1.6, lenB: 1.3, angle: 55 };
+
+useLabUrl({ lenA, lenB, angle });
+
+function reset() {
+  lenA.value = defaults.lenA;
+  lenB.value = defaults.lenB;
+  angle.value = defaults.angle;
+}
 
 let renderer;
 let scene;
@@ -122,7 +132,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <LabShell title="向量与度量" formula="a · b, |a × b|" description="点积管角度，叉积管面积；拖动旋转看第三个方向。">
+  <LabShell title="向量与度量" formula="a · b, |a × b|" description="点积管角度，叉积管面积；拖动旋转看第三个方向。" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>

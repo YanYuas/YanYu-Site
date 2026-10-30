@@ -1,6 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const a = ref(1);
@@ -8,6 +9,16 @@ const b = ref(0.5);
 const c = ref(0.2);
 const d = ref(1);
 const det = ref("1.00");
+const defaults = { a: 1, b: 0.5, c: 0.2, d: 1 };
+
+useLabUrl({ a, b, c, d });
+
+function reset() {
+  a.value = defaults.a;
+  b.value = defaults.b;
+  c.value = defaults.c;
+  d.value = defaults.d;
+}
 
 let ctx = null;
 let width = 0;
@@ -116,7 +127,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
 </script>
 
 <template>
-  <LabShell title="线性变换" formula="x ↦ Ax" :description="`det(A)=${det}；单位圆变成椭圆，网格随矩阵实时变形。`">
+  <LabShell title="线性变换" formula="x ↦ Ax" :description="`det(A)=${det}；单位圆变成椭圆，网格随矩阵实时变形。`" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>

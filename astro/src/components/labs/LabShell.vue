@@ -4,6 +4,8 @@ defineProps({
   formula: { type: String, default: "" },
   description: { type: String, default: "" },
 });
+
+defineEmits(["reset"]);
 </script>
 
 <template>
@@ -21,6 +23,7 @@ defineProps({
       </div>
       <aside class="lab__panel">
         <slot name="controls" />
+        <button class="lab__reset" type="button" @click="$emit('reset')">重置参数</button>
       </aside>
     </div>
   </section>

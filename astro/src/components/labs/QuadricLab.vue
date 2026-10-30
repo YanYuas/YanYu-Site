@@ -3,11 +3,20 @@ import { onBeforeUnmount, onMounted, ref, watch } from "vue";
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import LabShell from "./LabShell.vue";
+import { useLabUrl } from "./useLabUrl";
 
 const canvas = ref(null);
 const shape = ref("ellipsoid");
 const scale = ref(1.2);
 const copy = ref("三个主方向都被缩放；拖动旋转可以看到椭球的三个半轴。");
+const defaults = { shape: "ellipsoid", scale: 1.2 };
+
+useLabUrl({ shape, scale });
+
+function reset() {
+  shape.value = defaults.shape;
+  scale.value = defaults.scale;
+}
 
 let renderer;
 let scene;
@@ -197,7 +206,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <LabShell title="二次曲面" formula="xᵀAx = 1" :description="copy">
+  <LabShell title="二次曲面" formula="xᵀAx = 1" :description="copy" @reset="reset">
     <template #stage>
       <canvas ref="canvas" aria-hidden="true"></canvas>
     </template>
