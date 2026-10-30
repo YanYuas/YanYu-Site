@@ -1,0 +1,46 @@
+---
+import StarlightPage from "@astrojs/starlight/components/StarlightPage.astro";
+import { getTagPages } from "../../lib/tags";
+
+export async function getStaticPaths() {
+  const groups = await getTagPages();
+  return groups.map((group) => ({
+    params: { tag: group.tag },
+    props: { group },
+  }));
+}
+
+const { group } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<StarlightPage
+  frontmatter={{
+    title: `标签：${group.tag}`,
+    description: `YanYu-Site 中带有「${group.tag}」标签的全部内容。`,
+  }}
+>
+  <p class="tag-page__intro">
+    「{group.tag}」下共有 {group.pages.length} 篇内容。
+  </p>
+
+  <ul class="tag-page__list">
+    {
+      group.pages.map((page) => (
+        <li>
+          <a href={page.href}>
+            <strong>{page.title}</strong>
+            <span class="tag-page__meta">
+              {page.section === group.tag ? "打开 →" : page.section}
+              {page.description && ` · ${page.description}`}
+            </span>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="tag-page__back">
+    <a href={`${base}/tags/`}>← 返回标签总览</a>
+  </p>
+</StarlightPage>

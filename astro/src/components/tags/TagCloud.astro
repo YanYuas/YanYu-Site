@@ -1,0 +1,24 @@
+---
+import { getTagPages, tagHref } from "../../lib/tags";
+
+const groups = await getTagPages();
+const entryCount = new Set(groups.flatMap((group) => group.pages.map((page) => page.href))).size;
+---
+
+<p class="tag-cloud__meta">
+  共 <strong>{groups.length}</strong> 个标签，覆盖 <strong>{entryCount}</strong> 篇内容。
+  点标签可以看同一主题下的全部文章。
+</p>
+
+<ul class="tag-cloud">
+  {
+    groups.map((group) => (
+      <li>
+        <a href={tagHref(group.tag)}>
+          <span>{group.tag}</span>
+          <em>{group.pages.length}</em>
+        </a>
+      </li>
+    ))
+  }
+</ul>
