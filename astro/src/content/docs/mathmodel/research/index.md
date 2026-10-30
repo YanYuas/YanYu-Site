@@ -1,5 +1,6 @@
 ---
 title: "深入论文研究"
+description: "最小覆盖圆、SNCE 等研究与学术项目记录。"
 tags:
   - 数学建模
 ---

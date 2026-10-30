@@ -1,5 +1,6 @@
 ---
 title: "随笔"
+description: "日常记录、AI 实践、阅读与写作。"
 tags:
   - 随笔
 ---

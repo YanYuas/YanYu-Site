@@ -31,8 +31,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           <a href={page.href}>
             <strong>{page.title}</strong>
             <span class="tag-page__meta">
-              {page.section === group.tag ? "打开 →" : page.section}
-              {page.description && ` · ${page.description}`}
+              {page.description || (page.section === group.tag ? "打开 →" : page.section)}
             </span>
           </a>
         </li>

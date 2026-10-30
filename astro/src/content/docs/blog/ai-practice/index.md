@@ -1,5 +1,6 @@
 ---
 title: "AI 实践"
+description: "AI 辅助建模、写作与编程的实践记录。"
 tags:
   - 随笔
   - AI

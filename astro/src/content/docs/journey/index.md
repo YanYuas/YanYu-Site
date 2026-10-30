@@ -1,5 +1,6 @@
 ---
 title: 成长之路
+description: "从零搭站、竞赛与项目的时间线，以及个人简历。"
 hide:
   - toc
 tags:
