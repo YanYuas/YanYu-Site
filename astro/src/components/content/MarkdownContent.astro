@@ -1,0 +1,11 @@
+---
+import "@astrojs/starlight/style/markdown.css";
+import TagList from "./TagList.astro";
+
+const tags = Astro.locals.starlightRoute.entry.data.tags ?? [];
+---
+
+<div class="sl-markdown-content">
+  <slot />
+  {tags.length > 0 && <TagList tags={tags} />}
+</div>

@@ -71,6 +71,7 @@ export default defineConfig({
       ],
       components: {
         Hero: "./src/components/home/HomeHero.astro",
+        MarkdownContent: "./src/components/content/MarkdownContent.astro",
       },
       social: [
         { icon: "github", label: "GitHub", href: "https://github.com/YanYuas" },

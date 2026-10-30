@@ -1,0 +1,20 @@
+---
+import { tagHref } from "../../lib/tags";
+
+type Props = {
+  tags: string[];
+};
+
+const { tags } = Astro.props;
+---
+
+<nav class="page-tags" aria-label="内容标签">
+  <span class="page-tags__label">标签</span>
+  {
+    tags.map((tag) => (
+      <a class="page-tags__item" href={tagHref(tag)}>
+        {tag}
+      </a>
+    ))
+  }
+</nav>

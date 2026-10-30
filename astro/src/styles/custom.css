@@ -1474,6 +1474,54 @@ a.card:hover {
   border-radius: 0 10px 10px 0;
 }
 
+.starlight-aside--note {
+  --sl-color-asides-text-accent: var(--sa-water);
+  --sl-color-asides-border: var(--sa-water);
+  background-color: rgba(45, 109, 138, 0.1);
+}
+
+.starlight-aside--tip {
+  --sl-color-asides-text-accent: #8a6428;
+  --sl-color-asides-border: var(--sa-gold);
+  background-color: rgba(184, 135, 60, 0.12);
+}
+
+.starlight-aside--caution {
+  --sl-color-asides-text-accent: #9a5a1f;
+  --sl-color-asides-border: #c27a32;
+  background-color: rgba(194, 122, 50, 0.12);
+}
+
+.starlight-aside--danger {
+  --sl-color-asides-text-accent: var(--sa-fire);
+  --sl-color-asides-border: var(--sa-fire);
+  background-color: rgba(180, 77, 38, 0.1);
+}
+
+[data-theme="dark"] .starlight-aside--note {
+  --sl-color-asides-text-accent: #8ec4d9;
+  --sl-color-asides-border: var(--sa-water);
+  background-color: rgba(45, 109, 138, 0.18);
+}
+
+[data-theme="dark"] .starlight-aside--tip {
+  --sl-color-asides-text-accent: var(--sa-gold-light);
+  --sl-color-asides-border: var(--sa-gold);
+  background-color: rgba(184, 135, 60, 0.18);
+}
+
+[data-theme="dark"] .starlight-aside--caution {
+  --sl-color-asides-text-accent: #e0a05d;
+  --sl-color-asides-border: #c27a32;
+  background-color: rgba(194, 122, 50, 0.18);
+}
+
+[data-theme="dark"] .starlight-aside--danger {
+  --sl-color-asides-text-accent: #e09158;
+  --sl-color-asides-border: var(--sa-fire);
+  background-color: rgba(180, 77, 38, 0.18);
+}
+
 /* 内容面板顶部一条火线 */
 [data-theme="light"] .content-panel {
   border-top: 2px solid rgba(180, 77, 38, 0.42);
@@ -1637,6 +1685,40 @@ nav.sidebar {
 .tag-page__back {
   margin-top: 1.8rem;
   font-size: 0.9rem;
+}
+
+/* 文章底部标签 */
+.page-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 2.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--sl-color-hairline);
+}
+
+.page-tags__label {
+  margin-right: 0.25rem;
+  color: var(--sl-color-gray-3);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+}
+
+.page-tags__item {
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  color: var(--sl-color-gray-3);
+  font-size: 0.76rem;
+  line-height: 1.7;
+  text-decoration: none;
+}
+
+.page-tags__item:hover {
+  border-color: var(--sa-fire);
+  color: var(--sa-fire);
+  text-decoration: none;
 }
 
 /* 404 */
