@@ -134,33 +134,33 @@ tags:
 <div class="card-index">03</div>
 </div>
 
-<!-- 2026.05 电工杯 -->
+<!-- 2026.05 五一杯 -->
 <div class="timeline-card">
-<div class="card-date">2026.05</div>
-<h3>电工杯数学建模竞赛</h3>
-<p class="card-org">中国电机工程学会</p>
-<span class="card-badge green">省级三等奖</span>
-<p class="card-note">第一次参加数学建模竞赛，建模手初体验。从那以后一发不可收拾，半年打了五场。</p>
+<div class="card-date">2026.05.01</div>
+<h3>五一数学建模联赛</h3>
+<p class="card-org">中国矿业大学等</p>
+<span class="card-badge gray">未完成</span>
+<p class="card-note">第一场，A题。第一次完整走了一遍赛题、建模和论文流程。</p>
 <div class="card-index">04</div>
 </div>
 
-<!-- 2026.07 华数杯 -->
+<!-- 2026.05 电工杯 -->
 <div class="timeline-card">
-<div class="card-date">2026.07</div>
-<h3>华数杯数学建模竞赛</h3>
-<p class="card-org">中国工业与应用数学学会</p>
-<span class="card-badge gray">待公布</span>
-<p class="card-note">第二场，开始找到团队配合的节奏。</p>
+<div class="card-date">2026.05.23</div>
+<h3>电工杯数学建模竞赛</h3>
+<p class="card-org">中国电机工程学会</p>
+<span class="card-badge green">省级三等奖</span>
+<p class="card-note">第二场，B题嵌入式养老站点。建模手初体验，开始知道团队配合是怎么回事。</p>
 <div class="card-index">05</div>
 </div>
 
-<!-- 2026.08 五一 -->
+<!-- 2026.08 华数杯 -->
 <div class="timeline-card">
-<div class="card-date">2026.08</div>
-<h3>五一数学建模联赛</h3>
-<p class="card-org">中国矿业大学等</p>
-<span class="card-badge gray">待公布</span>
-<p class="card-note">第三场，暑假留校比赛，天气很热但状态不错。</p>
+<div class="card-date">2026.08.07</div>
+<h3>华数杯数学建模竞赛</h3>
+<p class="card-org">中国工业与应用数学学会</p>
+<span class="card-badge gray">未完成</span>
+<p class="card-note">第三场，B题 VLSI 布图规划。开始找到团队配合的节奏。</p>
 <div class="card-index">06</div>
 </div>
 
@@ -176,21 +176,21 @@ tags:
 
 <!-- 2026.09 国赛 -->
 <div class="timeline-card important">
-<div class="card-date">2026.09</div>
+<div class="card-date">2026.09.10</div>
 <h3>高教社杯全国大学生数学建模竞赛</h3>
 <p class="card-org">中国工业与应用数学学会 · 国家级赛事</p>
 <span class="card-badge gold">国赛</span>
-<p class="card-note">第五场，也是最重要的一场。B题，建模手位置，三天三夜。结果待公布。</p>
+<p class="card-note">第四场，也是最重要的一场。B题，建模手位置，三天三夜。结果待公布。</p>
 <div class="card-index">08</div>
 </div>
 
-<!-- 2026.10 亚太杯 -->
+<!-- 2026.11 亚太杯 -->
 <div class="timeline-card">
-<div class="card-date">2026.10</div>
+<div class="card-date">2026.11</div>
 <h3>亚太杯数学建模竞赛</h3>
 <p class="card-org">APMCM · 国际赛事</p>
-<span class="card-badge blue">进行中</span>
-<p class="card-note">亚太杯，目标拿个好成绩。英文论文，对写作能力也是考验。</p>
+<span class="card-badge blue">备赛中</span>
+<p class="card-note">第五场，目标拿个好成绩。英文论文，对写作能力也是考验。</p>
 <div class="card-index">09</div>
 </div>
 
