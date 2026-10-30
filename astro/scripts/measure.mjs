@@ -9,6 +9,16 @@ console.log("dist files", files.length, "raw MB", (total/1048576).toFixed(2), "g
 const js=files.filter(f=>f.endsWith(".js")).map(f=>{const b=fs.readFileSync(f); return {f:path.basename(f),raw:b.length,gz:zlib.gzipSync(b,{level:9}).length};}).sort((a,b)=>b.raw-a.raw);
 console.log("JS chunks", JSON.stringify(js.slice(0,12),null,2));
 const pf=files.filter(f=>f.includes("pagefind")); let pRaw=0; for(const f of pf) pRaw+=fs.statSync(f).size; console.log("pagefind files",pf.length,"raw KB",(pRaw/1024).toFixed(1));
-const home=fs.readFileSync("dist/index.html","utf8"); const lab=fs.readFileSync("dist/analytic-geometry/lab/index.html","utf8");
-for(const [name,html] of [["home",home],["lab",lab]]) { const chunks=[...html.matchAll(/src="([^"]+\.js)"/g)].map(m=>m[1].split("/").pop()); console.log(name,"scripts",JSON.stringify([...new Set(chunks)])); }
-const mk="..\\site\\search\\search_index.json"; if(fs.existsSync(mk)) console.log("mkdocs search index MB",(fs.statSync(mk).size/1048576).toFixed(2));
+const pages = [
+  ["home", "dist/index.html"],
+  ["lab", "dist/maththeory/analytic-geometry/lab/index.html"],
+];
+for (const [name, file] of pages) {
+  if (!fs.existsSync(file)) {
+    console.log(name, "missing", file);
+    continue;
+  }
+  const html = fs.readFileSync(file, "utf8");
+  const chunks = [...html.matchAll(/src="([^"]+\.js)"/g)].map((m) => m[1].split("/").pop());
+  console.log(name, "scripts", JSON.stringify([...new Set(chunks)]));
+}
