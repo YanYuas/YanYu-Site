@@ -1,5 +1,6 @@
 ---
 title: "SNCE充要图谱 v3 · 方法论规范"
+description: "SNCE 充要图谱 v3：知识条目的生成模板、五阶内核与操作流程。"
 tags:
   - 高等代数
   - SNCE
