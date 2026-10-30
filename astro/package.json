@@ -1,5 +1,5 @@
 {
-  "name": "yanyu-astro-spike",
+  "name": "yanyu-astro-site",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -10,6 +10,7 @@
     "check": "astro check",
     "check:math": "node scripts/check-math.mjs",
     "check:links": "node scripts/check-links.mjs",
+    "verify": "npm run check && npm run check:math && npm run build && npm run check:links",
     "measure": "node scripts/measure.mjs",
     "check:browser": "node scripts/browser-check.mjs"
   },

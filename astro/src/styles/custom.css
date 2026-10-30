@@ -46,32 +46,6 @@ body {
   color: var(--sl-color-gray-2);
 }
 
-/* 数据驱动的实验卡片 */
-.lab-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0 2.5rem;
-}
-
-.lab-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--sl-color-hairline);
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.025);
-  color: inherit;
-  text-decoration: none;
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.lab-card:hover {
-  border-color: var(--sl-color-accent);
-  transform: translateY(-2px);
-}
-
 /* 迁移后的 Material grid cards（HTML 版） */
 .card-grid {
   display: grid;
@@ -107,33 +81,6 @@ a.card:hover {
   color: var(--sl-color-gray-3);
   font-size: 0.82rem;
   line-height: 1.7;
-}
-
-.lab-card strong {
-  color: var(--sl-color-white);
-  font-size: 1.05rem;
-}
-
-.lab-card code {
-  color: var(--sl-color-accent);
-  font-size: 0.8rem;
-}
-
-.lab-card span:last-child {
-  color: var(--sl-color-gray-3);
-  font-size: 0.82rem;
-  line-height: 1.7;
-}
-
-.lab-card__status {
-  align-self: flex-start;
-  padding: 0.1rem 0.4rem;
-  border: 1px solid var(--sl-color-hairline);
-  border-radius: 999px;
-  color: var(--sl-color-gray-3);
-  font: 0.62rem/1.4 monospace;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 /* ============================================================
@@ -809,22 +756,19 @@ nav.sidebar {
 }
 
 /* 卡片通用：纸 + 火线 */
-.card,
-.lab-card {
+.card {
   border: 1px solid var(--sl-color-hairline);
   border-radius: 16px;
   background: rgba(255, 252, 245, 0.72);
   box-shadow: 0 10px 30px rgba(44, 53, 71, 0.05);
 }
 
-[data-theme="dark"] .card,
-[data-theme="dark"] .lab-card {
+[data-theme="dark"] .card {
   background: rgba(14, 29, 48, 0.7);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 
-a.card:hover,
-a.lab-card:hover {
+a.card:hover {
   border-color: var(--sa-fire);
   transform: translateY(-3px);
   box-shadow: 0 18px 40px rgba(180, 77, 38, 0.12);
@@ -1006,8 +950,10 @@ a.lab-card:hover {
 
 /* 首页下半部分 */
 .home-sections {
-  width: min(1120px, calc(100% - 3rem));
-  padding: 3.5rem 0 4rem;
+  width: 100vw;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  padding: 3.5rem max(1.5rem, calc((100vw - 1120px) / 2)) 4rem;
 }
 
 .home-sections h2 {
@@ -1336,11 +1282,242 @@ a.lab-card:hover {
 
 @media (max-width: 640px) {
   .home-sections {
-    width: calc(100% - 1.6rem);
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    padding-inline: 1rem;
   }
 
   .manifesto p:last-child {
     font-size: 0.92rem;
+  }
+}
+
+/* ============================================================
+   阅读排版：中文长文
+   ============================================================ */
+
+:root[data-theme] {
+  --sl-content-width: 47.5rem;
+}
+
+.sl-markdown-content {
+  font-size: 1.0625rem;
+  line-height: 1.92;
+  letter-spacing: 0.008em;
+  color: var(--sl-color-text);
+  text-wrap: pretty;
+}
+
+.sl-markdown-content > p {
+  margin-block: 0.88em;
+}
+
+.sl-markdown-content > p:first-child {
+  margin-top: 0.2em;
+}
+
+@media (min-width: 900px) {
+  .sl-markdown-content > p,
+  .sl-markdown-content > ul,
+  .sl-markdown-content > ol {
+    text-align: justify;
+    text-justify: inter-ideograph;
+  }
+}
+
+.sl-markdown-content h1 {
+  margin-top: 0;
+  margin-bottom: 0.9em;
+  font-size: clamp(2rem, 3.4vw, 2.75rem);
+  line-height: 1.32;
+}
+
+.sl-markdown-content h2 {
+  margin-top: 2.35em;
+  margin-bottom: 0.75em;
+  font-size: 1.58rem;
+  line-height: 1.4;
+}
+
+.sl-markdown-content h3 {
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+  font-size: 1.22rem;
+  line-height: 1.5;
+}
+
+.sl-markdown-content h4 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-size: 1.06rem;
+}
+
+.sl-markdown-content ul,
+.sl-markdown-content ol {
+  line-height: 1.85;
+  padding-inline-start: 1.35em;
+}
+
+.sl-markdown-content li {
+  margin-block: 0.3em;
+}
+
+.sl-markdown-content li::marker {
+  color: var(--sa-fire);
+}
+
+.sl-markdown-content strong {
+  color: var(--sl-color-white);
+  font-weight: 650;
+}
+
+.sl-markdown-content a {
+  color: var(--sl-color-accent);
+  text-decoration-color: color-mix(in srgb, var(--sl-color-accent) 40%, transparent);
+  text-decoration-thickness: 1px;
+}
+
+.sl-markdown-content a:hover {
+  text-decoration-thickness: 2px;
+}
+
+.sl-markdown-content hr {
+  margin-block: 2.5em;
+  border-color: var(--sl-color-hairline);
+}
+
+/* 引用：像书页里的题记 */
+.sl-markdown-content blockquote {
+  margin: 1.6em 0;
+  padding: 0.9em 1.2em;
+  border-inline-start: 3px solid var(--sa-fire);
+  border-radius: 0 10px 10px 0;
+  background:
+    linear-gradient(90deg, rgba(180, 77, 38, 0.07), transparent 72%),
+    rgba(255, 252, 245, 0.45);
+  color: var(--sl-color-gray-2);
+}
+
+[data-theme="dark"] .sl-markdown-content blockquote {
+  background:
+    linear-gradient(90deg, rgba(216, 115, 63, 0.12), transparent 72%),
+    rgba(10, 24, 42, 0.45);
+}
+
+.sl-markdown-content blockquote > p:first-child {
+  margin-top: 0;
+}
+
+.sl-markdown-content blockquote > p:last-child {
+  margin-bottom: 0;
+}
+
+/* 表格：暖纸、清晰表头 */
+.sl-markdown-content table {
+  width: 100%;
+  margin-block: 1.5em;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.sl-markdown-content th {
+  background: rgba(180, 77, 38, 0.08);
+  color: var(--sl-color-text);
+  font-weight: 650;
+  text-align: start;
+}
+
+.sl-markdown-content th,
+.sl-markdown-content td {
+  padding: 0.6em 0.7em;
+  border-color: var(--sl-color-hairline);
+}
+
+.sl-markdown-content tbody tr:nth-child(even) {
+  background: rgba(255, 252, 245, 0.42);
+}
+
+[data-theme="dark"] .sl-markdown-content tbody tr:nth-child(even) {
+  background: rgba(14, 29, 48, 0.42);
+}
+
+/* 代码与公式 */
+.sl-markdown-content :not(pre) > code {
+  padding: 0.15em 0.4em;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 5px;
+  background: var(--sl-color-bg-inline-code);
+  font-size: 0.9em;
+}
+
+.sl-markdown-content pre {
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.katex-display {
+  margin: 1.45em 0;
+  padding-block: 0.15em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex {
+  font-size: 1.04em;
+}
+
+/* 提示块：统一左线 */
+.starlight-aside {
+  border-inline-start-width: 3px;
+  border-radius: 0 10px 10px 0;
+}
+
+/* 内容面板顶部一条火线 */
+[data-theme="light"] .content-panel {
+  border-top: 2px solid rgba(180, 77, 38, 0.42);
+}
+
+[data-theme="dark"] .content-panel {
+  border-top: 2px solid rgba(216, 115, 63, 0.38);
+}
+
+/* 侧栏与目录 */
+nav.sidebar {
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.right-sidebar {
+  font-size: 0.84rem;
+  line-height: 1.6;
+}
+
+/* 手机：字号略小、左对齐、减少留白 */
+@media (max-width: 720px) {
+  .sl-markdown-content {
+    font-size: 1rem;
+    line-height: 1.86;
+    letter-spacing: 0;
+  }
+
+  .sl-markdown-content h2 {
+    margin-top: 2em;
+    font-size: 1.42rem;
+  }
+
+  .sl-markdown-content h3 {
+    margin-top: 1.5em;
+    font-size: 1.15rem;
+  }
+
+  .sl-markdown-content > p {
+    margin-block: 0.8em;
+  }
+
+  .sl-markdown-content blockquote {
+    padding: 0.8em 1em;
   }
 }
 

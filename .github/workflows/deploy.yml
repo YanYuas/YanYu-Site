@@ -40,6 +40,9 @@ jobs:
       - name: Astro check
         run: npm run check
 
+      - name: Formula check
+        run: npm run check:math
+
       - name: Build
         run: npm run build
 
