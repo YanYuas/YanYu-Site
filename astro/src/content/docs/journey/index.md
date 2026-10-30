@@ -167,9 +167,9 @@ tags:
 <div class="timeline-card">
 <div class="card-date">2026.09</div>
 <h3>个人网站 YanYu-Site 上线</h3>
-<p class="card-org">MkDocs + Material · GitHub Pages</p>
+<p class="card-org">Astro + Starlight · GitHub Pages</p>
 <span class="card-badge blue">项目</span>
-<p class="card-note">从零开始自学搭建，零基础到上线。首页史诗粒子风，全站代码逐行注释，GitHub Actions自动部署。</p>
+<p class="card-note">从零开始自学搭建。2026.10 迁移到 Astro，首页、实验台、标签页和搜索全部重做。</p>
 <div class="card-index">07</div>
 </div>
 
@@ -189,7 +189,7 @@ tags:
 <h3>亚太杯数学建模竞赛</h3>
 <p class="card-org">APMCM · 国际赛事</p>
 <span class="card-badge blue">进行中</span>
-<p class="card-note">第六场，目标拿个好成绩。英文论文，对写作能力也是考验。</p>
+<p class="card-note">亚太杯，目标拿个好成绩。英文论文，对写作能力也是考验。</p>
 <div class="card-index">09</div>
 </div>
 
@@ -251,7 +251,7 @@ tags:
 <h3>🏆 竞赛经历</h3>
 <div class="resume-item">
 <div class="resume-item-title">数学建模竞赛 · 建模手</div>
-<div class="resume-item-meta">2026.05 - 至今 · 半年六场</div>
+<div class="resume-item-meta">2026.05 - 至今 · 多场参赛</div>
 <div class="resume-item-desc">
 <ul>
 <li>2026 高教社杯全国大学生数学建模竞赛（国家级，B题）</li>
@@ -277,7 +277,8 @@ tags:
 <span class="skill-tag">FastAPI</span>
 <span class="skill-tag">Vue3</span>
 <span class="skill-tag">JavaScript</span>
-<span class="skill-tag">MkDocs</span>
+<span class="skill-tag">Astro</span>
+<span class="skill-tag">Starlight</span>
 <span class="skill-tag">Git</span>
 <span class="skill-tag">Lingo</span>
 <span class="skill-tag">R</span>
@@ -292,8 +293,8 @@ tags:
 
 <div class="resume-item">
 <div class="resume-item-title">YanYu-Site 个人网站</div>
-<div class="resume-item-meta">MkDocs + Material · GitHub Pages · 2026.09 上线</div>
-<div class="resume-item-desc">从零自学搭建，首页史诗粒子风，全站代码逐行注释，GitHub Actions自动部署。</div>
+<div class="resume-item-meta">Astro + Starlight · GitHub Pages · 2026.09 初版 / 2026.10 迁移</div>
+<div class="resume-item-desc">从零自学搭建，现为 Astro 静态站，含首页 3D 轮播、解析几何实验台、Pagefind 搜索和标签聚合。</div>
 </div>
 
 <div class="resume-item">

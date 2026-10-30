@@ -1772,5 +1772,25 @@ nav.sidebar {
   margin: 0;
 }
 
+/* 键盘焦点：保证在暖纸背景上看得见 */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--sa-fire);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* 用户要求减少动态效果时，不做长动画 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
 
 

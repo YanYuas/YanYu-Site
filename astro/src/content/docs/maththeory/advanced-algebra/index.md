@@ -36,13 +36,13 @@ tags:
     1. 在对应领域目录下新建文件夹（如 F8-xxx/）
     2. 文件夹里放 讲义.md 和 习题集.md
     3. 在本页面对应领域的表格里加一行
-    4. 在 mkdocs.yml 的 nav 里不需要加（Material 会自动扫描）
+    4. 需要出现在侧边栏时，在 astro/src/data/sidebar.generated.mjs 加链接
 
   【怎么添加新领域】
     1. 在 advanced-algebra/ 下新建目录（如 polynomial/）
     2. 新建 index.md 作为领域导览页（参照 linear-space/index.md）
     3. 在本页面加一个 ### 领域四 的小节和表格
-    4. 在 mkdocs.yml 的 nav 里加链接
+    4. 在 astro/src/data/sidebar.generated.mjs 加链接
   ============================================================
 -->
 

@@ -22,4 +22,4 @@ title: 2026 MTMCM 数学建模竞赛（待补充）
 ## 说明
 
 本页先保留目录占位。确认比赛全称与基本信息后，再补充内容，并同步到
-[竞赛作品总览](/YanYu-Site/mathmodel/works/05_mtmcm-2026/) 与 `mkdocs.yml` 导航。
+[竞赛作品总览](/YanYu-Site/mathmodel/works/) 与 `astro/src/data/sidebar.generated.mjs`。
