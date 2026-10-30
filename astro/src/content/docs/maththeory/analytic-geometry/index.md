@@ -36,27 +36,27 @@ tags:
 
 ### 领域一 · 坐标与向量
 
-- [A1 · 坐标系与坐标变换](/YanYu-Site/maththeory/analytic-geometry/coordinates/A1-coordinate-frame/)
+- [A1 · 坐标系与坐标变换](/YanYu-Site/maththeory/analytic-geometry/coordinates/a1-coordinate-frame/)
   —— 仿射坐标系、基变换、坐标变换公式与不变量
-- [A2 · 向量代数与度量](/YanYu-Site/maththeory/analytic-geometry/coordinates/A2-vector-metric/)
+- [A2 · 向量代数与度量](/YanYu-Site/maththeory/analytic-geometry/coordinates/a2-vector-metric/)
   —— 点积、叉积、混合积；长度、角度、面积、体积
 
 ### 领域二 · 曲线与曲面
 
-- [B1 · 直线与平面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B1-line-plane/)
+- [B1 · 直线与平面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b1-line-plane/)
   —— 点向式、一般式、位置关系、距离与夹角
-- [B2 · 圆锥曲线](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B2-conic/)
+- [B2 · 圆锥曲线](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b2-conic/)
   —— 焦点—准线、离心率、极坐标统一方程
-- [B3 · 二次曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B3-quadric/)
+- [B3 · 二次曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b3-quadric/)
   —— 二次型标准形、椭球/双曲/抛物/柱面/锥面
-- [B4 · 参数曲线与曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/B4-parametric/)
+- [B4 · 参数曲线与曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b4-parametric/)
   —— 参数表示、切向量、弧长、环面与莫比乌斯环
 
 ### 领域三 · 变换与分类
 
-- [C1 · 等距与仿射变换](/YanYu-Site/maththeory/analytic-geometry/transformations/C1-isometry-affine/)
+- [C1 · 等距与仿射变换](/YanYu-Site/maththeory/analytic-geometry/transformations/c1-isometry-affine/)
   —— 平移、旋转、反射、伸缩、剪切与它们的矩阵
-- [C2 · 二次型与分类](/YanYu-Site/maththeory/analytic-geometry/transformations/C2-classification/)
+- [C2 · 二次型与分类](/YanYu-Site/maththeory/analytic-geometry/transformations/c2-classification/)
   —— 合同变换、惯性定理、二次曲面的不变量分类
 
 ---

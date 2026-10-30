@@ -39,13 +39,13 @@ title: "领域一 · 矩阵与基"
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **F1** | 基底与坐标 | 高等代数几何视域的第一把钥匙 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/习题集/) |
-| **F2** | 矩阵运算与分块 | 复合变换的代数语言 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/习题集/) |
-| **F3** | 行列式 | 有向体积的代数 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F3-行列式/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F3-行列式/习题集/) |
-| **F4** | 特征理论 | 不变方向上的伸缩因子 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F4-特征理论/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F4-特征理论/习题集/) |
-| **F5** | 相似与标准形 | 换基视角下的变换等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/习题集/) |
-| **F6** | λ矩阵与若尔当标准形 | 亏损矩阵的终极分类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/习题集/) |
-| **F7** | 矩阵分解 | 几何变换的因式分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/习题集/) |
+| **F1** | 基底与坐标 | 高等代数几何视域的第一把钥匙 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/习题集/) |
+| **F2** | 矩阵运算与分块 | 复合变换的代数语言 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/习题集/) |
+| **F3** | 行列式 | 有向体积的代数 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/习题集/) |
+| **F4** | 特征理论 | 不变方向上的伸缩因子 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/习题集/) |
+| **F5** | 相似与标准形 | 换基视角下的变换等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/习题集/) |
+| **F6** | λ矩阵与若尔当标准形 | 亏损矩阵的终极分类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/习题集/) |
+| **F7** | 矩阵分解 | 几何变换的因式分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/习题集/) |
 
 ---
 

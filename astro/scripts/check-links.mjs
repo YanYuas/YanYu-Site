@@ -19,9 +19,8 @@ function walk(dir) {
 walk(dist);
 
 // GitHub Pages is case-sensitive; do not rely on Windows' case-insensitive fs.
-const fileSet = new Set(
-  allFiles.map((file) => path.relative(dist, file).replace(/\\/g, "/"))
-);
+const exactSet = new Set(allFiles.map((file) => path.relative(dist, file).replace(/\\/g, "/")));
+const lowerSet = new Set([...exactSet].map((file) => file.toLowerCase()));
 
 const broken = new Map();
 const seen = new Set();
@@ -46,7 +45,19 @@ for (const file of files) {
     else if (path.posix.extname(relative)) target = relative;
     else target = `${relative}/index.html`;
 
-    if (fileSet.has(target)) continue;
+    // Public content URLs are lowercase. Assets and dynamic tag routes keep
+    // their real case (`/tags/AI/`, `/_astro/page.cNngjUgL.js`).
+    const targetLower = target.toLowerCase();
+    const caseSensitive =
+      target.startsWith("tags/") ||
+      target.startsWith("_astro/") ||
+      target.startsWith("assets/") ||
+      !target.endsWith("/index.html");
+    if (caseSensitive) {
+      if (exactSet.has(target)) continue;
+    } else if (target === targetLower && lowerSet.has(targetLower)) {
+      continue;
+    }
     const key = `${path.relative(dist, file)} -> ${url}`;
     if (!seen.has(key)) {
       seen.add(key);

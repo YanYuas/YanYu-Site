@@ -50,9 +50,9 @@ ADMONITION_TYPES = {
 
 
 def slug(segment: str) -> str:
-    # Astro preserves path-segment case on Linux/GitHub Pages.
-    # Only normalize spaces and dots; do NOT lowercase (`G1` must stay `G1`).
-    return segment.replace(" ", "-").replace(".", "")
+    # GitHub Pages / Astro use lowercase URL slugs in this project.
+    # Keep `G1` as a filename, but the public URL is `g1`.
+    return segment.lower().replace(" ", "-").replace(".", "")
 
 
 def route_for_rel(rel: str) -> str:

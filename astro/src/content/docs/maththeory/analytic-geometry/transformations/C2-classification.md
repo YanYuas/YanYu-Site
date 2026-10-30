@@ -86,4 +86,4 @@ $$
 3. 证明：合同变换不改变二次型的秩。
 4. 举例说明两个矩阵相似但不合同，或合同但不相似。
 
-> 对应高等代数：[T5 · 对角化与谱定理](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/讲义/) 与 [G7 · 二次型与曲面](/YanYu-Site/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义/)。
+> 对应高等代数：[T5 · 对角化与谱定理](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/讲义/) 与 [G7 · 二次型与曲面](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/讲义/)。

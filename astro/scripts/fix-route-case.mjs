@@ -1,6 +1,6 @@
-// Normalize generated route casing to the actual files Astro emits.
-// Windows is case-insensitive, GitHub Pages is not. This script is run after
-// the migration build has emitted `dist/` and before links are trusted.
+// Canonical public URLs are lowercase on GitHub Pages. The Windows build may
+// keep old uppercase directory names, so compare case-insensitively and always
+// write the lowercase route. This is a one-time repair after migration.
 import fs from "node:fs";
 import path from "node:path";
 
@@ -30,15 +30,14 @@ for (const file of htmlFiles) {
   else routes.push(`/${rel}`);
 }
 
-const exact = new Set(routes);
-const lower = new Map(routes.map((route) => [route.toLowerCase(), route]));
+const exact = new Set(routes.map((route) => route.toLowerCase()));
+const lower = new Map(routes.map((route) => [route.toLowerCase(), route.toLowerCase()]));
 let unresolved = 0;
 
 function canonical(route) {
   const withoutSuffix = route.split("#")[0].split("?")[0];
-  if (exact.has(withoutSuffix)) return route;
-  const hit = lower.get(withoutSuffix.toLowerCase());
-  if (hit) return hit + route.slice(withoutSuffix.length);
+  const lowerRoute = withoutSuffix.toLowerCase();
+  if (exact.has(lowerRoute)) return lower.get(lowerRoute) + route.slice(withoutSuffix.length);
   unresolved += 1;
   return route;
 }

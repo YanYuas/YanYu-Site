@@ -28,23 +28,23 @@ export default [
           },
           {
             "label": "2026高教社杯",
-            "link": "/mathmodel/works/04_CUMCM-2026/"
+            "link": "/mathmodel/works/04_cumcm-2026/"
           },
           {
             "label": "2026华数杯",
-            "link": "/mathmodel/works/03_HSMCM-2026/"
+            "link": "/mathmodel/works/03_hsmcm-2026/"
           },
           {
             "label": "2026电工杯",
-            "link": "/mathmodel/works/02_EEMCM-2026/"
+            "link": "/mathmodel/works/02_eemcm-2026/"
           },
           {
             "label": "2026五一杯",
-            "link": "/mathmodel/works/01_51MCM-2026/"
+            "link": "/mathmodel/works/01_51mcm-2026/"
           },
           {
             "label": "2026亚太杯",
-            "link": "/mathmodel/works/06_APMCM-2026/"
+            "link": "/mathmodel/works/06_apmcm-2026/"
           }
         ]
       },
@@ -77,15 +77,15 @@ export default [
             "items": [
               {
                 "label": "高等代数演进史与SNCE视角",
-                "link": "/maththeory/advanced-algebra/theory/高等代数演进史与SNCE视角分析/"
+                "link": "/maththeory/advanced-algebra/theory/高等代数演进史与snce视角分析/"
               },
               {
                 "label": "SNCE充要图谱方法论-v3",
-                "link": "/maththeory/advanced-algebra/theory/SNCE充要图谱方法论-v3/"
+                "link": "/maththeory/advanced-algebra/theory/snce充要图谱方法论-v3/"
               },
               {
                 "label": "SNCE应用框架与方法论验证",
-                "link": "/maththeory/advanced-algebra/theory/SNCE应用框架-线性代数方法论验证/"
+                "link": "/maththeory/advanced-algebra/theory/snce应用框架-线性代数方法论验证/"
               }
             ],
             "collapsed": true
@@ -102,11 +102,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/习题集/"
                   }
                 ]
               },
@@ -115,11 +115,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/习题集/"
                   }
                 ]
               },
@@ -128,11 +128,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F3-行列式/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f3-行列式/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F3-行列式/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f3-行列式/习题集/"
                   }
                 ]
               },
@@ -141,11 +141,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F4-特征理论/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f4-特征理论/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F4-特征理论/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f4-特征理论/习题集/"
                   }
                 ]
               },
@@ -154,11 +154,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/习题集/"
                   }
                 ]
               },
@@ -167,11 +167,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/习题集/"
                   }
                 ]
               },
@@ -180,11 +180,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/讲义/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/习题集/"
+                    "link": "/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/习题集/"
                   }
                 ]
               }
@@ -203,11 +203,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/习题集/"
                   }
                 ]
               },
@@ -216,11 +216,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G2-基维数与同构/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g2-基维数与同构/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G2-基维数与同构/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g2-基维数与同构/习题集/"
                   }
                 ]
               },
@@ -229,11 +229,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/习题集/"
                   }
                 ]
               },
@@ -242,11 +242,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G4-商空间/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g4-商空间/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G4-商空间/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g4-商空间/习题集/"
                   }
                 ]
               },
@@ -255,11 +255,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/习题集/"
                   }
                 ]
               },
@@ -268,11 +268,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G6-仿射空间/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g6-仿射空间/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G6-仿射空间/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g6-仿射空间/习题集/"
                   }
                 ]
               },
@@ -281,11 +281,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/习题集/"
                   }
                 ]
               }
@@ -304,11 +304,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/习题集/"
                   }
                 ]
               },
@@ -317,11 +317,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/习题集/"
                   }
                 ]
               },
@@ -330,11 +330,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/习题集/"
                   }
                 ]
               },
@@ -343,11 +343,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/习题集/"
                   }
                 ]
               },
@@ -356,11 +356,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/习题集/"
                   }
                 ]
               },
@@ -369,11 +369,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/习题集/"
                   }
                 ]
               },
@@ -382,11 +382,11 @@ export default [
                 "items": [
                   {
                     "label": "讲义",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/讲义/"
                   },
                   {
                     "label": "习题集",
-                    "link": "/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集/"
+                    "link": "/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/习题集/"
                   }
                 ]
               }
@@ -415,11 +415,11 @@ export default [
               },
               {
                 "label": "A1 · 坐标系与坐标变换",
-                "link": "/maththeory/analytic-geometry/coordinates/A1-coordinate-frame/"
+                "link": "/maththeory/analytic-geometry/coordinates/a1-coordinate-frame/"
               },
               {
                 "label": "A2 · 向量代数与度量",
-                "link": "/maththeory/analytic-geometry/coordinates/A2-vector-metric/"
+                "link": "/maththeory/analytic-geometry/coordinates/a2-vector-metric/"
               }
             ],
             "collapsed": true
@@ -433,19 +433,19 @@ export default [
               },
               {
                 "label": "B1 · 直线与平面",
-                "link": "/maththeory/analytic-geometry/curves-surfaces/B1-line-plane/"
+                "link": "/maththeory/analytic-geometry/curves-surfaces/b1-line-plane/"
               },
               {
                 "label": "B2 · 圆锥曲线",
-                "link": "/maththeory/analytic-geometry/curves-surfaces/B2-conic/"
+                "link": "/maththeory/analytic-geometry/curves-surfaces/b2-conic/"
               },
               {
                 "label": "B3 · 二次曲面",
-                "link": "/maththeory/analytic-geometry/curves-surfaces/B3-quadric/"
+                "link": "/maththeory/analytic-geometry/curves-surfaces/b3-quadric/"
               },
               {
                 "label": "B4 · 参数曲线与曲面",
-                "link": "/maththeory/analytic-geometry/curves-surfaces/B4-parametric/"
+                "link": "/maththeory/analytic-geometry/curves-surfaces/b4-parametric/"
               }
             ],
             "collapsed": true
@@ -459,11 +459,11 @@ export default [
               },
               {
                 "label": "C1 · 等距与仿射变换",
-                "link": "/maththeory/analytic-geometry/transformations/C1-isometry-affine/"
+                "link": "/maththeory/analytic-geometry/transformations/c1-isometry-affine/"
               },
               {
                 "label": "C2 · 二次型与分类",
-                "link": "/maththeory/analytic-geometry/transformations/C2-classification/"
+                "link": "/maththeory/analytic-geometry/transformations/c2-classification/"
               }
             ],
             "collapsed": true

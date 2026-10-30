@@ -40,13 +40,13 @@ title: "领域三 · 线性变换"
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **T1** | 线性变换的定义与基本性质 | 空间之间的保持结构映射 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/习题集/) |
-| **T2** | 矩阵表示与相似 | 换基定理的深层几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/习题集/) |
-| **T3** | 核像与不变子空间 | 变换的内在几何结构 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/习题集/) |
-| **T4** | 特征理论的算子视角 | 从不变子空间到谱的几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/习题集/) |
-| **T5** | 对角化与谱定理 | 从判据到正规算子的谱分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/习题集/) |
-| **T6** | Jordan标准形的算子构造 | 从广义特征空间到 Jordan 链 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/习题集/) |
-| **T7** | 特殊线性变换与应用 | 从投影幂等到矩阵指数的几何全景 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集/) |
+| **T1** | 线性变换的定义与基本性质 | 空间之间的保持结构映射 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/习题集/) |
+| **T2** | 矩阵表示与相似 | 换基定理的深层几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/习题集/) |
+| **T3** | 核像与不变子空间 | 变换的内在几何结构 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/习题集/) |
+| **T4** | 特征理论的算子视角 | 从不变子空间到谱的几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/习题集/) |
+| **T5** | 对角化与谱定理 | 从判据到正规算子的谱分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/习题集/) |
+| **T6** | Jordan标准形的算子构造 | 从广义特征空间到 Jordan 链 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/习题集/) |
+| **T7** | 特殊线性变换与应用 | 从投影幂等到矩阵指数的几何全景 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/习题集/) |
 
 ---
 

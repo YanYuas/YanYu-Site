@@ -20,8 +20,8 @@ tags:
 
 | 模块 | 一句话 | 对应高等代数 |
 |---|---|---|
-| [A1 · 坐标系与坐标变换](/YanYu-Site/maththeory/analytic-geometry/coordinates/A1-coordinate-frame/) | 同一个几何对象，换一组基就换一组坐标 | G1/G2 基与维数 |
-| [A2 · 向量代数与度量](/YanYu-Site/maththeory/analytic-geometry/coordinates/A2-vector-metric/) | 点积管角度，叉积管面积，混合积管体积 | G3 内积空间 |
+| [A1 · 坐标系与坐标变换](/YanYu-Site/maththeory/analytic-geometry/coordinates/a1-coordinate-frame/) | 同一个几何对象，换一组基就换一组坐标 | G1/G2 基与维数 |
+| [A2 · 向量代数与度量](/YanYu-Site/maththeory/analytic-geometry/coordinates/a2-vector-metric/) | 点积管角度，叉积管面积，混合积管体积 | G3 内积空间 |
 
 ## 学习建议
 

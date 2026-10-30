@@ -16,8 +16,8 @@ tags:
 
 | 模块 | 核心问题 | 对应高等代数 |
 |---|---|---|
-| [C1 · 等距与仿射变换](/YanYu-Site/maththeory/analytic-geometry/transformations/C1-isometry-affine/) | 哪些变换保持距离/角度/平行性/面积比 | T2 矩阵表示与相似 |
-| [C2 · 二次型与分类](/YanYu-Site/maththeory/analytic-geometry/transformations/C2-classification/) | 合同变换下的标准形与惯性指数 | T4/T5 特征理论与对角化 |
+| [C1 · 等距与仿射变换](/YanYu-Site/maththeory/analytic-geometry/transformations/c1-isometry-affine/) | 哪些变换保持距离/角度/平行性/面积比 | T2 矩阵表示与相似 |
+| [C2 · 二次型与分类](/YanYu-Site/maththeory/analytic-geometry/transformations/c2-classification/) | 合同变换下的标准形与惯性指数 | T4/T5 特征理论与对角化 |
 
 ## 学习建议
 

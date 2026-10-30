@@ -28,7 +28,7 @@ function entryPath(entry: { id: string; filePath?: string }): string {
     .replace(/^.*?src\/content\/docs\//, "")
     .replace(/\.(md|mdx)$/, "")
     .replace(/(^|\/)index$/, "");
-  return normalized ? `/${normalized}/` : "/";
+  return normalized ? `/${normalized.toLowerCase()}/` : "/";
 }
 
 function sectionName(id: string): string {

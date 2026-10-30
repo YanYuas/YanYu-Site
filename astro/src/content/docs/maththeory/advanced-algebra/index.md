@@ -74,13 +74,13 @@ tags:
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **F1** | 基底与坐标 | 高等代数几何视域的第一把钥匙 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F1-基底与坐标/习题集/) |
-| **F2** | 矩阵运算与分块 | 复合变换的代数语言 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F2-矩阵运算与分块/习题集/) |
-| **F3** | 行列式 | 有向体积的代数 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F3-行列式/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F3-行列式/习题集/) |
-| **F4** | 特征理论 | 不变方向上的伸缩因子 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F4-特征理论/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F4-特征理论/习题集/) |
-| **F5** | 相似与标准形 | 换基视角下的变换等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F5-相似与标准形/习题集/) |
-| **F6** | λ矩阵与若尔当标准形 | 亏损矩阵的终极分类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F6-λ矩阵与若尔当标准形/习题集/) |
-| **F7** | 矩阵分解 | 几何变换的因式分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/F7-矩阵分解/习题集/) |
+| **F1** | 基底与坐标 | 高等代数几何视域的第一把钥匙 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f1-基底与坐标/习题集/) |
+| **F2** | 矩阵运算与分块 | 复合变换的代数语言 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f2-矩阵运算与分块/习题集/) |
+| **F3** | 行列式 | 有向体积的代数 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f3-行列式/习题集/) |
+| **F4** | 特征理论 | 不变方向上的伸缩因子 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f4-特征理论/习题集/) |
+| **F5** | 相似与标准形 | 换基视角下的变换等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f5-相似与标准形/习题集/) |
+| **F6** | λ矩阵与若尔当标准形 | 亏损矩阵的终极分类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f6-λ矩阵与若尔当标准形/习题集/) |
+| **F7** | 矩阵分解 | 几何变换的因式分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/f7-矩阵分解/习题集/) |
 
 [:material-arrow-right: 进入领域一详情](/YanYu-Site/maththeory/advanced-algebra/matrix-basis/)
 
@@ -91,13 +91,13 @@ tags:
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **G1** | 线性空间的基本原理 | 公理化空间观 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G1-线性空间的定义与基本性质/习题集/) |
-| **G2** | 基维数与同构 | 舞台的骨架与标尺 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G2-基维数与同构/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G2-基维数与同构/习题集/) |
-| **G3** | 内积空间与正交性 | 骨架的度量与垂直 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G3-内积空间与正交性/习题集/) |
-| **G4** | 商空间 | 折叠的舞台与等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G4-商空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G4-商空间/习题集/) |
-| **G5** | 解析几何嵌入 | 欧几里得几何的代数翻译 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G5-解析几何嵌入/习题集/) |
-| **G6** | 仿射空间 | 无原点的几何与点向量分离 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G6-仿射空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G6-仿射空间/习题集/) |
-| **G7** | 二次型与曲面 | 对称矩阵的合同分类与二次曲面 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/G7-二次型与曲面/习题集/) |
+| **G1** | 线性空间的基本原理 | 公理化空间观 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g1-线性空间的定义与基本性质/习题集/) |
+| **G2** | 基维数与同构 | 舞台的骨架与标尺 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g2-基维数与同构/习题集/) |
+| **G3** | 内积空间与正交性 | 骨架的度量与垂直 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g3-内积空间与正交性/习题集/) |
+| **G4** | 商空间 | 折叠的舞台与等价类 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g4-商空间/习题集/) |
+| **G5** | 解析几何嵌入 | 欧几里得几何的代数翻译 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g5-解析几何嵌入/习题集/) |
+| **G6** | 仿射空间 | 无原点的几何与点向量分离 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g6-仿射空间/习题集/) |
+| **G7** | 二次型与曲面 | 对称矩阵的合同分类与二次曲面 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-space/g7-二次型与曲面/习题集/) |
 
 [:material-arrow-right: 进入领域二详情](/YanYu-Site/maththeory/advanced-algebra/linear-space/)
 
@@ -108,13 +108,13 @@ tags:
 
 | 模块 | 标题 | 一句话几何锚定 | 内容 |
 |---|---|---|---|
-| **T1** | 线性变换的定义与基本性质 | 空间之间的保持结构映射 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T1-线性变换的定义与基本性质/习题集/) |
-| **T2** | 矩阵表示与相似 | 换基定理的深层几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T2-矩阵表示与相似/习题集/) |
-| **T3** | 核像与不变子空间 | 变换的内在几何结构 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T3-核像与不变子空间/习题集/) |
-| **T4** | 特征理论的算子视角 | 从不变子空间到谱的几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T4-特征理论的算子视角/习题集/) |
-| **T5** | 对角化与谱定理 | 从判据到正规算子的谱分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T5-对角化与谱定理/习题集/) |
-| **T6** | Jordan标准形的算子构造 | 从广义特征空间到 Jordan 链 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T6-Jordan标准形的算子构造/习题集/) |
-| **T7** | 特殊线性变换与应用 | 从投影幂等到矩阵指数的几何全景 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/T7-特殊线性变换与应用/习题集/) |
+| **T1** | 线性变换的定义与基本性质 | 空间之间的保持结构映射 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t1-线性变换的定义与基本性质/习题集/) |
+| **T2** | 矩阵表示与相似 | 换基定理的深层几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t2-矩阵表示与相似/习题集/) |
+| **T3** | 核像与不变子空间 | 变换的内在几何结构 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t3-核像与不变子空间/习题集/) |
+| **T4** | 特征理论的算子视角 | 从不变子空间到谱的几何 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t4-特征理论的算子视角/习题集/) |
+| **T5** | 对角化与谱定理 | 从判据到正规算子的谱分解 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t5-对角化与谱定理/习题集/) |
+| **T6** | Jordan标准形的算子构造 | 从广义特征空间到 Jordan 链 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t6-jordan标准形的算子构造/习题集/) |
+| **T7** | 特殊线性变换与应用 | 从投影幂等到矩阵指数的几何全景 | [讲义](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/讲义/) · [习题集](/YanYu-Site/maththeory/advanced-algebra/linear-transform/t7-特殊线性变换与应用/习题集/) |
 
 [:material-arrow-right: 进入领域三详情](/YanYu-Site/maththeory/advanced-algebra/linear-transform/)
 
@@ -137,11 +137,11 @@ tags:
 
 充要认知法（SNCE）在线性代数领域的理论产物——从历史验证到操作规范，再到学术框架，形成完整的研究链条：
 
-- [高等代数演进史与SNCE视角分析](/YanYu-Site/maththeory/advanced-algebra/theory/高等代数演进史与SNCE视角分析/)
+- [高等代数演进史与SNCE视角分析](/YanYu-Site/maththeory/advanced-algebra/theory/高等代数演进史与snce视角分析/)
   —— 四百年演进的深度研究报告，附录C系统验证SNCE发生学命题
-- [SNCE充要图谱方法论 v3](/YanYu-Site/maththeory/advanced-algebra/theory/SNCE充要图谱方法论-v3/)
+- [SNCE充要图谱方法论 v3](/YanYu-Site/maththeory/advanced-algebra/theory/snce充要图谱方法论-v3/)
   —— SNCE理论指导下的条目模板、命题类型化与理解深度分级规范
-- [SNCE应用框架与方法论验证](/YanYu-Site/maththeory/advanced-algebra/theory/SNCE应用框架-线性代数方法论验证/)
+- [SNCE应用框架与方法论验证](/YanYu-Site/maththeory/advanced-algebra/theory/snce应用框架-线性代数方法论验证/)
   —— 三领域架构的设计论证、八项缺陷的SNCE理论验证与文献对话
 
 ---
