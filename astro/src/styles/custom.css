@@ -1798,6 +1798,35 @@ nav.sidebar {
   margin-top: 0.9rem;
 }
 
+.lab__presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.7rem;
+}
+
+.lab__presets > span {
+  color: var(--sl-color-gray-3);
+  font-size: 0.72rem;
+}
+
+.lab__presets button {
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.lab__presets button:hover {
+  border-color: var(--sa-fire);
+  color: var(--sa-fire);
+}
+
 .lab__reset,
 .lab__share {
   padding: 0.45rem 0.7rem;

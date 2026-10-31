@@ -13,8 +13,19 @@ const dot = ref("");
 const crossLen = ref("");
 const crossValue = ref("");
 const defaults = { lenA: 1.6, lenB: 1.3, angle: 55 };
+const presets = [
+  { label: "垂直", values: { lenA: 1.6, lenB: 1.3, angle: 90 } },
+  { label: "平行", values: { lenA: 1.6, lenB: 1.3, angle: 0 } },
+  { label: "60°", values: { lenA: 1.6, lenB: 1.3, angle: 60 } },
+];
 
 useLabUrl({ lenA, lenB, angle });
+
+function applyPreset(preset) {
+  lenA.value = preset.values.lenA;
+  lenB.value = preset.values.lenB;
+  angle.value = preset.values.angle;
+}
 
 function reset() {
   lenA.value = defaults.lenA;
@@ -149,6 +160,12 @@ onBeforeUnmount(() => {
         <span>夹角 θ <b>{{ Number(angle).toFixed(0) }}°</b></span>
         <input v-model.number="angle" type="range" min="0" max="180" step="1" />
       </label>
+      <div class="lab__presets" aria-label="向量参数预设">
+        <span>预设</span>
+        <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
+          {{ preset.label }}
+        </button>
+      </div>
       <div class="lab__readout">
         <span>a · b = <b>{{ dot }}</b></span>
         <span>|a × b| = <b>{{ crossLen }}</b></span>

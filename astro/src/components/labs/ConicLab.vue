@@ -8,8 +8,18 @@ const e = ref(0.6);
 const p = ref(1.5);
 const copy = ref("拖动离心率，观察椭圆 → 抛物线 → 双曲线的连续变化。");
 const defaults = { e: 0.6, p: 1.5 };
+const presets = [
+  { label: "椭圆", values: { e: 0.6, p: 1.5 } },
+  { label: "抛物线", values: { e: 1, p: 1.5 } },
+  { label: "双曲线", values: { e: 1.4, p: 1.5 } },
+];
 
 useLabUrl({ e, p });
+
+function applyPreset(preset) {
+  e.value = preset.values.e;
+  p.value = preset.values.p;
+}
 
 function reset() {
   e.value = defaults.e;
@@ -177,6 +187,12 @@ onBeforeUnmount(() => {
         <span>半通径 p <b>{{ Number(p).toFixed(2) }}</b></span>
         <input v-model.number="p" type="range" min="0.5" max="3" step="0.05" />
       </label>
+      <div class="lab__presets" aria-label="圆锥曲线预设">
+        <span>预设</span>
+        <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
+          {{ preset.label }}
+        </button>
+      </div>
       <p class="lab__hint">焦点在原点 · 虚线为准线 · 坐标单位为 1</p>
     </template>
   </LabShell>

@@ -10,8 +10,21 @@ const c = ref(0.2);
 const d = ref(1);
 const det = ref("1.00");
 const defaults = { a: 1, b: 0.5, c: 0.2, d: 1 };
+const presets = [
+  { label: "旋转 90°", values: { a: 0, b: -1, c: 1, d: 0 } },
+  { label: "剪切", values: { a: 1, b: 1, c: 0, d: 1 } },
+  { label: "缩放", values: { a: 1.4, b: 0, c: 0, d: 0.7 } },
+  { label: "奇异", values: { a: 1, b: 1, c: 1, d: 1 } },
+];
 
 useLabUrl({ a, b, c, d });
+
+function applyPreset(preset) {
+  a.value = preset.values.a;
+  b.value = preset.values.b;
+  c.value = preset.values.c;
+  d.value = preset.values.d;
+}
 
 function reset() {
   a.value = defaults.a;
@@ -148,6 +161,12 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
         <span>d <b>{{ Number(d).toFixed(1) }}</b></span>
         <input v-model.number="d" type="range" min="-2" max="2" step="0.1" />
       </label>
+      <div class="lab__presets" aria-label="线性变换预设">
+        <span>预设</span>
+        <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
+          {{ preset.label }}
+        </button>
+      </div>
       <div class="lab__readout">
         <span>det(A) = <b>{{ det }}</b></span>
       </div>

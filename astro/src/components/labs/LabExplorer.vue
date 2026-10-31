@@ -18,7 +18,7 @@ const currentComponent = computed(() => components[current.value.component]);
 function select(slug) {
   active.value = slug;
   if (typeof window !== "undefined") {
-    window.history.replaceState(null, "", `#${slug}`);
+    window.history.replaceState(null, "", `${window.location.pathname}#${slug}`);
   }
 }
 
