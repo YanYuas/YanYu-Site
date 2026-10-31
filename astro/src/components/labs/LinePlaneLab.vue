@@ -11,8 +11,19 @@ const azimuth = ref(30);
 const lineAngle = ref(20);
 const angleText = ref("");
 const defaults = { tilt: 35, azimuth: 30, lineAngle: 20 };
+const presets = [
+  { label: "水平面", values: { tilt: 5, azimuth: 30, lineAngle: 20 } },
+  { label: "倾斜面", values: { tilt: 35, azimuth: 30, lineAngle: 20 } },
+  { label: "竖直面", values: { tilt: 85, azimuth: 30, lineAngle: 20 } },
+];
 
 useLabUrl({ tilt, azimuth, lineAngle });
+
+function applyPreset(preset) {
+  tilt.value = preset.values.tilt;
+  azimuth.value = preset.values.azimuth;
+  lineAngle.value = preset.values.lineAngle;
+}
 
 function reset() {
   tilt.value = defaults.tilt;
@@ -156,6 +167,12 @@ onBeforeUnmount(() => {
         <span>直线方向 <b>{{ Number(lineAngle).toFixed(0) }}°</b></span>
         <input v-model.number="lineAngle" type="range" min="0" max="360" step="1" />
       </label>
+      <div class="lab__presets" aria-label="平面朝向预设">
+        <span>预设</span>
+        <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
+          {{ preset.label }}
+        </button>
+      </div>
       <div class="lab__readout">
         <span>线面角 θ = <b>{{ angleText }}°</b></span>
       </div>
