@@ -73,6 +73,35 @@ export default defineConfig({
           content:
             "(()=>{const set=()=>{const n=document.querySelectorAll('.pagefind-ui__search-input');n.forEach(i=>{if(!i.getAttribute('aria-label'))i.setAttribute('aria-label','站内搜索')});if(n.length)o.disconnect()};const o=new MutationObserver(set);o.observe(document.documentElement,{childList:true,subtree:true});set()})()",
         },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image",
+            content: "https://yanyuas.github.io/YanYu-Site/assets/images/og-default.webp",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: { property: "og:image:width", content: "1200" },
+        },
+        {
+          tag: "meta",
+          attrs: { property: "og:image:height", content: "630" },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            property: "og:image:alt",
+            content: "水火与光之间的衍煜",
+          },
+        },
+        {
+          tag: "meta",
+          attrs: {
+            name: "twitter:image",
+            content: "https://yanyuas.github.io/YanYu-Site/assets/images/og-default.webp",
+          },
+        },
       ],
       components: {
         Hero: "./src/components/home/HomeHero.astro",
