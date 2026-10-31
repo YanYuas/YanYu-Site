@@ -67,7 +67,7 @@ onBeforeUnmount(() => window.removeEventListener("hashchange", syncFromHash));
         :class="{ 'is-active': active === lab.slug }"
         role="tab"
         :aria-selected="active === lab.slug"
-        :aria-controls="`lab-panel-${lab.slug}`"
+        :aria-controls="active === lab.slug ? `lab-panel-${lab.slug}` : undefined"
         :tabindex="active === lab.slug ? 0 : -1"
         @click="select(lab.slug)"
         @keydown="onTabKeydown"
