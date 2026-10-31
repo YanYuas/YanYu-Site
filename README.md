@@ -1,172 +1,175 @@
 # YanYuas · 个人网站
 
-数学与应用数学本科生的个人网站，用 MkDocs + Material 主题搭建。
+数学与应用数学本科生的个人学术网站：数学建模、高等代数、解析几何、随笔与交互实验。
 
-## 网站内容
+- 线上：https://yanyuas.github.io/YanYu-Site/
+- 仓库：https://github.com/YanYuas/YanYu-Site
 
-- **数学建模**：建模手的自我修养、数学与算法基础、竞赛作品、优秀论文精解、深入论文研究
-- **数学理论**：高等代数（三领域 × 七模块 = 21模块、672道习题）
-- **随笔**：日常随笔、AI实践
+---
 
-## 技术栈
+## 现在用什么
 
 | 组件 | 技术 |
-|------|------|
-| 静态站点生成器 | MkDocs 1.6.1 |
-| 主题 | Material for MkDocs 9.7.7 |
-| 中文搜索 | jieba 分词 |
-| 数学公式 | MathJax（本地部署） |
-| 流程图 | Mermaid |
-| 首页特效 | Canvas 粒子背景 + Ken Burns 背景图 |
-| 旧链接重定向 | mkdocs-redirects |
-| 自动部署 | GitHub Actions → GitHub Pages |
-
-## 本地运行
-
-```bash
-# 1. 创建虚拟环境（第一次）
-python -m venv .venv
-
-# 2. 激活虚拟环境
-.venv\Scripts\activate
-
-# 3. 安装依赖
-pip install -r requirements.txt
-
-# 4. 启动本地预览（http://127.0.0.1:8000）
-mkdocs serve
-
-# 5. 构建网站（输出到 site/ 目录）
-mkdocs build --clean
-
-# 6. 发布前严格检查 + 站点验收（CI 也是这两步）
-mkdocs build --clean --strict
-.venv\Scripts\python.exe tools\check_site.py
-```
-
-## 项目结构
-
-```
-YanYu-Site/
-├── docs/                        # 网站内容（Markdown）
-│   ├── index.md                 # 首页（粒子背景 + 史诗插画）
-│   ├── about.md                 # 关于页
-│   ├── mathmodel/               # 数学建模板块（5个子模块）
-│   │   ├── self-cultivation/    # 建模手的自我修养
-│   │   ├── fundamentals/        # 数学与算法基础
-│   │   ├── works/               # 我的竞赛作品（6个目录，05 暂为占位）
-│   │   ├── paper-analysis/      # 优秀论文精解
-│   │   └── research/            # 深入论文研究
-│   ├── maththeory/              # 数学理论板块
-│   │   ├── advanced-algebra/    # 高等代数（三领域七模块）
-│   │   ├── analytic-geometry/   # 解析几何专题（含 Three.js 交互实验）
-│   │   └── probability-theory/  # 概率论（骨架，建设中）
-│   ├── blog/                    # 随笔板块
-│   │   ├── posts/               # 日常随笔
-│   │   └── ai-practice/         # AI实践
-│   ├── journey/                 # 成长之路（灰度，暂未进导航）
-│   ├── assets/images/           # 图片资源（首页背景图等）
-│   ├── stylesheets/             # 自定义样式
-│   │   ├── home.css             # 首页样式（已逐行注释）
-│   │   └── starry-academic.css  # 全站视觉系统
-│   └── javascripts/             # 自定义脚本
-│       ├── particle-bg.js       # 粒子背景引擎
-│       ├── home-greet.js        # 首页问候语（按时段变化）
-│       └── mathjax.js           # LaTeX 渲染配置
-├── _archive/                    # 存档（不参与构建）
-│   └── literature/              # 海灵传说小说（180章）
-├── tools/                       # 维护脚本（验收 / 改名 / 内容修复）
-├── visual/                      # P2 视觉原型（Three.js，暂不参与构建）
-├── overrides/                   # 自定义模板（404 页面）
-├── .github/workflows/           # GitHub Actions 自动部署
-├── mkdocs.yml                   # 网站总配置（已详细注释）
-├── requirements.txt             # Python 依赖清单
-├── .gitignore                   # Git 忽略规则
-└── .gitattributes               # Git 属性配置
-```
-
-## 怎么加新内容
-
-1. 在 `docs/` 对应目录下新建 `.md` 文件
-2. 在 `mkdocs.yml` 的 `nav` 里添加链接
-3. `mkdocs serve` 预览效果
-4. 推送前跑一遍 `mkdocs build --clean --strict`，确认没有警告
-5. `git push` 推送到 GitHub，自动部署
-
-**如果移动/改名已有页面**：不要手动改链接，用下面这个脚本，它会同时改
-Markdown 链接、`mkdocs.yml` 的 nav，并自动补上旧 URL 的 redirect：
-
-```bash
-.venv\Scripts\python.exe tools/rename_page.py 旧路径 新路径
-```
-
-先加 `--dry-run` 可以只看计划、不写文件。
-
-## 维护工具
-
-| 工具 | 作用 |
 |---|---|
-| `tools/check_site.py` | 全站验收：页面数、题量、讲义、内链、公式；不通过退出码非 0 |
-| `tools/rename_page.py` | 页面/目录改名：自动改 Markdown 链接、nav、redirect |
-| `tools/gen_nav.py` / `gen_index.py` | 生成 nav 与索引页 |
-| `tools/fix_*.py` | 修复公式/矩阵/标题格式（新导入内容时用） |
+| 站点生成 | Astro 7.4 |
+| 文档主题 | Starlight 0.42 |
+| 交互 | Vue 3 islands + Three.js |
+| 公式 | KaTeX |
+| 搜索 | Pagefind |
+| 部署 | GitHub Actions → GitHub Pages |
+| Node | 24 |
 
-- CI 部署前会跑 `mkdocs build --clean --strict` 和 `python tools/check_site.py`，
-  有坏链或警告就不会发布。
-- 旧 URL 由 `mkdocs-redirects` 负责跳转；`rename_page.py` 会自动维护映射。
-- 手动改文件名后，记得补 `mkdocs.yml` 的 `redirect_maps`，否则旧链接会 404。
+`docs/` 是 MkDocs 时代的旧内容，只用于回滚；**生产内容在 `astro/src/content/docs/`**。
 
-## P2 视觉升级
+---
 
-- **首页 Hero**：桌面端右侧按「椭球面 → 单叶双曲面 → 马鞍面 → 莫比乌斯环」交替展示，
-  悬停暂停、切换时交叉淡入；只在 >1000px 且支持 WebGL 时懒加载。
-- **解析几何专题**：`maththeory/analytic-geometry/` 采用三领域八模块结构，
-  并配交互实验台：3D 二次曲面/平面/环面/莫比乌斯环，2D 圆锥曲线、2D 线性变换。
-- `visual/` 是视觉实验与 Three.js 源码目录；正式产物在
-  `docs/javascripts/vendor/`，由 `docs/javascripts/*.js` 按页面懒加载。
-- 改完源码后重新打包：
+## 本地跑起来
 
-```bash
-cd visual
-npm install
-npm run build:hero   # 首页 hero
-npm run build:geo    # 解析几何实验台
-```
+需要 Node.js 24 和 Git。
 
-细节见 [visual/README.md](visual/README.md)。
-
-## Astro 生产站（Phase D 完成）
-
-**生产站点已切换为 Astro 构建**，部署 workflow 为 `.github/workflows/deploy.yml`；
-MkDocs 保留为手动回滚：`.github/workflows/deploy-mkdocs.yml`。
-
-- 架构决策：[ARCHITECTURE.md](ARCHITECTURE.md)
-- Phase A：[astro/SPIKE_REPORT.md](astro/SPIKE_REPORT.md)
-- Phase B：[astro/MIGRATION_REPORT.md](astro/MIGRATION_REPORT.md)
-- Phase C：[astro/PHASE_C_REPORT.md](astro/PHASE_C_REPORT.md)
-- Phase D：[astro/PHASE_D_REPORT.md](astro/PHASE_D_REPORT.md)
-- 内容源：`astro/src/content/docs/`（`docs/` 只用于 MkDocs 回滚/历史）
-- 数据源：`astro/src/data/`
-- 本地运行：
-
-```bash
+```powershell
+cd D:\YanYuas\YanYu-Site
 cd astro
 npm install
-npm run dev      # http://localhost:4321/YanYu-Site/
-npm run check
-npm run check:math
-npm run check:links
+npm run dev
 ```
 
-回滚：
+打开：
 
-```bash
+```text
+http://localhost:4321/YanYu-Site/
+```
+
+> 必须带 `/YanYu-Site/`，因为站点部署在子路径。
+
+---
+
+## 常用命令
+
+在 `astro/` 目录下执行：
+
+| 命令 | 作用 |
+|---|---|
+| `npm run dev` | 本地预览 |
+| `npm run verify` | 一次跑完 check → formula → build → links |
+| `npm run check` | Astro / TypeScript 检查 |
+| `npm run check:math` | 扫描 Astro 内容里的公式 |
+| `npm run build` | 生成 `astro/dist/` |
+| `npm run check:links` | 检查内部链接，严格区分大小写 |
+| `npm run measure` | 查看 JS/CSS/资源体积 |
+| `npm run check:browser` | Playwright 浏览器检查（可选，需本地静态服务） |
+
+发布前最省事：
+
+```powershell
+npm run verify
+```
+
+---
+
+## 内容在哪里
+
+```text
+astro/
+├── src/content/docs/      ★ 文章和页面
+│   ├── index.mdx          首页
+│   ├── tags.mdx           标签总览
+│   ├── 404.md             自定义 404
+│   ├── mathmodel/         数学建模
+│   ├── maththeory/        数学理论
+│   ├── blog/              随笔
+│   └── journey/           成长之路
+├── src/components/
+│   ├── home/              首页 Hero / 3D 轮播
+│   ├── labs/              6 个交互实验
+│   ├── tags/              标签总览
+│   └── content/           文章底部标签条
+├── src/data/              labs / sidebar / redirects
+├── src/pages/tags/        标签详情动态路由
+├── src/styles/custom.css  主题与排版
+├── public/assets/         图片、favicon、OG 图
+└── scripts/               检查与迁移脚本
+```
+
+新增文章：
+
+1. 在对应目录新建 `.md`；
+2. frontmatter 写 `title`、`description`、`tags`；
+3. 正文不要再写 H1；
+4. 站内链接写目录，不写 `.md`；
+5. 需要侧边栏时改 `src/data/sidebar.generated.mjs`。
+
+标签会自动出现在 `/tags/`，不需要手写标签页。
+
+---
+
+## 部署
+
+push 到 `main` 会自动触发：
+
+```text
+.github/workflows/deploy.yml
+```
+
+流程：
+
+```text
+npm ci → astro check → check:math → build → check:links → GitHub Pages
+```
+
+回滚到 MkDocs 旧版：
+
+```powershell
 gh workflow run deploy-mkdocs.yml --ref main
 ```
 
-## 设计风格
+或在 GitHub Actions 页面手动运行 `deploy-mkdocs`。
 
-星空学术风（Starry Academic）+ 金色主题：
-- 深色模式：深蓝底 + 金色文字 + 玻璃态卡片
-- 浅色模式：暖白底 + 深金文字 + 暖白玻璃态
-- 首页：两栏 Hero（左文字 / 右 Three.js 四种曲面交替）+ 风格化史诗插画背景 + 数据条 + 6 个实验入口
+---
+
+## 当前状态
+
+| 项目 | 值 |
+|---|---|
+| 页面 | 97 页 |
+| HTML | 106（含 redirect） |
+| sitemap | 96 URLs |
+| 标签 | 9 个标签 / 27 篇内容 |
+| 检查 | check 0/0/0；链接 0 broken |
+| 安全 | `npm audit` 0 vulnerabilities |
+| 回滚 | 已实测 |
+
+详细架构与历史报告：
+
+- [ARCHITECTURE.md](ARCHITECTURE.md)
+- [Phase A](astro/SPIKE_REPORT.md)
+- [Phase B](astro/MIGRATION_REPORT.md)
+- [Phase C](astro/PHASE_C_REPORT.md)
+- [Phase D](astro/PHASE_D_REPORT.md)
+
+---
+
+## 其他目录
+
+| 目录 | 说明 |
+|---|---|
+| `docs/` | MkDocs 旧内容，只用于回滚 |
+| `visual/` | Three.js 原型/旧实验源码，不参与生产部署 |
+| `tools/` | MkDocs 时代的 Python 工具 |
+| `手册/` | 本地手册，被 `.gitignore` 忽略，不随仓库同步 |
+| `_archive/` | 历史备份 |
+| `site/` | 已清理的旧构建产物 |
+
+---
+
+## 本地手册
+
+`手册/` 里有给新手看的：
+
+- `使用手册.md`：日常改内容、加公式、加图片、发布、排错；
+- `搭建手册.md`：从新电脑到上线；
+- `依赖升级策略.md`：升级依赖但不升坏；
+- `遗留与维护清单.md`：还有哪些坑、怎么维护；
+- `最终验收报告.md`：当前验收基线。
+
+这些文件**不进 Git**，换电脑需要手动复制。
