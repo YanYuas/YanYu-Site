@@ -187,7 +187,7 @@ onBeforeUnmount(() => {
         <span>半通径 p <b>{{ Number(p).toFixed(2) }}</b></span>
         <input v-model.number="p" type="range" min="0.5" max="3" step="0.05" />
       </label>
-      <div class="lab__presets" aria-label="圆锥曲线预设">
+      <div class="lab__presets" role="group" aria-label="圆锥曲线预设">
         <span>预设</span>
         <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
           {{ preset.label }}

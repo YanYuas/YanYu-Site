@@ -161,7 +161,7 @@ onBeforeUnmount(() => resizeObserver?.disconnect());
         <span>d <b>{{ Number(d).toFixed(1) }}</b></span>
         <input v-model.number="d" type="range" min="-2" max="2" step="0.1" />
       </label>
-      <div class="lab__presets" aria-label="线性变换预设">
+      <div class="lab__presets" role="group" aria-label="线性变换预设">
         <span>预设</span>
         <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
           {{ preset.label }}

@@ -160,7 +160,7 @@ onBeforeUnmount(() => {
         <span>夹角 θ <b>{{ Number(angle).toFixed(0) }}°</b></span>
         <input v-model.number="angle" type="range" min="0" max="180" step="1" />
       </label>
-      <div class="lab__presets" aria-label="向量参数预设">
+      <div class="lab__presets" role="group" aria-label="向量参数预设">
         <span>预设</span>
         <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
           {{ preset.label }}

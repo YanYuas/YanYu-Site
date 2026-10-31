@@ -167,7 +167,7 @@ onBeforeUnmount(() => {
         <span>直线方向 <b>{{ Number(lineAngle).toFixed(0) }}°</b></span>
         <input v-model.number="lineAngle" type="range" min="0" max="360" step="1" />
       </label>
-      <div class="lab__presets" aria-label="平面朝向预设">
+      <div class="lab__presets" role="group" aria-label="平面朝向预设">
         <span>预设</span>
         <button v-for="preset in presets" :key="preset.label" type="button" @click="applyPreset(preset)">
           {{ preset.label }}
