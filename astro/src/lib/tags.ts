@@ -28,7 +28,11 @@ function entryPath(entry: { id: string; filePath?: string }): string {
     .replace(/^.*?src\/content\/docs\//, "")
     .replace(/\.(md|mdx)$/, "")
     .replace(/(^|\/)index$/, "");
-  return normalized ? `/${normalized.toLowerCase()}/` : "/";
+  const slugged = normalized
+    .split("/")
+    .map((segment) => segment.replace(/\./g, ""))
+    .join("/");
+  return slugged ? `/${slugged.toLowerCase()}/` : "/";
 }
 
 function sectionName(id: string): string {

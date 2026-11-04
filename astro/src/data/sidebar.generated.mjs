@@ -493,6 +493,14 @@ export default [
                   {
                     "label": "04 · 独立事件",
                     "link": "/maththeory/probability-theory/概率空间和随机事件/04独立事件/"
+                  },
+                  {
+                    "label": "05 · 随机变量与分布函数",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/05随机变量与分布函数/"
+                  },
+                  {
+                    "label": "06 · 数学期望与方差",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/06数学期望与方差/"
                   }
                 ],
                 "collapsed": true

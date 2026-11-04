@@ -13,7 +13,7 @@ tags:
 
 ## 这条线怎么组织
 
-这一部分目前是**基础扩充版**，先把最核心的四章搭起来：
+这一部分目前是**基础扩充版**，先把最核心的六章搭起来：
 
 | 章节 | 主题 | 解决的问题 |
 |---|---|---|
@@ -21,12 +21,16 @@ tags:
 | 02 | 可测空间和概率空间 | 哪些集合可以谈概率？概率怎么公理化？ |
 | 03 | 条件概率 | 已知信息后，概率怎么更新？ |
 | 04 | 独立事件 | 什么时候“互不影响”可以写成等式？ |
+| 05 | 随机变量与分布函数 | 怎样把样本点变成数？ |
+| 06 | 数学期望与方差 | 怎样用两个数概括分布？ |
 
 <div class="card-grid">
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/01随机试验和随机事件/"><strong>01 · 随机试验和随机事件</strong><span>样本空间、事件、集合运算</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/02可测空间和概率空间/"><strong>02 · 可测空间和概率空间</strong><span>σ-代数、概率测度、三元组</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/03条件概率/"><strong>03 · 条件概率</strong><span>乘法公式、全概率、Bayes</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/04独立事件/"><strong>04 · 独立事件</strong><span>两两独立、相互独立、Bernoulli 试验</span></a>
+<a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/05随机变量与分布函数/"><strong>05 · 随机变量与分布函数</strong><span>离散型、连续型、常见分布</span></a>
+<a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/06数学期望与方差/"><strong>06 · 数学期望与方差</strong><span>位置、波动、常见分布的数字特征</span></a>
 </div>
 
 ---
@@ -63,6 +67,6 @@ $$
 - **独立不等于互斥**：这是最常见的一个混淆点。
 
 :::note[当前范围]
-这一部分是基础扩充版：定义、直觉、基本性质和典型例子。
-随机变量、分布、期望、极限定理等内容后续再补。
+这一部分是基础扩充版：随机变量、分布函数、期望和方差已经补上；
+大数定律、中心极限定理和数理统计后续再补。
 :::
