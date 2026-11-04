@@ -13,7 +13,7 @@ tags:
 
 ## 这条线怎么组织
 
-这一部分目前是**基础扩充版**，先把最核心的六章搭起来：
+这一部分目前是**基础扩充版**，先把最核心的七章搭起来：
 
 | 章节 | 主题 | 解决的问题 |
 |---|---|---|
@@ -23,6 +23,7 @@ tags:
 | 04 | 独立事件 | 什么时候“互不影响”可以写成等式？ |
 | 05 | 随机变量与分布函数 | 怎样把样本点变成数？ |
 | 06 | 数学期望与方差 | 怎样用两个数概括分布？ |
+| 07 | 大数定律与中心极限定理 | 平均为什么稳定、波动为什么近似正态？ |
 
 <div class="card-grid">
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/01随机试验和随机事件/"><strong>01 · 随机试验和随机事件</strong><span>样本空间、事件、集合运算</span></a>
@@ -31,6 +32,7 @@ tags:
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/04独立事件/"><strong>04 · 独立事件</strong><span>两两独立、相互独立、Bernoulli 试验</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/05随机变量与分布函数/"><strong>05 · 随机变量与分布函数</strong><span>离散型、连续型、常见分布</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/06数学期望与方差/"><strong>06 · 数学期望与方差</strong><span>位置、波动、常见分布的数字特征</span></a>
+<a class="card" href="/YanYu-Site/maththeory/probability-theory/概率空间和随机事件/07大数定律与中心极限定理/"><strong>07 · 大数定律与中心极限定理</strong><span>样本均值的稳定与正态近似</span></a>
 </div>
 
 ---
@@ -67,6 +69,6 @@ $$
 - **独立不等于互斥**：这是最常见的一个混淆点。
 
 :::note[当前范围]
-这一部分是基础扩充版：随机变量、分布函数、期望和方差已经补上；
-大数定律、中心极限定理和数理统计后续再补。
+这一部分是基础扩充版：随机变量、分布函数、期望和方差、极限定理已经补上；
+数理统计（抽样、估计、检验）后续再补。
 :::

@@ -501,6 +501,10 @@ export default [
                   {
                     "label": "06 · 数学期望与方差",
                     "link": "/maththeory/probability-theory/概率空间和随机事件/06数学期望与方差/"
+                  },
+                  {
+                    "label": "07 · 大数定律与中心极限定理",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/07大数定律与中心极限定理/"
                   }
                 ],
                 "collapsed": true
