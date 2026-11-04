@@ -467,6 +467,38 @@ export default [
               }
             ],
             "collapsed": true
+          },
+          {
+            "label": "概率论",
+            "items": [
+              {
+                "label": "总览",
+                "link": "/maththeory/probability-theory/"
+              },
+              {
+                "label": "概率空间和随机事件",
+                "items": [
+                  {
+                    "label": "01 · 随机试验和随机事件",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/01随机试验和随机事件/"
+                  },
+                  {
+                    "label": "02 · 可测空间和概率空间",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/02可测空间和概率空间/"
+                  },
+                  {
+                    "label": "03 · 条件概率",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/03条件概率/"
+                  },
+                  {
+                    "label": "04 · 独立事件",
+                    "link": "/maththeory/probability-theory/概率空间和随机事件/04独立事件/"
+                  }
+                ],
+                "collapsed": true
+              }
+            ],
+            "collapsed": true
           }
         ]
       }
