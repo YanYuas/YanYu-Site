@@ -23,6 +23,7 @@ tags:
 <a class="card" href="/YanYu-Site/maththeory/advanced-algebra/"><strong>高等代数</strong><span>以几何为锚定的知识体系：三领域 × 七模块 = 21个模块、672道精编习题</span></a>
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/"><strong>解析几何</strong><span>坐标 · 向量 · 二次曲面 · 三维交互实验</span></a>
 <a class="card" href="/YanYu-Site/maththeory/probability-theory/"><strong>概率论</strong><span>随机试验 · 概率空间 · 条件概率 · 独立事件（基础扩充）</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analysis/"><strong>分析学概念领域</strong><span>8 领域 · 59 模块 · 极限到解析的横向组织</span></a>
 </div>
 
 ---

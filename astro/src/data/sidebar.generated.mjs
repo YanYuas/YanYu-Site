@@ -511,6 +511,48 @@ export default [
               }
             ],
             "collapsed": true
+          },
+          {
+            "label": "分析学",
+            "items": [
+              {
+                "label": "总览",
+                "link": "/maththeory/analysis/"
+              },
+              {
+                "label": "D1 · 极限",
+                "link": "/maththeory/analysis/d1-limits/"
+              },
+              {
+                "label": "D2 · 连续",
+                "link": "/maththeory/analysis/d2-continuity/"
+              },
+              {
+                "label": "D3 · 微分",
+                "link": "/maththeory/analysis/d3-differentiation/"
+              },
+              {
+                "label": "D4 · 积分",
+                "link": "/maththeory/analysis/d4-integration/"
+              },
+              {
+                "label": "D5 · 级数",
+                "link": "/maththeory/analysis/d5-series/"
+              },
+              {
+                "label": "D6 · 完备性",
+                "link": "/maththeory/analysis/d6-completeness/"
+              },
+              {
+                "label": "D7 · 三角学",
+                "link": "/maththeory/analysis/d7-trigonometry/"
+              },
+              {
+                "label": "D8 · 解析",
+                "link": "/maththeory/analysis/d8-analyticity/"
+              }
+            ],
+            "collapsed": true
           }
         ]
       }
