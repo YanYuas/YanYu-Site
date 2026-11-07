@@ -1881,6 +1881,67 @@ nav.sidebar {
   border: 0;
 }
 
+/* Native MathML (KaTeX mathml output) can be wider than a phone viewport. */
+math {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}
+
+math[display="block"] {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.15rem 0;
+}
+
+/* Long headings in the mobile TOC should not widen the page. */
+mobile-starlight-toc {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+mobile-starlight-toc details,
+mobile-starlight-toc summary {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+mobile-starlight-toc details > .dropdown {
+  max-width: calc(100vw - 1rem);
+}
+
+mobile-starlight-toc details {
+  max-width: calc(100vw - 1rem);
+}
+
+mobile-starlight-toc summary {
+  max-width: calc(100vw - 1rem);
+}
+
+mobile-starlight-toc .dropdown ul {
+  max-width: 100%;
+}
+
+mobile-starlight-toc .dropdown a {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 50rem) {
+  .sl-markdown-content li {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
+
 
 
 

@@ -34,7 +34,7 @@ const markdownProcessor = unified({
         },
         throwOnError: false,
         strict: false,
-        output: "mathml",
+        output: "html",
       },
     ],
   ],
