@@ -31,13 +31,18 @@ tags:
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/shapes-equations/"><strong>领域二 · 形体与方程</strong><span>S1–S7 · 7 个模块</span></a>
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/transforms-classification/"><strong>领域三 · 变换与分类</strong><span>V1–V7 · 7 个模块</span></a>
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/extensions/"><strong>领域四 · 延伸模块</strong><span>X1–X4 · 4 个模块</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/terminology/"><strong>用语与约定</strong><span>标架、坐标、位置向量、二次曲线、合同变换的统一写法</span></a>
 </div>
 
 ---
 
 ## 和旧版导览的关系
 
-原有「坐标与向量 / 曲线与曲面 / 变换与分类」三组短导览是快速入门，保留了交互实验台的入口。
+原有「坐标与向量 / 曲线与曲面 / 变换与分类」三组快速导览已并入对应模块的「入门速览」一节，不再单独保留页面。
+
+- A1 → E3，A2 → E4；
+- B1 → S3，B2 → V2，B3 → S6，B4 → S5；
+- C1 → V1，C2 → V6。
 
 这套系统讲义是**主教材层**：
 
@@ -50,7 +55,7 @@ tags:
 ## 建议读法
 
 1. 先读 E1–E3，把向量、分解、标架和坐标分开；
-2. 读 E4–E7，补上内积、外积、坐标系与点向量分离；
+2. 读 E4–E7，补上内积、外积、坐标系与位置向量分离；
 3. 读 S1–S4，进入平面、直线、距离与角；
 4. 读 S5–S7，进入柱锥旋、二次曲面与空间曲线；
 5. 读 V1–V7，用变换和不变量回看整门课；

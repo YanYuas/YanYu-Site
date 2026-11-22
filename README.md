@@ -131,10 +131,10 @@ gh workflow run deploy-mkdocs.yml --ref main
 
 | 项目 | 值 |
 |---|---|
-| 页面 | 297 页 |
-| HTML | 306（含 redirect） |
-| sitemap | 296 URLs |
-| 标签 | 24 个标签 / 217 篇内容 |
+| 页面 | 287 页 |
+| HTML | 307（含 redirect） |
+| sitemap | 286 URLs |
+| 标签 | 24 个标签 / 207 篇内容 |
 | 检查 | check 0/0/0；链接 0 broken |
 | 安全 | `npm audit` 0 vulnerabilities |
 | 回滚 | 已实测 |

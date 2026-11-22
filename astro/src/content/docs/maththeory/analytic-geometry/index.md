@@ -11,9 +11,9 @@ tags:
 
 ---
 
-## 系统讲义（主教材层）
+## 主教材层
 
-本页下方的 A/B/C 是快速导览；真正的**主教材层**是 25 个模块的系统讲义，每个模块都配一份习题集：
+解析几何的主体是 **25 个模块的系统讲义**，每个模块都配一份习题集：
 
 <div class="card-grid">
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/"><strong>系统讲义总览</strong><span>25 模块 · 50 篇讲义与习题</span></a>
@@ -21,99 +21,75 @@ tags:
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/shapes-equations/"><strong>领域二 · 形体与方程</strong><span>S1–S7 · 平面、直线、距离、曲面、空间曲线</span></a>
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/transforms-classification/"><strong>领域三 · 变换与分类</strong><span>V1–V7 · 二次曲线、二次曲面、变换群</span></a>
 <a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/extensions/"><strong>领域四 · 延伸模块</strong><span>X1–X4 · 曲率、射影、公理、计算几何</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/terminology/"><strong>用语与约定</strong><span>标架、位置向量、二次曲线、合同变换的统一写法</span></a>
 </div>
 
 系统讲义和数学分析、高等代数同级：
 
 - 每个模块有完整定义、定理、证明思路与反例；
 - 每个模块配 A/B/C/D 分层习题与解答；
-- 快速导览负责建立直觉，系统讲义负责把结构讲完；
-- 交互实验台仍然是独立的浏览器实验入口。
+- 先读定义与边界，再读证明，最后用习题检验；
+- 原「快速导览」八篇已并入对应模块的「入门速览」一节。
 
 ---
 
-## 快速导览怎么组织
-
-解析几何的核心不是「背方程」，而是三件事的往返翻译：
-
-1. **对象 → 坐标**：点、直线、平面、曲线、曲面写成方程；
-2. **坐标 → 结构**：用向量、内积、外积、二次型读出角度、距离、曲率与分类；
-3. **结构 → 变换**：换坐标、刚体变换、仿射变换下，哪些量变了，哪些量不变。
-
-按这三步，体系分成三个相对独立、又互相咬合的领域：
+## 结构
 
 | 领域 | 模块 | 关注的问题 |
 |---|---|---|
-| **一 · 坐标与向量** | A1 坐标系与坐标变换 · A2 向量代数与度量 | 空间如何被坐标化，长度/角度/面积如何被计算 |
-| **二 · 曲线与曲面** | B1 直线与平面 · B2 圆锥曲线 · B3 二次曲面 · B4 参数曲线与曲面 | 方程如何变成图形，图形如何被分类 |
-| **三 · 变换与分类** | C1 等距与仿射变换 · C2 二次型与分类 | 换一个坐标系/变换之后，什么保持不变 |
-
-> 和高等代数的关系：领域一对应 G1–G3（空间、基、内积），
-> 领域二对应 G5/G7（解析几何嵌入、二次型与曲面），
-> 领域三对应 T2–T5（矩阵表示、特征理论、对角化）。
+| 一 · 标架与度量 | E1–E7 | 向量、分解、标架、坐标、内积、外积、坐标系家族 |
+| 二 · 形体与方程 | S1–S7 | 轨迹、平面、空间直线、距离与角、柱锥旋、二次曲面、空间曲线 |
+| 三 · 变换与分类 | V1–V7 | 坐标变换、二次曲线、切线与极线、直径与主方向、分类、变换群 |
+| 四 · 延伸模块 | X1–X4 | 曲率与挠率、射影几何、公理体系、计算几何接口 |
 
 ---
 
-## 模块导航
+## 快速导览并入了哪里
 
-### 领域一 · 坐标与向量
+| 旧页面 | 并入 |
+|---|---|
+| A1 坐标系与坐标变换 | E3 标架与坐标 |
+| A2 向量代数与度量 | E4 内积与投影 |
+| B1 直线与平面 | S3 空间直线 |
+| B2 圆锥曲线 | V2 二次曲线与直线 |
+| B3 二次曲面 | S6 二次曲面标准形 |
+| B4 参数曲线与曲面 | S5 柱锥旋 |
+| C1 等距与仿射变换 | V1 平面直角坐标变换 |
+| C2 二次型与分类 | V6 二次曲面的一般理论 |
 
-- [A1 · 坐标系与坐标变换](/YanYu-Site/maththeory/analytic-geometry/coordinates/a1-coordinate-frame/)
-  —— 仿射坐标系、基变换、坐标变换公式与不变量
-- [A2 · 向量代数与度量](/YanYu-Site/maththeory/analytic-geometry/coordinates/a2-vector-metric/)
-  —— 点积、叉积、混合积；长度、角度、面积、体积
-
-### 领域二 · 曲线与曲面
-
-- [B1 · 直线与平面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b1-line-plane/)
-  —— 点向式、一般式、位置关系、距离与夹角
-- [B2 · 圆锥曲线](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b2-conic/)
-  —— 焦点—准线、离心率、极坐标统一方程
-- [B3 · 二次曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b3-quadric/)
-  —— 二次型标准形、椭球/双曲/抛物/柱面/锥面
-- [B4 · 参数曲线与曲面](/YanYu-Site/maththeory/analytic-geometry/curves-surfaces/b4-parametric/)
-  —— 参数表示、切向量、弧长、环面与莫比乌斯环
-
-### 领域三 · 变换与分类
-
-- [C1 · 等距与仿射变换](/YanYu-Site/maththeory/analytic-geometry/transformations/c1-isometry-affine/)
-  —— 平移、旋转、反射、伸缩、剪切与它们的矩阵
-- [C2 · 二次型与分类](/YanYu-Site/maththeory/analytic-geometry/transformations/c2-classification/)
-  —— 合同变换、惯性定理、二次曲面的不变量分类
+旧链接通过跳转表指到新位置，不会 404。
 
 ---
 
 ## 实验台
 
-- [解析几何实验台](/YanYu-Site/maththeory/analytic-geometry/lab/) —— 3D 二次曲面/参数曲面、2D 圆锥曲线、2D 线性变换，
-  可拖动、可调参数，全部在浏览器里实时计算。
-- 实验台与模块对应关系：
-  - B2 ↔ 圆锥曲线实验（离心率、半通径）
-  - B3 ↔ 二次曲面实验（椭球/双曲面/马鞍面）
-  - B4 ↔ 参数曲面实验（环面/莫比乌斯环）
-  - C1 ↔ 线性变换实验（2×2 矩阵、网格、单位圆）
-
----
-
-## 延伸资源
-
-**3Blue1Brown（3b1b）** 的线性代数系列适合建立几何直觉：
-
-- [Essence of Linear Algebra 官方专题页](https://www.3blue1brown.com/topics/linear-algebra)
-- [3b1b/videos：视频动画源码](https://github.com/3b1b/videos)
-  —— 内容采用 **CC BY-NC-SA 4.0**，非商业使用需署名并以相同方式共享；
-- [3b1b/manim：动画引擎](https://github.com/3b1b/manim)
-  —— **MIT** 许可，可以用来生成自己的数学动画。
-
-本站的三维实验使用 Three.js 实时计算；Manim 版本适合做「讲解动画」，
-两者分工：**Manim 负责叙事，Three.js 负责交互**。
+- [解析几何实验台](/YanYu-Site/maththeory/analytic-geometry/lab/) —— 3D 二次曲面、参数曲面、2D 圆锥曲线、2D 线性变换。
+- 可拖动、可调参数，全部在浏览器里实时计算。
+- 实验台与模块的关系：
+  - V2 ↔ 二次曲线实验
+  - S6 ↔ 二次曲面实验
+  - S5 ↔ 参数曲面实验
+  - V1 ↔ 线性变换实验
 
 ---
 
 ## 建议学习路径
 
-1. A1 → A2：先把「坐标化 + 向量计算」练成肌肉记忆；
-2. B1 → B2：从直线/平面进入圆锥曲线，抓住离心率这条主线；
-3. B3 → B4：把二次方程升级为二次曲面，再看参数曲面；
-4. C1 → C2：用变换和不变量回看前面所有对象；
-5. 最后回到高等代数 G5/G7，把具体结论接到抽象结构上。
+1. E1 → E3：把向量、分解、标架和坐标分开；
+2. E4 → E7：内积、外积、坐标系、位置向量；
+3. S1 → S4：平面、直线、距离与角；
+4. S5 → S7：柱锥旋、二次曲面、空间曲线；
+5. V1 → V7：用变换和不变量回看整门课；
+6. X1–X4 按兴趣选读。
+
+---
+
+## 延伸资源
+
+3Blue1Brown 的线性代数系列适合建立几何直觉：
+
+- [Essence of Linear Algebra](https://www.3blue1brown.com/topics/linear-algebra)
+- [3b1b/videos](https://github.com/3b1b/videos)（CC BY-NC-SA 4.0）
+- [3b1b/manim](https://github.com/3b1b/manim)（MIT）
+
+本站的三维实验用 Three.js 实时计算；Manim 适合做讲解动画，两者分工不同。
