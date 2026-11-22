@@ -1,6 +1,6 @@
 # YanYuas · 个人网站
 
-数学与应用数学本科生的个人学术网站：数学建模、高等代数、解析几何、概率论、分析学、随笔与交互实验。
+数学与应用数学本科生的个人学术网站：数学建模、高等代数、解析几何（25 模块系统讲义）、概率论、分析学、随笔与交互实验。
 
 - 线上：https://yanyuas.github.io/YanYu-Site/
 - 仓库：https://github.com/YanYuas/YanYu-Site
@@ -131,10 +131,10 @@ gh workflow run deploy-mkdocs.yml --ref main
 
 | 项目 | 值 |
 |---|---|
-| 页面 | 237 页 |
-| HTML | 246（含 redirect） |
-| sitemap | 236 URLs |
-| 标签 | 19 个标签 / 162 篇内容 |
+| 页面 | 297 页 |
+| HTML | 306（含 redirect） |
+| sitemap | 296 URLs |
+| 标签 | 24 个标签 / 217 篇内容 |
 | 检查 | check 0/0/0；链接 0 broken |
 | 安全 | `npm audit` 0 vulnerabilities |
 | 回滚 | 已实测 |
