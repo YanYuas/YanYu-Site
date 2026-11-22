@@ -9,3 +9,54 @@ const tags = Astro.locals.starlightRoute.entry.data.tags ?? [];
   <slot />
   {tags.length > 0 && <TagList tags={tags} />}
 </div>
+
+<script>
+  import katex from "katex";
+
+  const macros = {
+    "\\R": "\\mathbb{R}",
+    "\\N": "\\mathbb{N}",
+    "\\Z": "\\mathbb{Z}",
+    "\\Q": "\\mathbb{Q}",
+    "\\C": "\\mathbb{C}",
+    "\\dim": "\\operatorname{dim}",
+    "\\rank": "\\operatorname{rank}",
+    "\\ker": "\\operatorname{ker}",
+    "\\im": "\\operatorname{im}",
+    "\\tr": "\\operatorname{tr}",
+    "\\det": "\\operatorname{det}",
+    "\\abs": "\\left|#1\\right|",
+    "\\norm": "\\left\\|#1\\right\\|",
+    "\\iff": "\\Longleftrightarrow",
+    "\\implies": "\\Longrightarrow",
+    "\\empty": "\\varnothing",
+  };
+
+  function renderMath() {
+    const nodes = document.querySelectorAll(".math");
+    for (const node of nodes) {
+      if (node.querySelector(".katex")) continue;
+      const tex = node.textContent ?? "";
+      if (!tex.trim()) continue;
+      const display =
+        node.classList.contains("math-display") || node.tagName === "DIV";
+      try {
+        katex.render(tex, node as HTMLElement, {
+          displayMode: display,
+          throwOnError: false,
+          strict: false,
+          macros,
+        });
+      } catch {
+        // 保留原始 TeX，不在页面上抛出异常。
+      }
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", renderMath);
+  } else {
+    renderMath();
+  }
+</script>
+

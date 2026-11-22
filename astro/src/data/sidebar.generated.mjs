@@ -403,11 +403,36 @@ export default [
             "link": "/maththeory/analytic-geometry/"
           },
           {
+            "label": "系统讲义",
+            "items": [
+              {
+                "label": "讲义总览",
+                "link": "/maththeory/analytic-geometry/notes/"
+              },
+              {
+                "label": "领域一 · 标架与度量",
+                "link": "/maththeory/analytic-geometry/notes/frames-metric/"
+              },
+              {
+                "label": "领域二 · 形体与方程",
+                "link": "/maththeory/analytic-geometry/notes/shapes-equations/"
+              },
+              {
+                "label": "领域三 · 变换与分类",
+                "link": "/maththeory/analytic-geometry/notes/transforms-classification/"
+              },
+              {
+                "label": "领域四 · 延伸模块",
+                "link": "/maththeory/analytic-geometry/notes/extensions/"
+              }
+            ]
+          },
+          {
             "label": "交互实验台",
             "link": "/maththeory/analytic-geometry/lab/"
           },
           {
-            "label": "领域一 · 坐标与向量",
+            "label": "快速导览 · 坐标与向量",
             "items": [
               {
                 "label": "领域导览",
@@ -425,7 +450,7 @@ export default [
             "collapsed": true
           },
           {
-            "label": "领域二 · 曲线与曲面",
+            "label": "快速导览 · 曲线与曲面",
             "items": [
               {
                 "label": "领域导览",
@@ -451,7 +476,7 @@ export default [
             "collapsed": true
           },
           {
-            "label": "领域三 · 变换与分类",
+            "label": "快速导览 · 变换与分类",
             "items": [
               {
                 "label": "领域导览",

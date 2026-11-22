@@ -1,6 +1,6 @@
 ---
 title: "解析几何"
-description: "解析几何：坐标、向量、曲线曲面、变换与交互实验。"
+description: "解析几何：25 个模块的系统讲义与习题，坐标、向量、曲线曲面、变换与交互实验。"
 tags:
   - 数学理论
   - 解析几何
@@ -11,7 +11,28 @@ tags:
 
 ---
 
-## 这套体系怎么组织
+## 系统讲义（主教材层）
+
+本页下方的 A/B/C 是快速导览；真正的**主教材层**是 25 个模块的系统讲义，每个模块都配一份习题集：
+
+<div class="card-grid">
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/"><strong>系统讲义总览</strong><span>25 模块 · 50 篇讲义与习题</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/frames-metric/"><strong>领域一 · 标架与度量</strong><span>E1–E7 · 向量、坐标、内积、外积、坐标系</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/shapes-equations/"><strong>领域二 · 形体与方程</strong><span>S1–S7 · 平面、直线、距离、曲面、空间曲线</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/transforms-classification/"><strong>领域三 · 变换与分类</strong><span>V1–V7 · 二次曲线、二次曲面、变换群</span></a>
+<a class="card" href="/YanYu-Site/maththeory/analytic-geometry/notes/extensions/"><strong>领域四 · 延伸模块</strong><span>X1–X4 · 曲率、射影、公理、计算几何</span></a>
+</div>
+
+系统讲义和数学分析、高等代数同级：
+
+- 每个模块有完整定义、定理、证明思路与反例；
+- 每个模块配 A/B/C/D 分层习题与解答；
+- 快速导览负责建立直觉，系统讲义负责把结构讲完；
+- 交互实验台仍然是独立的浏览器实验入口。
+
+---
+
+## 快速导览怎么组织
 
 解析几何的核心不是「背方程」，而是三件事的往返翻译：
 
